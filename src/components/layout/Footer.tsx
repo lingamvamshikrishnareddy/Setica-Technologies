@@ -1,0 +1,189 @@
+'use client';
+
+import Link from 'next/link';
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { icon: 'fab fa-twitter', href: 'https://twitter.com/setica', label: 'Twitter' },
+    { icon: 'fab fa-linkedin', href: 'https://linkedin.com/company/setica', label: 'LinkedIn' },
+    { icon: 'fab fa-github', href: 'https://github.com/setica', label: 'GitHub' },
+    { icon: 'fab fa-instagram', href: 'https://instagram.com/setica', label: 'Instagram' },
+  ];
+
+  const footerLinks = {
+    company: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Products', href: '/products' },
+      { label: 'Services', href: '/services' },
+      { label: 'Solutions', href: '/solutions' },
+    ],
+  };
+
+  return (
+    <footer style={{
+      background: 'var(--dark-card)',
+      padding: '80px 5% 30px',
+      borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+    }}>
+      <div style={{
+        maxWidth: '1400px',
+        margin: '0 auto',
+      }}>
+        {/* Main Footer Content */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '50px',
+          marginBottom: '50px',
+        }}>
+          {/* Brand Section */}
+          <div>
+            <Link href="/" style={{
+              fontSize: '1.8rem',
+              fontWeight: '800',
+              textDecoration: 'none',
+              background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+              display: 'inline-block',
+              marginBottom: '15px',
+            }}>
+              Setica
+            </Link>
+            <p style={{
+              fontSize: '0.95rem',
+              color: 'var(--text-muted)',
+              lineHeight: '1.7',
+              marginBottom: '20px',
+            }}>
+              Building the future with 40+ integrated solutions and premium development services.
+            </p>
+            
+            {/* Social Links */}
+            <div style={{
+              display: 'flex',
+              gap: '15px',
+            }}>
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--text-color)',
+                    transition: 'all 0.3s ease',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, var(--primary-blue), var(--primary-orange))';
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <i className={social.icon}></i>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h4 style={{
+              fontSize: '1.1rem',
+              fontWeight: '700',
+              color: 'var(--text-color)',
+              marginBottom: '20px',
+            }}>
+              Company
+            </h4>
+            <ul style={{ listStyle: 'none' }}>
+              {footerLinks.company.map((link) => (
+                <li key={link.label} style={{ marginBottom: '12px' }}>
+                  <Link href={link.href} style={{
+                    color: 'var(--text-muted)',
+                    textDecoration: 'none',
+                    fontSize: '0.95rem',
+                    transition: 'color 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div style={{
+          paddingTop: '30px',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '20px',
+        }}>
+          <p style={{
+            fontSize: '0.9rem',
+            color: 'var(--text-muted)',
+          }}>
+            © {currentYear} Setica. All rights reserved. Made with{' '}
+            <span className="heart-icon">❤️</span> in India.
+          </p>
+
+          <div style={{
+            display: 'flex',
+            gap: '20px',
+            fontSize: '0.9rem',
+          }}>
+            <Link href="/privacy" style={{
+              color: 'var(--text-muted)',
+              textDecoration: 'none',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              Privacy
+            </Link>
+            <Link href="/terms" style={{
+              color: 'var(--text-muted)',
+              textDecoration: 'none',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              Terms
+            </Link>
+            <Link href="/contact" style={{
+              color: 'var(--text-muted)',
+              textDecoration: 'none',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
