@@ -11,24 +11,24 @@ export default function AboutPage() {
 
   const coreValues = [
     {
-      icon: 'fas fa-users-cog',
-      title: 'Community & Openness',
-      description: 'Built collaboratively with transparency. Open source isn\'t just code; it\'s our philosophy.'
+      icon: 'fas fa-heart',
+      title: 'Contribution to Humanity',
+      description: 'Every product we build aims to save lives, solve universal problems, and create meaningful impact for all of mankind.'
     },
     {
-      icon: 'fas fa-link',
-      title: 'Seamless Integration',
-      description: 'Connecting the dots between digital tools and daily tasks for effortless workflows.'
+      icon: 'fas fa-handshake',
+      title: 'Win-Win Solutions',
+      description: 'Building technology that benefits everyone - no losers, only collective growth and mutual prosperity for all.'
     },
     {
-      icon: 'fas fa-compass-drafting',
-      title: 'User-Centric Design',
-      description: 'Prioritizing intuitive interfaces and meaningful interactions that genuinely simplify.'
+      icon: 'fas fa-rocket',
+      title: 'Action Over Comfort',
+      description: 'Taking risks in our prime to solve problems others won\'t tackle due to laziness or commitments.'
     },
     {
-      icon: 'fas fa-shield-alt',
-      title: 'Privacy & Ethics',
-      description: 'Committed to ethical practices and respecting user privacy by design.'
+      icon: 'fas fa-globe',
+      title: 'Universal Problem Solving',
+      description: 'Bridging digital products with AI, web, and mobile to address real-world problems that impact humanity globally.'
     }
   ];
 
@@ -80,7 +80,7 @@ export default function AboutPage() {
             marginBottom: '1rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.3)'
           }}>
-            Simplifying Life Through Integration
+            Building Technology That Serves Humanity
           </h1>
           <p style={{
             fontSize: 'clamp(1.1rem, 2.2vw, 1.3rem)',
@@ -88,7 +88,7 @@ export default function AboutPage() {
             margin: '0 auto',
             color: 'var(--text-muted)'
           }}>
-            Discover the driving force behind Setica — our mission, vision, and commitment to open-source innovation.
+            Discover the philosophy behind Setica — a mission to solve universal problems, save lives, and create meaningful impact for all of mankind.
           </p>
         </div>
       </header>
@@ -137,8 +137,7 @@ export default function AboutPage() {
               maxWidth: '500px',
               margin: '0 auto'
             }}>
-              To empower individuals by simplifying digital complexity through a unified, intuitive, 
-              and open-source platform that seamlessly integrates the essential tools for modern life.
+              To contribute meaningfully to humanity by building technology that solves universal problems, saves lives, improves productivity, and creates win-win solutions. We bridge the gap between human needs and digital innovation through AI, web, and mobile products that benefit all of mankind.
             </p>
           </div>
 
@@ -172,87 +171,240 @@ export default function AboutPage() {
               maxWidth: '500px',
               margin: '0 auto'
             }}>
-              To foster a global community building and benefiting from ethical, user-centric technology 
-              that enhances human connection, productivity, and well-being, free from data exploitation.
+              To build a global movement where every human joins in solving universal problems together. Creating ethical, impactful technology that serves humanity, enhances lives worldwide, and leaves a lasting positive contribution to society and mankind.
             </p>
           </div>
         </div>
       </section>
 
-      {/* About Content Section */}
+      {/* Philosophy Section */}
       <section style={{
         padding: '80px 5%',
         background: 'var(--dark-bg)'
       }}>
         <div style={{
-          maxWidth: '1200px',
+          maxWidth: '900px',
           margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '60px',
-          alignItems: 'center'
+          textAlign: 'center'
         }}>
-          <div style={{ textAlign: 'center' }}>
-            <div style={{
-              maxWidth: '500px',
-              margin: '0 auto'
-            }}>
-              <Image
-                src="/vamshikrishnareddy_Lingam__imagine_prompt__Minimalist_abstract_visualization_33bca415-7a58-4ba1-9300-99bd347ce25a.png"
-                alt="Abstract visualization of integrated digital tools"
-                width={500}
-                height={400}
-                style={{
-                  borderRadius: '24px',
-                  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3)',
-                  maxWidth: '100%',
-                  height: 'auto',
-                  display: 'block'
-                }}
-              />
-              <p style={{
-                fontSize: '0.9rem',
-                color: 'var(--text-muted)',
-                marginTop: '10px',
-                textAlign: 'center'
-              }}>
-                Conceptualizing the Setica Ecosystem
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h2 style={{
-              marginBottom: '20px',
-              fontSize: '2rem',
-              color: 'var(--text-color)'
-            }}>
-              Technology Designed for Humans
-            </h2>
-            <p style={{
-              fontSize: '1.05rem',
-              lineHeight: '1.7',
-              color: 'var(--text-muted)',
-              marginBottom: '1.5rem'
-            }}>
-              Setica is more than just software; it&apos;s an ambitious <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>open-source ecosystem</strong> designed to tackle the fragmentation and complexity of our digital lives. We believe technology should serve people, adapting to their needs, not the other way around.
+          <h2 style={{
+            marginBottom: '30px',
+            fontSize: '2.5rem',
+            color: 'var(--text-color)'
+          }}>
+            The Philosophy Behind Setica
+          </h2>
+          
+          <div style={{
+            fontSize: '1.15rem',
+            lineHeight: '1.8',
+            color: 'var(--text-muted)',
+            textAlign: 'left',
+            marginTop: '40px'
+          }}>
+            <p style={{ marginBottom: '1.5rem' }}>
+              Setica was born from a fundamental question: <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>What is life?</strong>
             </p>
-            <p style={{
-              fontSize: '1.05rem',
-              lineHeight: '1.7',
-              color: 'var(--text-muted)',
-              marginBottom: '1.5rem'
-            }}>
-              By combining cutting-edge interaction design with robust engineering, we&apos;re building a unified platform where disparate digital tools converge into a seamless, intuitive experience. Our goal is to reduce friction and empower users to focus on what truly matters.
+            <p style={{ marginBottom: '1.5rem' }}>
+              The answer became clear — before we leave this world, what truly matters is <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>how much we contribute to humanity and society</strong>. It&apos;s about how many lives we save, how many problems we solve, and how beneficial our work is to all of mankind.
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              In India and across the world, countless problems exist that nobody wants to solve — either due to laziness or existing commitments. <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>Setica exists to bridge that gap</strong>, using AI, web, and mobile technologies to create win-win solutions that improve productivity and save human lives.
+            </p>
+            <p style={{ marginBottom: '1.5rem', fontSize: '1.2rem', color: 'var(--primary-blue)', fontWeight: 600 }}>
+              If you want the future to be good, you must take it into your own hands. No one is going to come save you.
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              This isn&apos;t just about building products. It&apos;s about creating a movement where every human can join in solving universal problems that matter to all of us.
             </p>
           </div>
         </div>
 
-        {/* Core Values */}
+        {/* The Problem Section */}
+      <section style={{
+        padding: '80px 5%',
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #0f1419 100%)'
+      }}>
+        <div style={{
+          maxWidth: '1000px',
+          margin: '0 auto'
+        }}>
+          <h2 style={{
+            marginBottom: '40px',
+            fontSize: '2.5rem',
+            color: 'var(--text-color)',
+            textAlign: 'center'
+          }}>
+            The Problem We&apos;re Solving
+          </h2>
+
+          <div style={{
+            fontSize: '1.1rem',
+            lineHeight: '1.8',
+            color: 'var(--text-muted)',
+            marginBottom: '40px'
+          }}>
+            <p style={{ marginBottom: '1.5rem' }}>
+              Large corporations and MNCs are overcharging for basic necessities — internet bills, loan rates, grocery prices, housing costs. <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>The rich are getting richer while prices keep going up.</strong>
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              Even when these companies generate massive revenue and record profits, they still conduct layoffs. <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>Human life is not valued in today&apos;s corporate world.</strong>
+            </p>
+            <p style={{ marginBottom: '1.5rem', fontSize: '1.15rem', color: 'var(--primary-orange)', fontWeight: 600 }}>
+              The solution is simple: If we don&apos;t buy their products, they don&apos;t get revenue.
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              But we need alternatives. That&apos;s why I&apos;m building products that put power back in the hands of people. <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>I want to change the system with Human + AI</strong> — where income inequality is justified, where human life is valued, and where everyone has access to fair pricing and opportunities.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '25px',
+            marginTop: '50px'
+          }}>
+            <div style={{
+              padding: '25px',
+              borderRadius: '16px',
+              background: 'rgba(255, 111, 0, 0.1)',
+              border: '2px solid rgba(255, 111, 0, 0.3)',
+              textAlign: 'center'
+            }}>
+              <i className="fas fa-wifi" style={{
+                fontSize: '2.5rem',
+                color: 'var(--primary-orange)',
+                marginBottom: '15px',
+                display: 'block'
+              }}></i>
+              <h3 style={{
+                fontSize: '1.2rem',
+                color: 'var(--text-color)',
+                marginBottom: '10px'
+              }}>Internet Bills</h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: 'var(--text-muted)',
+                margin: 0
+              }}>Overpriced connectivity keeping people disconnected</p>
+            </div>
+
+            <div style={{
+              padding: '25px',
+              borderRadius: '16px',
+              background: 'rgba(255, 111, 0, 0.1)',
+              border: '2px solid rgba(255, 111, 0, 0.3)',
+              textAlign: 'center'
+            }}>
+              <i className="fas fa-percentage" style={{
+                fontSize: '2.5rem',
+                color: 'var(--primary-orange)',
+                marginBottom: '15px',
+                display: 'block'
+              }}></i>
+              <h3 style={{
+                fontSize: '1.2rem',
+                color: 'var(--text-color)',
+                marginBottom: '10px'
+              }}>Loan Rates</h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: 'var(--text-muted)',
+                margin: 0
+              }}>Unfair interest rates trapping people in debt</p>
+            </div>
+
+            <div style={{
+              padding: '25px',
+              borderRadius: '16px',
+              background: 'rgba(255, 111, 0, 0.1)',
+              border: '2px solid rgba(255, 111, 0, 0.3)',
+              textAlign: 'center'
+            }}>
+              <i className="fas fa-shopping-cart" style={{
+                fontSize: '2.5rem',
+                color: 'var(--primary-orange)',
+                marginBottom: '15px',
+                display: 'block'
+              }}></i>
+              <h3 style={{
+                fontSize: '1.2rem',
+                color: 'var(--text-color)',
+                marginBottom: '10px'
+              }}>Grocery Prices</h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: 'var(--text-muted)',
+                margin: 0
+              }}>Basic necessities becoming unaffordable luxuries</p>
+            </div>
+
+            <div style={{
+              padding: '25px',
+              borderRadius: '16px',
+              background: 'rgba(255, 111, 0, 0.1)',
+              border: '2px solid rgba(255, 111, 0, 0.3)',
+              textAlign: 'center'
+            }}>
+              <i className="fas fa-home" style={{
+                fontSize: '2.5rem',
+                color: 'var(--primary-orange)',
+                marginBottom: '15px',
+                display: 'block'
+              }}></i>
+              <h3 style={{
+                fontSize: '1.2rem',
+                color: 'var(--text-color)',
+                marginBottom: '10px'
+              }}>Housing Costs</h3>
+              <p style={{
+                fontSize: '0.95rem',
+                color: 'var(--text-muted)',
+                margin: 0
+              }}>Skyrocketing prices making homeownership a dream</p>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: '50px',
+            padding: '40px',
+            borderRadius: '20px',
+            background: 'linear-gradient(135deg, rgba(74, 85, 255, 0.1), rgba(255, 111, 0, 0.1))',
+            border: '2px solid rgba(74, 85, 255, 0.3)',
+            textAlign: 'center'
+          }}>
+            <h3 style={{
+              fontSize: '1.8rem',
+              color: 'var(--text-color)',
+              marginBottom: '20px'
+            }}>
+              The Solution: Human + AI
+            </h3>
+            <p style={{
+              fontSize: '1.15rem',
+              lineHeight: '1.7',
+              color: 'var(--text-muted)',
+              maxWidth: '700px',
+              margin: '0 auto 25px'
+            }}>
+              By combining human ingenuity with artificial intelligence, we can build alternatives that value people over profits, that justify income through contribution, and that create opportunities for everyone.
+            </p>
+            <p style={{
+              fontSize: '1.2rem',
+              color: 'var(--primary-blue)',
+              fontWeight: 700
+            }}>
+              All I need is your support to make this vision a reality.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values */}
         <div style={{ marginTop: '80px' }}>
           <h3 style={{
             marginBottom: '40px',
-            fontSize: '1.5rem',
+            fontSize: '2rem',
             color: 'var(--text-color)',
             textAlign: 'center'
           }}>
@@ -266,7 +418,14 @@ export default function AboutPage() {
             margin: '0 auto'
           }}>
             {coreValues.map((value, index) => (
-              <div key={index} className="value-item">
+              <div key={index} className="value-item" style={{
+                padding: '30px',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                transition: 'transform 0.3s ease',
+                textAlign: 'center'
+              }}>
                 <i className={value.icon} style={{
                   position: 'relative',
                   zIndex: 1,
@@ -326,7 +485,7 @@ export default function AboutPage() {
           marginLeft: 'auto',
           marginRight: 'auto'
         }}>
-          Setica is currently driven by an individual passion for creating better, more integrated technology.
+          A solo journey driven by passion, resilience, and the unwavering belief that one person can make a difference for all of humanity.
         </p>
 
         <div style={{
@@ -343,13 +502,14 @@ export default function AboutPage() {
             flexShrink: 0
           }}>
             <Image
-              src="/profile.jpg"
+              src="/images/profile.jpg"
               alt="Lingam Vamshi Krishna Reddy Profile Picture"
-              width={180}
-              height={180}
+              width={300}
+              height={300}
+              priority
               style={{
-                width: '180px',
-                height: '180px',
+                width: '300px',
+                height: '300px',
                 borderRadius: '50%',
                 margin: '0 auto 20px',
                 objectFit: 'cover',
@@ -371,7 +531,7 @@ export default function AboutPage() {
               display: 'block',
               marginBottom: '15px'
             }}>
-              Founder - Indie Developer & AI Researcher
+              Founder & Solo Builder - On a Mission to Serve Humanity
             </span>
           </div>
 
@@ -381,15 +541,23 @@ export default function AboutPage() {
             color: 'var(--text-muted)'
           }}>
             <p style={{ marginBottom: '1.5rem' }}>
-              Hi, I&apos;m Vamshi. As an indie developer fascinated by the potential of technology to improve our lives, I started Setica to address the digital clutter and disjointed experiences I saw everywhere. My goal is to build tools that feel less like applications and more like natural extensions of our intentions.
+              Hi, I&apos;m Vamshi. Setica was born from a profound question: <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>What is life?</strong> After deep reflection, I realized the answer lies in contribution — before we leave this world, what truly matters is how much we&apos;ve contributed to humanity and society, how many lives we&apos;ve saved, and how many problems we&apos;ve solved for mankind.
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              My journey hasn&apos;t been easy. I&apos;ve faced countless failures, traveled to many places across India and learned about problems people face daily — problems that nobody wants to solve, either due to laziness or existing commitments. I&apos;ve taken every odd job imaginable to gain product knowledge and understand the real world, much like the early days of entrepreneurs who hustled to learn their craft.
             </p>
             <p style={{ marginBottom: '1.5rem' }}>
               <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>
-                Setica is born from the belief that complexity can be elegant, and that open collaboration leads to stronger, more ethical solutions.
-              </strong> While currently an indie project, the vision is much larger — a thriving ecosystem built with and for the community.
+                At 26, I&apos;m in my prime, and I&apos;m building all these products alone to solve universal problems.
+              </strong> I believe in win-win solutions — bridging digital products with AI, web, and mobile technologies to improve productivity, save human lives, and create meaningful impact for all of humanity. I&apos;m building alternatives to overpriced services so people have real choices, not monopolies.
             </p>
             <p style={{ marginBottom: '1.5rem' }}>
-              I&apos;m excited about the future and the innovative products planned under the Setica umbrella. Let&apos;s build something amazing together.
+              The beauty of taking this risk now is simple: if I fail, I can always return to freelancing or get a stable job. But my passion isn&apos;t stability — it&apos;s solving problems and building businesses that bring joy not just to me, but to everyone they touch. That&apos;s what drives me every single day.
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              <strong style={{ color: 'var(--text-color)', fontWeight: 600 }}>
+                Now, all that&apos;s left is for every human who shares this vision to join this journey.
+              </strong> Together, we can build technology that truly serves humanity, breaks the monopoly of overpriced services, values human life over corporate profits, and creates a fairer world where income inequality is justified by contribution, not exploitation. <strong style={{ color: 'var(--primary-blue)' }}>All I need is your support.</strong>
             </p>
             <div style={{ marginTop: '20px', textAlign: 'center' }}>
               <a
@@ -418,21 +586,25 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="cta-section">
+      <section className="cta-section" style={{
+        padding: '100px 5%',
+        background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+        textAlign: 'center'
+      }}>
         <div className="cta-content">
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             marginBottom: '1rem',
             color: 'var(--text-color)'
           }}>
-            Be Part of the Journey
+            Join the Movement to Serve Humanity
           </h2>
           <p style={{
             fontSize: '1.2rem',
             color: 'var(--text-muted)',
             marginBottom: '2rem'
           }}>
-            Follow the project&apos;s progress, contribute ideas, or join the waitlist to be notified about upcoming launches.
+            Every human who shares this vision is invited to join this journey. Together, we can solve universal problems and create lasting positive impact for all of mankind.
           </p>
           <Link
             href="/join-waitlist"
@@ -450,7 +622,7 @@ export default function AboutPage() {
             }}
             className="btn-cta"
           >
-            JOIN WAITLIST →
+            JOIN THE MOVEMENT →
           </Link>
           <a
             href="https://github.com/lingamvamshikrishnareddy/setica"
@@ -458,15 +630,16 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             style={{
               padding: '16px 40px',
-              background: 'rgba(255,255,255,0.8)',
-              color: 'var(--dark-bg)',
+              background: 'rgba(255,255,255,0.1)',
+              color: 'white',
               textDecoration: 'none',
               borderRadius: '12px',
               fontWeight: '700',
               fontSize: '1.1rem',
               display: 'inline-block',
               transition: 'all 0.3s ease',
-              marginTop: '10px'
+              marginTop: '10px',
+              border: '2px solid rgba(255,255,255,0.2)'
             }}
             className="btn-secondary"
           >
@@ -487,9 +660,28 @@ export default function AboutPage() {
           box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
+        .value-item:hover {
+          transform: translateY(-5px);
+        }
+
+        .value-item:hover i {
+          transform: scale(1.1);
+        }
+
         .contact-btn:hover {
           transform: translateY(-2px);
           box-shadow: 0 5px 20px rgba(74, 85, 255, 0.4);
+        }
+
+        .btn-cta:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(74, 85, 255, 0.4);
+        }
+
+        .btn-secondary:hover {
+          background: rgba(255,255,255,0.15);
+          border-color: rgba(255,255,255,0.4);
+          transform: translateY(-3px);
         }
 
         @media (min-width: 768px) {

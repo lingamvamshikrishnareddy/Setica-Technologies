@@ -16,12 +16,12 @@ export default function HomePage() {
       icon: 'fas fa-briefcase-medical',
       status: 'In Development',
       statusClass: 'status-development',
-      description: 'Connect with healthcare providers, schedule appointments, and manage your health records - all in one secure location.',
+      description: 'Comprehensive healthcare solution combining online telemedicine consultations, pharmacy services, and ambulance connectivity in one platform.',
       features: [
         'Virtual doctor consultations',
-        'Secure medical record access',
+        'Online pharmacy integration',
         'Ambulance service connectivity',
-        'Prescription management'
+        'Secure health records access'
       ]
     },
     {
@@ -29,38 +29,38 @@ export default function HomePage() {
       icon: 'fas fa-hard-hat',
       status: 'In Development',
       statusClass: 'status-development',
-      description: 'A dedicated platform connecting skilled workers with relevant opportunities, designed specifically for the underserved blue-collar segment.',
+      description: 'Comprehensive job portal connecting local and international blue-collar workers with verified opportunities across industries.',
       features: [
-        'AI-powered job matching',
-        'Skill verification tracking',
-        'Direct messaging',
-        'Career resources'
+        'Local to international job matching',
+        'Skill verification system',
+        'Multi-language support',
+        'Career progression tracking'
       ]
     },
     {
-      title: 'Health & Fitness App',
+      title: 'NutriHealth Buddy',
       icon: 'fas fa-heartbeat',
       status: 'In Development',
       statusClass: 'status-development',
-      description: 'Track your nutrition, plan workouts, and monitor your progress with personalized health insights.',
+      description: 'AI-powered nutrition and wellness companion for personalized meal planning, health tracking, and fitness guidance.',
       features: [
-        'Personalized nutrition tracking',
-        'Adaptive workout routines',
-        'Progress tracking & reports',
-        'Wearable device integration'
+        'AI meal planning & recipes',
+        'Calorie & macro tracking',
+        'Fitness integration',
+        'Health insights & reports'
       ]
     },
     {
-      title: 'Women\'s Safety Tools',
+      title: 'Women\'s Safety App',
       icon: 'fas fa-shield-alt',
       status: 'In Development',
       statusClass: 'status-development',
-      description: 'Enhance personal security with location sharing, emergency contacts, and community safety features.',
+      description: 'Individual-registered SOS emergency platform with real-time alerts, location sharing, and trusted contact networks.',
       features: [
+        'Personal SOS registration',
         'Real-time location sharing',
-        'One-tap emergency alert (SOS)',
-        'Institutional safety partnerships',
-        'Automated journey monitoring'
+        'Emergency contact alerts',
+        'Journey monitoring'
       ]
     },
     {
@@ -68,12 +68,12 @@ export default function HomePage() {
       icon: 'fas fa-shipping-fast',
       status: 'Planned',
       statusClass: 'status-planned',
-      description: 'Transparent quick commerce with zero dark patterns, connecting users with local stores for rapid delivery.',
+      description: 'Transparent quick commerce with zero hidden prices, no dark patterns, and assured quality delivery.',
       features: [
         '100% transparent pricing',
-        'Sub-30 min local delivery',
-        'No hidden fees or tricks',
-        'Support local businesses'
+        'No dark patterns guarantee',
+        'Quality assured delivery',
+        'Local store partnerships'
       ]
     },
     {
@@ -81,12 +81,12 @@ export default function HomePage() {
       icon: 'fas fa-car',
       status: 'Planned',
       statusClass: 'status-planned',
-      description: 'Connected transportation service optimizing urban mobility with focus on affordability and efficiency.',
+      description: 'Connected transportation with autonomous car services, car wash, and comprehensive vehicle care features.',
       features: [
-        'Real-time ride matching',
-        'Driver verification & safety',
-        'Multiple transport options',
-        'Loyalty & rewards system'
+        'Ride-hailing service',
+        'Autonomous vehicle ready',
+        'Car wash & care booking',
+        'Vehicle maintenance alerts'
       ]
     },
     {
@@ -94,38 +94,38 @@ export default function HomePage() {
       icon: 'fas fa-cogs',
       status: 'Planned',
       statusClass: 'status-planned',
-      description: 'Complete business OS with CRM, project management, and workflow automation. Alternative to Zoho and Salesforce.',
+      description: 'Business OS for MSMEs and startups with CRM, project management, and workflow automation tools.',
       features: [
         'Unified CRM platform',
-        'Project management tools',
-        'Workflow automation',
-        'Team collaboration'
+        'MSME-focused features',
+        'Startup tools & templates',
+        'Workflow automation'
       ]
     },
     {
-      title: 'Yatra - Travel & Hospitality',
+      title: 'Yatra Travel & Hospitality',
       icon: 'fas fa-plane-departure',
       status: 'Planned',
       statusClass: 'status-planned',
-      description: 'Complete travel platform with budget stays, spiritual travel, honeymoon packages, and AI itinerary planning.',
+      description: 'Online hospitality and booking platform for hotels, flights, and complete travel experiences.',
       features: [
-        'Budget stays (₹99-₹499)',
-        'Spiritual travel mode',
-        'AI Travel Assistant',
-        'Gamified rewards system'
+        'Hotel & flight booking',
+        'Travel packages',
+        'Itinerary planning',
+        'Local experiences'
       ]
     },
     {
-      title: 'Fintech Solution',
-      icon: 'fas fa-coins',
+      title: 'Traffic AI',
+      icon: 'fas fa-traffic-light',
       status: 'Research',
       statusClass: 'status-research',
-      description: 'Manage your finances with modern tools for budgeting, seamless payments, and financial wellness insights.',
+      description: 'Vision model-based traffic management system with dynamic timer adjustments based on real-time traffic density.',
       features: [
-        'Automated expense tracking',
-        'Secure P2P payments',
-        'Financial health scoring',
-        'Goal-based savings tracking'
+        'AI vision-based detection',
+        'Dynamic signal timing',
+        'Traffic density analysis',
+        'Smart city integration'
       ]
     },
     {
@@ -133,7 +133,7 @@ export default function HomePage() {
       icon: 'fas fa-robot',
       status: 'Research',
       statusClass: 'status-research',
-      description: 'Automated job searching and application with AI-powered resume optimization.',
+      description: 'Automated job searching and application agent with intelligent matching and profile optimization.',
       features: [
         'Auto job search & apply',
         'Resume optimization',
@@ -142,16 +142,16 @@ export default function HomePage() {
       ]
     },
     {
-      title: 'Cyber Shield',
-      icon: 'fas fa-user-shield',
+      title: 'NeuroSync Brain Interface',
+      icon: 'fas fa-brain',
       status: 'Research',
       statusClass: 'status-research',
-      description: 'Comprehensive cybersecurity platform for personal and business protection.',
+      description: 'Neural chip technology enabling brain-to-brain API communication for next-generation connectivity.',
       features: [
-        'Real-time threat monitoring',
-        'Identity protection',
-        'Secure browsing & VPN',
-        'Data encryption tools'
+        'Brain-computer interface',
+        'Thought-based communication',
+        'Neural API integration',
+        'Privacy-first design'
       ]
     },
     {
@@ -266,7 +266,7 @@ export default function HomePage() {
 
         <div style={{ textAlign: 'center', marginTop: '60px' }}>
           <Link href="/products" className="btn btn-primary" style={{ marginRight: '15px' }}>
-            View Complete Roadmap (40+ Products)
+            View Complete Roadmap (50+ Products)
           </Link>
           <Link href="/services" className="btn btn-primary">
             Explore Our Services
