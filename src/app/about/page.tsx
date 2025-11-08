@@ -559,28 +559,7 @@ export default function AboutPage() {
                 Now, all that&apos;s left is for every human who shares this vision to join this journey.
               </strong> Together, we can build technology that truly serves humanity, breaks the monopoly of overpriced services, values human life over corporate profits, and creates a fairer world where income inequality is justified by contribution, not exploitation. <strong style={{ color: 'var(--primary-blue)' }}>All I need is your support.</strong>
             </p>
-            <div style={{ marginTop: '20px', textAlign: 'center' }}>
-              <a
-                href="mailto:lingamvamshikrishnareddy@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '10px 20px',
-                  borderRadius: '8px',
-                  backgroundColor: 'var(--primary-blue)',
-                  color: 'white',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                  transition: 'all 0.3s ease'
-                }}
-                className="contact-btn"
-              >
-                <i className="fas fa-paper-plane"></i> Get In Touch
-              </a>
-            </div>
+            
           </div>
         </div>
       </section>
