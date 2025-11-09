@@ -1,12 +1,62 @@
 'use client';
 
-import { useEffect } from 'react';
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '@/lib/firebase/firestore';
 
 export default function ServicesPage() {
+  const router = useRouter();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
+
   useEffect(() => {
     document.body.classList.add('loaded');
   }, []);
+
+  const handleNavigateToWaitlist = () => {
+    router.push('/join-waitlist');
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('');
+
+    try {
+      await addDoc(collection(db, 'contact-messages'), {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        timestamp: serverTimestamp(),
+        status: 'new'
+      });
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      
+      setTimeout(() => {
+        setSubmitStatus('');
+      }, 5000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const services = [
     {
@@ -213,8 +263,8 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <a 
-                  href="mailto:lingamvamshikrishnareddy@gmail.com"
+                <button 
+                  onClick={handleNavigateToWaitlist}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -227,12 +277,12 @@ export default function ServicesPage() {
                     fontSize: '0.9rem',
                     transition: 'all 0.3s ease',
                     border: '1px solid rgba(74, 85, 255, 0.2)',
-                    textDecoration: 'none'
+                    cursor: 'pointer'
                   }}
                   className="service-cta"
                 >
                   Get Started <i className="fas fa-arrow-right"></i>
-                </a>
+                </button>
               </div>
             </div>
           ))}
@@ -353,9 +403,17 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-content">
+      {/* CTA Section with Contact Form */}
+      <section style={{
+        padding: '80px 5%',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+        position: 'relative'
+      }}>
+        <div style={{
+          maxWidth: '800px',
+          margin: '0 auto',
+          textAlign: 'center'
+        }}>
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             marginBottom: '1rem',
@@ -364,27 +422,187 @@ export default function ServicesPage() {
           <p style={{
             fontSize: '1.2rem',
             color: 'var(--text-muted)',
-            marginBottom: '2rem'
+            marginBottom: '3rem'
           }}>
             Let&apos;s discuss your project and create exceptional digital experiences together.
           </p>
-          <a 
-            href="mailto:lingamvamshikrishnareddy@gmail.com"
-            style={{
-              padding: '16px 40px',
-              background: 'linear-gradient(135deg, var(--primary-blue), var(--primary-orange))',
-              color: 'white',
-              textDecoration: 'none',
-              borderRadius: '12px',
-              fontWeight: '700',
-              fontSize: '1.1rem',
-              display: 'inline-block',
-              transition: 'all 0.3s ease'
-            }}
-            className="btn-cta"
-          >
-            CONTACT US →
-          </a>
+
+          <form onSubmit={handleSubmit} style={{
+            background: 'rgba(255, 255, 255, 0.03)',
+            backdropFilter: 'blur(10px)',
+            padding: '40px',
+            borderRadius: '20px',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            textAlign: 'left'
+          }}>
+            <div style={{ marginBottom: '25px' }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '8px',
+                color: 'var(--text-color)',
+                fontWeight: '600',
+                fontSize: '0.95rem'
+              }}>
+                Name *
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                style={{
+                  width: '100%',
+                  padding: '14px 18px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '12px',
+                  color: 'var(--text-color)',
+                  fontSize: '1rem',
+                  transition: 'all 0.3s ease',
+                  outline: 'none'
+                }}
+                onFocus={(e) => e.target.style.borderColor = '#4A55FF'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+              />
+            </div>
+
+            <div style={{ marginBottom: '25px' }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '8px',
+                color: 'var(--text-color)',
+                fontWeight: '600',
+                fontSize: '0.95rem'
+              }}>
+                Email *
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                style={{
+                  width: '100%',
+                  padding: '14px 18px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '12px',
+                  color: 'var(--text-color)',
+                  fontSize: '1rem',
+                  transition: 'all 0.3s ease',
+                  outline: 'none'
+                }}
+                onFocus={(e) => e.target.style.borderColor = '#4A55FF'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+              />
+            </div>
+
+            <div style={{ marginBottom: '30px' }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '8px',
+                color: 'var(--text-color)',
+                fontWeight: '600',
+                fontSize: '0.95rem'
+              }}>
+                Message *
+              </label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+                rows={5}
+                style={{
+                  width: '100%',
+                  padding: '14px 18px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '12px',
+                  color: 'var(--text-color)',
+                  fontSize: '1rem',
+                  transition: 'all 0.3s ease',
+                  outline: 'none',
+                  resize: 'vertical',
+                  fontFamily: 'inherit'
+                }}
+                onFocus={(e) => e.target.style.borderColor = '#4A55FF'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{
+                width: '100%',
+                padding: '16px 40px',
+                background: isSubmitting 
+                  ? 'rgba(74, 85, 255, 0.5)' 
+                  : 'linear-gradient(135deg, #4A55FF, #ff6f00)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '12px',
+                fontWeight: '700',
+                fontSize: '1.1rem',
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              className="submit-btn"
+            >
+              {isSubmitting ? 'SENDING...' : 'SEND MESSAGE →'}
+            </button>
+
+            {submitStatus === 'success' && (
+              <div style={{
+                marginTop: '20px',
+                padding: '15px',
+                background: 'rgba(34, 197, 94, 0.1)',
+                border: '1px solid rgba(34, 197, 94, 0.3)',
+                borderRadius: '12px',
+                color: '#22c55e',
+                textAlign: 'center',
+                fontWeight: '600'
+              }}>
+                ✓ Message sent successfully! We&apos;ll get back to you soon.
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div style={{
+                marginTop: '20px',
+                padding: '15px',
+                background: 'rgba(239, 68, 68, 0.1)',
+                border: '1px solid rgba(239, 68, 68, 0.3)',
+                borderRadius: '12px',
+                color: '#ef4444',
+                textAlign: 'center',
+                fontWeight: '600'
+              }}>
+                ✕ Something went wrong. Please try again or email us directly.
+              </div>
+            )}
+          </form>
+
+          <p style={{
+            marginTop: '25px',
+            color: 'var(--text-muted)',
+            fontSize: '0.9rem'
+          }}>
+            Or email us directly at{' '}
+            <a 
+              href="mailto:lingamvamshikrishnareddy@gmail.com"
+              style={{
+                color: '#4A55FF',
+                textDecoration: 'none',
+                fontWeight: '600'
+              }}
+            >
+              lingamvamshikrishnareddy@gmail.com
+            </a>
+          </p>
         </div>
       </section>
 
@@ -407,6 +625,11 @@ export default function ServicesPage() {
           background: rgba(255, 255, 255, 0.06) !important;
           transform: translateY(-5px);
           box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .submit-btn:hover:not(:disabled) {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 30px rgba(74, 85, 255, 0.4);
         }
 
         @media (max-width: 768px) {

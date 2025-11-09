@@ -61,7 +61,7 @@ export default function ProductsPage() {
         statusClass: 'status-completed',
         progress: '100%',
         tech: 'Healthcare SaaS',
-        description: 'Comprehensive healthcare solution combining online telemedicine consultations, pharmacy services, and ambulance connectivity in one platform.'
+        description: 'Comprehensive healthcare solution combining online telemedicine consultations, pharmacy products, and ambulance connectivity in one platform.'
       },
       {
         icon: 'fas fa-shipping-fast',
@@ -106,7 +106,7 @@ export default function ProductsPage() {
         statusClass: 'status-completed',
         progress: '100%',
         tech: 'Mobile App',
-        description: 'Connected transportation with autonomous car services, car wash, and comprehensive vehicle care features.'
+        description: 'Connected transportation with autonomous car products, car wash, and comprehensive vehicle care features.'
       },
       {
         icon: 'fas fa-solar-panel',
@@ -215,7 +215,7 @@ export default function ProductsPage() {
       }
     ],
 
-    // ==================== IN DEVELOPMENT - CORE SERVICES ====================
+    // ==================== IN DEVELOPMENT - CORE products ====================
     developmentCore: [
       {
         icon: 'fas fa-hard-hat',
@@ -260,7 +260,7 @@ export default function ProductsPage() {
         statusClass: 'status-development',
         progress: '15%',
         tech: 'Banking Platform',
-        description: 'Digital banking platform offering personal and business loans, fixed deposits, and comprehensive financial services.'
+        description: 'Digital banking platform offering personal and business loans, fixed deposits, and comprehensive financial products.'
       },
       {
         icon: 'fas fa-calendar-alt',
@@ -389,12 +389,12 @@ export default function ProductsPage() {
       },
       {
         icon: 'fas fa-car-side',
-        title: 'Vehicle Care Services',
+        title: 'Vehicle Care products',
         status: 'In Development',
         statusClass: 'status-early',
         progress: '20%',
         tech: 'Service Platform',
-        description: 'On-demand car wash, services, and comprehensive vehicle care with maintenance tracking and alerts.'
+        description: 'On-demand car wash, products, and comprehensive vehicle care with maintenance tracking and alerts.'
       },
       {
         icon: 'fas fa-hand-holding-medical',
@@ -430,7 +430,7 @@ export default function ProductsPage() {
         statusClass: 'status-early',
         progress: '18%',
         tech: 'Healthcare Platform',
-        description: 'Virtual nursing and care management for senior citizens and baby sitting services with real-time monitoring.'
+        description: 'Virtual nursing and care management for senior citizens and baby sitting products with real-time monitoring.'
       },
       {
         icon: 'fas fa-clipboard-check',
@@ -797,7 +797,7 @@ export default function ProductsPage() {
             margin: '0 auto',
             color: '#aaa'
           } as CSSProperties}>
-            Our comprehensive suite of 70+ integrated solutions spanning healthcare, AI, productivity, and emerging technologies.
+            Our comprehensive suite of 60+ integrated solutions spanning healthcare, AI, productivity, and emerging technologies.
           </p>
         </div>
       </header>
@@ -810,10 +810,10 @@ export default function ProductsPage() {
         <div style={{ maxWidth: '1200px', margin: '0 auto' } as CSSProperties}>
           
           {/* All Product Sections */}
-          {renderProductSection('🚀 Active Products', productRoadmap.active, '#10b981')}
-          {renderProductSection('✅ Completed & Ready to Launch', productRoadmap.completed, '#3b82f6')}
+          {renderProductSection('🔥 Active Products', productRoadmap.active, '#10b981')}
+          {renderProductSection('👊 Completed & Ready to Launch', productRoadmap.completed, '#3b82f6')}
           {renderProductSection('⚡ High Progress Development (20-70%)', productRoadmap.developmentHigh, '#f59e0b')}
-          {renderProductSection('🔧 Core Services Development', productRoadmap.developmentCore, '#f59e0b')}
+          {renderProductSection('🔧 Core products Development', productRoadmap.developmentCore, '#f59e0b')}
           {renderProductSection('🧠 AI/ML Training Phase', productRoadmap.aiMlProducts, '#8b5cf6')}
           {renderProductSection('🤖 AI Agent Ecosystem', productRoadmap.aiAgents, '#ec4899')}
           {renderProductSection('🚧 Early Development (10-30%)', productRoadmap.advancedDevelopment, '#06b6d4')}
@@ -848,7 +848,7 @@ export default function ProductsPage() {
             marginBottom: '2.5rem',
             lineHeight: '1.8'
           } as CSSProperties}>
-            Be part of building the future with our comprehensive product ecosystem of 70+ solutions spanning AI, SaaS, hardware, and emerging technologies.
+            Be part of building the future with our comprehensive product ecosystem of 60+ solutions spanning AI, SaaS, hardware, and emerging technologies.
           </p>
           <Link
             href="/join-waitlist"

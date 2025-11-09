@@ -499,21 +499,19 @@ export default function AboutPage() {
             textAlign: 'center',
             flexShrink: 0
           }}>
-            <div style={{
-              width: '300px',
-              height: '300px',
-              borderRadius: '50%',
-              margin: '0 auto 20px',
-              background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '4rem',
-              color: '#fff',
-              fontWeight: 700
-            }}>
-              VK
-            </div>
+            <img 
+              src="/images/profile.jpg" 
+              alt="VK Profile"
+              style={{
+                width: '400px',
+                height: '400px',
+                borderRadius: '50%',
+                margin: '0 auto 20px',
+                display: 'block',
+                objectFit: 'cover',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+              }}
+            />
             <h3 style={{
               fontSize: '1.6rem',
               color: '#fff',

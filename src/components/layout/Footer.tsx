@@ -59,7 +59,7 @@ export default function Footer() {
               lineHeight: '1.7',
               marginBottom: '20px',
             }}>
-              Building the future with 40+ integrated solutions and premium development services.
+              Building the future with 60+ integrated solutions and premium development services.
             </p>
             
             {/* Social Links */}
@@ -71,7 +71,7 @@ export default function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
-                  target="_blank"
+                  target="https://www.linkedin.com/in/lingam-vamshi-krishna-reddy-1a7402160/"
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   style={{
@@ -149,39 +149,7 @@ export default function Footer() {
             <span className="heart-icon">❤️</span> in India.
           </p>
 
-          <div style={{
-            display: 'flex',
-            gap: '20px',
-            fontSize: '0.9rem',
-          }}>
-            <Link href="/privacy" style={{
-              color: 'var(--text-muted)',
-              textDecoration: 'none',
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-            >
-              Privacy
-            </Link>
-            <Link href="/terms" style={{
-              color: 'var(--text-muted)',
-              textDecoration: 'none',
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-            >
-              Terms
-            </Link>
-            <Link href="/contact" style={{
-              color: 'var(--text-muted)',
-              textDecoration: 'none',
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
-            >
-              Contact
-            </Link>
-          </div>
+          
         </div>
       </div>
     </footer>

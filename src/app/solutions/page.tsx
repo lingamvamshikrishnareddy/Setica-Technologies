@@ -1,11 +1,18 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function SolutionsPage() {
+  const router = useRouter();
+  
   useEffect(() => {
     document.body.classList.add('loaded');
   }, []);
+
+  const handleNavigateToWaitlist = () => {
+    router.push('/join-waitlist');
+  };
 
   const phases = [
     {
@@ -610,32 +617,32 @@ export default function SolutionsPage() {
           ]
         },
         {
-  title: 'FounderFlow AI',
-  icon: 'fas fa-rocket',
-  status: 'In Development',
-  statusClass: 'status-development',
-  description: 'AI-powered platform connecting founders with investors. Intelligent agents automate pitch prep, investor matching, and fundraising workflows.',
-  features: [
-    'AI agent pitch assistance',
-    'Smart investor matching',
-    'Automated due diligence',
-    'Fundraising analytics'
-  ],
-},
-{
-  title: 'Called It',
-  icon: 'fas fa-trophy',
-  status: 'Beta',
-  statusClass: 'status-beta',
-  description: 'Gen-Z prediction market with virtual currency. Bet on trends, events, and outcomes—all the fun of predictions without financial risk.',
-  features: [
-    'Play-money predictions',
-    'Social leaderboards',
-    'Trend forecasting games',
-    'Achievement rewards'
-  ],
-  team: 'Tech: You | UI/UX & Frontend: Deesha Kumbam (Apple) | Sales & Growth: Pallavi (Apple)'
-},
+          title: 'FounderFlow AI',
+          icon: 'fas fa-rocket',
+          status: 'In Development',
+          statusClass: 'status-development',
+          description: 'AI-powered platform connecting founders with investors. Intelligent agents automate pitch prep, investor matching, and fundraising workflows.',
+          features: [
+            'AI agent pitch assistance',
+            'Smart investor matching',
+            'Automated due diligence',
+            'Fundraising analytics'
+          ],
+        },
+        {
+          title: 'Called It',
+          icon: 'fas fa-trophy',
+          status: 'Beta',
+          statusClass: 'status-beta',
+          description: 'Gen-Z prediction market with virtual currency. Bet on trends, events, and outcomes—all the fun of predictions without financial risk.',
+          features: [
+            'Play-money predictions',
+            'Social leaderboards',
+            'Trend forecasting games',
+            'Achievement rewards'
+          ],
+          team: 'Tech: You | UI/UX & Frontend: Deesha Kumbam (Apple) | Sales & Growth: Pallavi (Apple)'
+        },
         {
           title: 'FarmiCart AgriTech',
           icon: 'fas fa-tractor',
@@ -1158,17 +1165,20 @@ export default function SolutionsPage() {
                   </ul>
 
                   {/* CTA Link */}
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    color: '#4A55FF',
-                    fontSize: '0.9rem',
-                    fontWeight: 600,
-                    marginTop: 'auto',
-                    paddingTop: '15px',
-                    borderTop: '1px solid #2a2a2a'
-                  }}>
+                  <div 
+                    onClick={handleNavigateToWaitlist}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      color: '#4A55FF',
+                      fontSize: '0.9rem',
+                      fontWeight: 600,
+                      marginTop: 'auto',
+                      paddingTop: '15px',
+                      borderTop: '1px solid #2a2a2a',
+                      cursor: 'pointer'
+                    }}>
                     Get Early Access <i className="fas fa-arrow-right"></i>
                   </div>
                 </div>
@@ -1223,27 +1233,29 @@ export default function SolutionsPage() {
             justifyContent: 'center',
             flexWrap: 'wrap'
           }}>
-            <button style={{
-              padding: '18px 40px',
-              fontSize: '1.1rem',
-              fontWeight: 700,
-              background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
-              color: '#fff',
-              border: 'none',
-              borderRadius: '12px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(74, 85, 255, 0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
+            <button 
+              onClick={handleNavigateToWaitlist}
+              style={{
+                padding: '18px 40px',
+                fontSize: '1.1rem',
+                fontWeight: 700,
+                background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                textTransform: 'uppercase',
+                letterSpacing: '0.5px'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(74, 85, 255, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}>
               JOIN WAITLIST NOW
             </button>
             <button style={{
