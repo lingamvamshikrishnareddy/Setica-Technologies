@@ -1,7 +1,30 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, CSSProperties } from 'react';
 import Link from 'next/link';
+
+// Type definitions
+interface ProductCardProps {
+  icon: string;
+  title: string;
+  status: string;
+  progress?: string;
+  statusColor: string;
+  tech: string;
+  description: string;
+  requirements?: string;
+}
+
+interface Product {
+  icon: string;
+  title: string;
+  status: string;
+  statusClass: string;
+  progress?: string;
+  tech: string;
+  description: string;
+  requirements?: string;
+}
 
 export default function ProductsPage() {
   useEffect(() => {
@@ -643,19 +666,59 @@ export default function ProductsPage() {
     ]
   };
 
-  const sections = [
-    { key: 'active', title: '🚀 Active Products', color: '#10b981' },
-    { key: 'completed', title: '✅ Completed & Ready to Launch', color: '#3b82f6' },
-    { key: 'developmentHigh', title: '⚡ High Progress Development (20-70%)', color: '#f59e0b' },
-    { key: 'developmentCore', title: '🔧 Core Services Development', color: '#f59e0b' },
-    { key: 'aiMlProducts', title: '🧠 AI/ML Training Phase', color: '#8b5cf6' },
-    { key: 'aiAgents', title: '🤖 AI Agent Ecosystem', color: '#ec4899' },
-    { key: 'advancedDevelopment', title: '🚧 Early Development (10-30%)', color: '#06b6d4' },
-    { key: 'ideation', title: '💡 Ideation Phase', color: '#6366f1' },
-    { key: 'hardwareProducts', title: '⚙️ Hardware Development', color: '#14b8a6' }
-  ];
+  const getStatusColor = (statusClass: string): string => {
+    const colorMap: { [key: string]: string } = {
+      'status-active': '#10b981',
+      'status-completed': '#3b82f6',
+      'status-development': '#f59e0b',
+      'status-training': '#8b5cf6',
+      'status-early': '#06b6d4',
+      'status-ideation': '#6366f1',
+      'status-hardware': '#14b8a6'
+    };
+    return colorMap[statusClass] || '#6366f1';
+  };
 
-     return (
+  const renderProductSection = (title: string, products: Product[], sectionColor: string) => {
+    if (!products || products.length === 0) return null;
+    
+    return (
+      <div style={{ marginBottom: '80px' } as CSSProperties}>
+        <h2 style={{
+          fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
+          marginBottom: '40px',
+          color: sectionColor,
+          fontWeight: 700,
+          textAlign: 'center',
+          textShadow: `0 0 20px ${sectionColor}66`
+        } as CSSProperties}>
+          {title}
+        </h2>
+        
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+          gap: '30px'
+        } as CSSProperties}>
+          {products.map((product, index) => (
+            <ProductCard
+              key={index}
+              icon={product.icon}
+              title={product.title}
+              status={product.status}
+              progress={product.progress}
+              statusColor={getStatusColor(product.statusClass)}
+              tech={product.tech}
+              description={product.description}
+              requirements={product.requirements}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  return (
     <>
       {/* Header */}
       <header style={{
@@ -669,7 +732,7 @@ export default function ProductsPage() {
         padding: '120px 5% 60px',
         backgroundColor: '#000',
         overflow: 'hidden'
-      }} className="page-header">
+      } as CSSProperties}>
         <div className="stars" style={{
           position: 'absolute',
           top: 0,
@@ -681,7 +744,7 @@ export default function ProductsPage() {
           display: 'block',
           zIndex: 0,
           background: '#000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center'
-        }}></div>
+        } as CSSProperties}></div>
         <div className="twinkling" style={{
           position: 'absolute',
           top: 0,
@@ -694,8 +757,8 @@ export default function ProductsPage() {
           zIndex: 1,
           background: 'transparent url(https://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center',
           animation: 'move-twink-back 200s linear infinite'
-        }}></div>
-        <div style={{ zIndex: 5, position: 'relative' }}>
+        } as CSSProperties}></div>
+        <div style={{ zIndex: 5, position: 'relative' } as CSSProperties}>
           <h1 style={{
             fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
             color: '#fff',
@@ -705,7 +768,7 @@ export default function ProductsPage() {
             WebkitTextFillColor: 'transparent',
             backgroundSize: '200% 200%',
             animation: 'gradientShift 3s ease infinite'
-          }}>
+          } as CSSProperties}>
             Product Ecosystem 2025
           </h1>
           <p style={{
@@ -713,33 +776,50 @@ export default function ProductsPage() {
             maxWidth: '700px',
             margin: '0 auto',
             color: '#aaa'
-          }}>
+          } as CSSProperties}>
             Our comprehensive suite of 70+ integrated solutions spanning healthcare, AI, productivity, and emerging technologies.
           </p>
         </div>
       </header>
 
+      {/* Products Section */}
+      <section style={{
+        padding: '80px 5%',
+        backgroundColor: '#0a0a0a'
+      } as CSSProperties}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' } as CSSProperties}>
+          
+          {/* All Product Sections */}
+          {renderProductSection('🚀 Active Products', productRoadmap.active, '#10b981')}
+          {renderProductSection('✅ Completed & Ready to Launch', productRoadmap.completed, '#3b82f6')}
+          {renderProductSection('⚡ High Progress Development (20-70%)', productRoadmap.developmentHigh, '#f59e0b')}
+          {renderProductSection('🔧 Core Services Development', productRoadmap.developmentCore, '#f59e0b')}
+          {renderProductSection('🧠 AI/ML Training Phase', productRoadmap.aiMlProducts, '#8b5cf6')}
+          {renderProductSection('🤖 AI Agent Ecosystem', productRoadmap.aiAgents, '#ec4899')}
+          {renderProductSection('🚧 Early Development (10-30%)', productRoadmap.advancedDevelopment, '#06b6d4')}
+          {renderProductSection('💡 Ideation Phase', productRoadmap.ideation, '#6366f1')}
+          {renderProductSection('⚙️ Hardware Development', productRoadmap.hardwareProducts, '#14b8a6')}
+
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section style={{
         padding: '100px 5%',
         background: 'linear-gradient(135deg, rgba(74, 85, 255, 0.1), rgba(255, 111, 0, 0.1))',
-        position: 'relative',
-        overflow: 'hidden',
         backgroundColor: '#0a0a0a'
-      }} className="cta-section">
+      } as CSSProperties}>
         <div style={{
           maxWidth: '800px',
           margin: '0 auto',
-          textAlign: 'center',
-          position: 'relative',
-          zIndex: 2
-        }} className="cta-content">
+          textAlign: 'center'
+        } as CSSProperties}>
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             marginBottom: '1.5rem',
             color: '#fff',
             fontWeight: 700
-          }}>
+          } as CSSProperties}>
             Join Our Innovation Journey
           </h2>
           <p style={{
@@ -747,12 +827,12 @@ export default function ProductsPage() {
             color: '#aaa',
             marginBottom: '2.5rem',
             lineHeight: '1.8'
-          }}>
+          } as CSSProperties}>
             Be part of building the future with our comprehensive product ecosystem of 70+ solutions spanning AI, SaaS, hardware, and emerging technologies.
           </p>
-          <a
+          <Link
             href="/join-waitlist"
-            className="btn-cta-animated"
+            className="btn-cta"
             style={{
               padding: '18px 45px',
               background: 'linear-gradient(135deg, #4a55ff, #ff6f00)',
@@ -762,13 +842,11 @@ export default function ProductsPage() {
               fontWeight: '700',
               fontSize: '1.1rem',
               display: 'inline-block',
-              position: 'relative',
-              overflow: 'hidden',
               transition: 'all 0.3s ease'
-            }}
+            } as CSSProperties}
           >
-            <span style={{ position: 'relative', zIndex: 2 }}>JOIN WAITLIST →</span>
-          </a>
+            JOIN WAITLIST →
+          </Link>
         </div>
       </section>
 
@@ -779,34 +857,140 @@ export default function ProductsPage() {
         }
 
         @keyframes gradientShift {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
         }
 
-        .btn-cta-animated::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-          transition: left 0.5s ease;
-        }
-
-        .btn-cta-animated:hover::before {
-          left: 100%;
-        }
-
-        .btn-cta-animated:hover {
+        .btn-cta:hover {
           transform: translateY(-3px);
           box-shadow: 0 10px 30px rgba(74, 85, 255, 0.4);
         }
+
+        @media (max-width: 768px) {
+          div[style*="gridTemplateColumns"] {
+            grid-template-columns: 1fr !important;
+          }
+        }
       `}</style>
     </>
+  );
+}
+
+function ProductCard({ icon, title, status, progress, statusColor, tech, description, requirements }: ProductCardProps) {
+  return (
+    <div style={{
+      position: 'relative',
+      backgroundColor: 'rgba(255, 255, 255, 0.03)',
+      borderRadius: '16px',
+      padding: '30px',
+      transition: 'all 0.4s ease',
+      border: '1px solid rgba(255, 255, 255, 0.05)'
+    } as CSSProperties}>
+      {/* Icon */}
+      <div style={{
+        width: '60px',
+        height: '60px',
+        borderRadius: '12px',
+        background: `linear-gradient(135deg, ${statusColor}20, ${statusColor}10)`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: '20px'
+      } as CSSProperties}>
+        <i className={icon} style={{
+          color: statusColor,
+          fontSize: '1.8rem'
+        } as CSSProperties}></i>
+      </div>
+
+      {/* Status Badge */}
+      <div style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '8px',
+        padding: '6px 14px',
+        borderRadius: '20px',
+        fontSize: '0.75rem',
+        fontWeight: 600,
+        marginBottom: '12px',
+        backgroundColor: `${statusColor}20`,
+        color: statusColor,
+        border: `1px solid ${statusColor}40`
+      } as CSSProperties}>
+        {status}
+        {progress && (
+          <span style={{
+            backgroundColor: statusColor,
+            color: '#000',
+            padding: '2px 8px',
+            borderRadius: '10px',
+            fontSize: '0.7rem',
+            fontWeight: 700
+          } as CSSProperties}>
+            {progress}
+          </span>
+        )}
+      </div>
+
+      {/* Tech Badge */}
+      <div style={{
+        display: 'inline-block',
+        padding: '4px 10px',
+        borderRadius: '6px',
+        fontSize: '0.7rem',
+        fontWeight: 600,
+        marginBottom: '15px',
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        color: '#aaa'
+      } as CSSProperties}>
+        {tech}
+      </div>
+
+      {/* Title */}
+      <h3 style={{
+        fontSize: '1.3rem',
+        marginBottom: '12px',
+        color: '#fff',
+        fontWeight: 600
+      } as CSSProperties}>
+        {title}
+      </h3>
+
+      {/* Description */}
+      <p style={{
+        fontSize: '0.9rem',
+        color: '#aaa',
+        lineHeight: '1.6',
+        marginBottom: requirements ? '15px' : '0'
+      } as CSSProperties}>
+        {description}
+      </p>
+
+      {/* Requirements */}
+      {requirements && (
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '10px 14px',
+          borderRadius: '8px',
+          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          marginTop: '15px'
+        } as CSSProperties}>
+          <i className="fas fa-info-circle" style={{
+            color: statusColor,
+            fontSize: '0.9rem'
+          } as CSSProperties}></i>
+          <span style={{
+            fontSize: '0.8rem',
+            color: '#aaa',
+            fontStyle: 'italic'
+          } as CSSProperties}>
+            {requirements}
+          </span>
+        </div>
+      )}
+    </div>
   );
 }
