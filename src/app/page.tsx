@@ -66,8 +66,8 @@ export default function HomePage() {
     {
       title: 'SetCart Quick Commerce',
       icon: 'fas fa-shipping-fast',
-      status: 'Planned',
-      statusClass: 'status-planned',
+      status: 'In Development',
+      statusClass: 'status-In Development',
       description: 'Transparent quick commerce with zero hidden prices, no dark patterns, and assured quality delivery.',
       features: [
         '100% transparent pricing',
@@ -79,8 +79,8 @@ export default function HomePage() {
     {
       title: 'Vayu Ride Sharing',
       icon: 'fas fa-car',
-      status: 'Planned',
-      statusClass: 'status-planned',
+      status: 'In Development',
+      statusClass: 'status-In Development',
       description: 'Connected transportation with autonomous car services, car wash, and comprehensive vehicle care features.',
       features: [
         'Ride-hailing service',
@@ -92,8 +92,8 @@ export default function HomePage() {
     {
       title: 'Enterprise Management SaaS',
       icon: 'fas fa-cogs',
-      status: 'Planned',
-      statusClass: 'status-planned',
+      status: 'In Development',
+      statusClass: 'status-In Development',
       description: 'Business OS for MSMEs and startups with CRM, project management, and workflow automation tools.',
       features: [
         'Unified CRM platform',
@@ -105,8 +105,8 @@ export default function HomePage() {
     {
       title: 'Yatra Travel & Hospitality',
       icon: 'fas fa-plane-departure',
-      status: 'Planned',
-      statusClass: 'status-planned',
+      status: 'In Development',
+      statusClass: 'status-In Development',
       description: 'Online hospitality and booking platform for hotels, flights, and complete travel experiences.',
       features: [
         'Hotel & flight booking',
@@ -118,8 +118,8 @@ export default function HomePage() {
     {
       title: 'Traffic AI',
       icon: 'fas fa-traffic-light',
-      status: 'Research',
-      statusClass: 'status-research',
+      status: 'In Development',
+      statusClass: 'status-In Development',
       description: 'Vision model-based traffic management system with dynamic timer adjustments based on real-time traffic density.',
       features: [
         'AI vision-based detection',
@@ -131,8 +131,8 @@ export default function HomePage() {
     {
       title: 'AI Job Application Agent',
       icon: 'fas fa-robot',
-      status: 'Research',
-      statusClass: 'status-research',
+      status: 'In Development',
+      statusClass: 'status-In Development',
       description: 'Automated job searching and application agent with intelligent matching and profile optimization.',
       features: [
         'Auto job search & apply',
@@ -144,8 +144,8 @@ export default function HomePage() {
     {
       title: 'NeuroSync Brain Interface',
       icon: 'fas fa-brain',
-      status: 'Research',
-      statusClass: 'status-research',
+      status: 'In Development',
+      statusClass: 'status-In Development',
       description: 'Neural chip technology enabling brain-to-brain API communication for next-generation connectivity.',
       features: [
         'Brain-computer interface',
@@ -157,8 +157,8 @@ export default function HomePage() {
     {
       title: 'Kalam EV Vehicle',
       icon: 'fas fa-charging-station',
-      status: 'Research',
-      statusClass: 'status-research',
+      status: 'In Development',
+      statusClass: 'status-In Development',
       description: 'Quad-motor electric vehicle with specialized lithium battery cells for unmatched reliability.',
       features: [
         '4-motor redundancy',
@@ -182,7 +182,7 @@ export default function HomePage() {
           <h2>Featured Solutions & Product Roadmap</h2>
           <p>
             Explore Setica&apos;s comprehensive ecosystem of integrated solutions currently 
-            in development or planned for future releases.
+            in development or In Development for future releases.
           </p>
         </div>
 

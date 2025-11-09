@@ -73,8 +73,8 @@ export default function SolutionsPage() {
         {
           title: 'Enterprise Management SaaS',
           icon: 'fas fa-cogs',
-          status: 'Planned',
-          statusClass: 'status-planned',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Complete business OS with CRM, project management, and workflow automation. Alternative to Zoho and Salesforce.',
           features: [
             'Unified CRM platform',
@@ -86,8 +86,8 @@ export default function SolutionsPage() {
         {
           title: 'SetCart Quick Commerce',
           icon: 'fas fa-shipping-fast',
-          status: 'Planned',
-          statusClass: 'status-planned',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Transparent quick commerce with zero dark patterns, connecting users with local stores for rapid delivery.',
           features: [
             '100% transparent pricing',
@@ -99,8 +99,8 @@ export default function SolutionsPage() {
         {
           title: 'Construction Management SaaS',
           icon: 'fas fa-tools',
-          status: 'Planned',
-          statusClass: 'status-planned',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Comprehensive platform for clients to track contractors from project start to build completion.',
           features: [
             'Project tracking',
@@ -112,8 +112,8 @@ export default function SolutionsPage() {
         {
           title: 'Vayu Ride Sharing',
           icon: 'fas fa-car',
-          status: 'Planned',
-          statusClass: 'status-planned',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Connected transportation service optimizing urban mobility with focus on affordability and efficiency.',
           features: [
             'Real-time ride matching',
@@ -125,8 +125,8 @@ export default function SolutionsPage() {
         {
           title: 'Gatherly Event Platform',
           icon: 'fas fa-calendar-alt',
-          status: 'Planned',
-          statusClass: 'status-planned',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Meetups and events platform for organizing, discovering, and managing community gatherings.',
           features: [
             'Event discovery',
@@ -138,8 +138,8 @@ export default function SolutionsPage() {
         {
           title: 'TripNDrip Travel & Hospitality',
           icon: 'fas fa-plane-departure',
-          status: 'Planned',
-          statusClass: 'status-planned',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Complete travel platform with budget stays, spiritual travel, honeymoon packages, and AI itinerary planning.',
           features: [
             'Budget stays (₹99-₹499)',
@@ -151,8 +151,8 @@ export default function SolutionsPage() {
         {
           title: 'Excel Kitab Accounting',
           icon: 'fas fa-book',
-          status: 'Planned',
-          statusClass: 'status-planned',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Simplified accounting and bookkeeping platform designed for small businesses and entrepreneurs.',
           features: [
             'Easy bookkeeping',
@@ -164,8 +164,8 @@ export default function SolutionsPage() {
         {
           title: 'FinTech Banking',
           icon: 'fas fa-piggy-bank',
-          status: 'Planned',
-          statusClass: 'status-planned',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Digital banking platform offering personal and business loans, fixed deposits, and comprehensive financial services.',
           features: [
             'Automated expense tracking',
@@ -178,13 +178,13 @@ export default function SolutionsPage() {
     },
     {
       title: 'Phase 3: Advanced Solutions & Technologies',
-      description: 'Innovative products in research and development',
+      description: 'Innovative products in active development',
       products: [
         {
           title: 'Justica.ai - Legal Tech',
           icon: 'fas fa-balance-scale',
-          status: 'Active',
-          statusClass: 'status-active',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'AI-powered legal technology platform streamlining legal research, document analysis, and case management.',
           features: [
             'Legal research automation',
@@ -196,8 +196,8 @@ export default function SolutionsPage() {
         {
           title: 'B2B Marketplace',
           icon: 'fas fa-handshake',
-          status: 'Active',
-          statusClass: 'status-active',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Enterprise marketplace platform connecting buyers and sellers with intelligent matching and procurement automation.',
           features: [
             'Intelligent matching',
@@ -209,8 +209,8 @@ export default function SolutionsPage() {
         {
           title: 'Traffic AI',
           icon: 'fas fa-traffic-light',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Vision model-based traffic management system with dynamic timer adjustments based on real-time traffic density.',
           features: [
             'Real-time traffic analysis',
@@ -222,8 +222,8 @@ export default function SolutionsPage() {
         {
           title: 'BeautyCare AI',
           icon: 'fas fa-spa',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'AI-powered beauty routine optimizer with exercise recommendations and personalized product suggestions.',
           features: [
             'Skin analysis',
@@ -235,8 +235,8 @@ export default function SolutionsPage() {
         {
           title: 'Vehicle Care Services',
           icon: 'fas fa-car-side',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'On-demand car wash, services, and comprehensive vehicle care with maintenance tracking and alerts.',
           features: [
             'On-demand service',
@@ -248,8 +248,8 @@ export default function SolutionsPage() {
         {
           title: 'Addiction Recovery App',
           icon: 'fas fa-hand-holding-medical',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Support platform for addiction recovery with alternative therapy recommendations and community support.',
           features: [
             'Recovery tracking',
@@ -261,8 +261,8 @@ export default function SolutionsPage() {
         {
           title: 'Cold DM Platform',
           icon: 'fas fa-envelope-open-text',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Consent-first, multi-platform cold DM tool for businesses with proper opt-in/opt-out mechanisms.',
           features: [
             'Multi-platform reach',
@@ -274,8 +274,8 @@ export default function SolutionsPage() {
         {
           title: 'Cyber Shield',
           icon: 'fas fa-user-shield',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Comprehensive cybersecurity platform for personal and business protection with threat monitoring.',
           features: [
             'Real-time threat monitoring',
@@ -287,8 +287,8 @@ export default function SolutionsPage() {
         {
           title: 'Senior & Baby Care',
           icon: 'fas fa-user-nurse',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Virtual nursing and care management for senior citizens and baby sitting services with real-time monitoring.',
           features: [
             'Real-time monitoring',
@@ -300,8 +300,8 @@ export default function SolutionsPage() {
         {
           title: 'Scope Creep Killer',
           icon: 'fas fa-clipboard-check',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Project management tool preventing clients from adding out-of-scope features after fixed-price agreements.',
           features: [
             'Scope definition',
@@ -313,8 +313,8 @@ export default function SolutionsPage() {
         {
           title: 'Blockchain Rewards',
           icon: 'fas fa-link',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Token and rewards system using blockchain for purchase incentives and loyalty programs.',
           features: [
             'Token economy',
@@ -326,8 +326,8 @@ export default function SolutionsPage() {
         {
           title: 'College Life Management',
           icon: 'fas fa-graduation-cap',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'All-in-one SaaS platform for students managing academics, schedules, and campus life activities.',
           features: [
             'Academic tracking',
@@ -339,8 +339,8 @@ export default function SolutionsPage() {
         {
           title: 'AI Job Application Agent',
           icon: 'fas fa-robot',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Automated job searching and application with AI-powered resume optimization.',
           features: [
             'Auto job search & apply',
@@ -352,8 +352,8 @@ export default function SolutionsPage() {
         {
           title: 'Divorce Support Platform',
           icon: 'fas fa-heart-broken',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Divorce support resources and legal guidance specifically focused on needs during separation.',
           features: [
             'Legal guidance',
@@ -365,8 +365,8 @@ export default function SolutionsPage() {
         {
           title: 'AI Chatbot (SLM)',
           icon: 'fas fa-comments',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Domain-specialized AI assistant using small language models, achieving 80%+ relevance match scores.',
           features: [
             'Domain specialization',
@@ -378,8 +378,8 @@ export default function SolutionsPage() {
         {
           title: 'ChippyChips Veg Delivery',
           icon: 'fas fa-cookie-bite',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Pure vegetarian food delivery app where orders are accepted within 15 minutes with quality assurance.',
           features: [
             '100% vegetarian',
@@ -391,8 +391,8 @@ export default function SolutionsPage() {
         {
           title: 'BriyaniBro',
           icon: 'fas fa-utensils',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Specialized biryani delivery platform emphasizing premium meat quantity and quality with perfectly flavored rice.',
           features: [
             'Premium quality',
@@ -404,8 +404,8 @@ export default function SolutionsPage() {
         {
           title: 'Fast & Yoga',
           icon: 'fas fa-om',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Integrated fasting and yoga platform for nutritional wellness and holistic health practices.',
           features: [
             'Fasting schedules',
@@ -417,8 +417,8 @@ export default function SolutionsPage() {
         {
           title: 'Waste & Carbon Management',
           icon: 'fas fa-recycle',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Waste management, water management, and carbon credits marketplace for sustainable environmental solutions.',
           features: [
             'Waste tracking',
@@ -430,8 +430,8 @@ export default function SolutionsPage() {
         {
           title: 'Wedding SaaS',
           icon: 'fas fa-ring',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Comprehensive wedding planning platform for managing vendors, guests, budgets, and complete wedding coordination.',
           features: [
             'Vendor management',
@@ -443,8 +443,8 @@ export default function SolutionsPage() {
         {
           title: 'Synaptika AI Editor',
           icon: 'fas fa-code',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'AI coding editor where complete apps and websites can be built in 5 minutes with automated development.',
           features: [
             'Rapid development',
@@ -456,8 +456,8 @@ export default function SolutionsPage() {
         {
           title: 'Energy Grid Monitor',
           icon: 'fas fa-solar-panel',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Smart energy grid management, monitoring, and energy production optimization platform.',
           features: [
             'Grid monitoring',
@@ -469,8 +469,8 @@ export default function SolutionsPage() {
         {
           title: 'GateKeeping Resident Portal',
           icon: 'fas fa-building',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Visitor management and maintenance request system for residential communities and commercial buildings.',
           features: [
             'Visitor management',
@@ -482,8 +482,8 @@ export default function SolutionsPage() {
         {
           title: 'Kalam EV Vehicle',
           icon: 'fas fa-charging-station',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Quad-motor electric vehicle with specialized lithium battery cells for unmatched reliability.',
           features: [
             '4-motor redundancy',
@@ -495,8 +495,8 @@ export default function SolutionsPage() {
         {
           title: 'Studio Suite',
           icon: 'fas fa-film',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Professional platform for creators to edit videos, photos, design logos, and create after effects content.',
           features: [
             'Video editing',
@@ -508,8 +508,8 @@ export default function SolutionsPage() {
         {
           title: 'Remis Real Estate SaaS',
           icon: 'fas fa-home',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Real estate management platform for dealers, agents, and owners focusing on customer satisfaction and lead management.',
           features: [
             'Lead management',
@@ -521,8 +521,8 @@ export default function SolutionsPage() {
         {
           title: 'User Stories News',
           icon: 'fas fa-newspaper',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Platform where every individual can share their story and get featured as news content.',
           features: [
             'Story submission',
@@ -534,8 +534,8 @@ export default function SolutionsPage() {
         {
           title: 'Women\'s Tailoring',
           icon: 'fas fa-cut',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Specialized knitting and custom dress making service for women with precise measurements and designs.',
           features: [
             'Custom designs',
@@ -547,8 +547,8 @@ export default function SolutionsPage() {
         {
           title: 'Stock Trading AI',
           icon: 'fas fa-chart-line',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'AI-powered stock and trading platform with intelligent market analysis and automated trading strategies.',
           features: [
             'Market analysis',
@@ -560,8 +560,8 @@ export default function SolutionsPage() {
         {
           title: 'Drones Logistics',
           icon: 'fas fa-helicopter',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Fast drone delivery platform for logistics under 3km with comprehensive drone management software.',
           features: [
             'Fast delivery',
@@ -573,8 +573,8 @@ export default function SolutionsPage() {
         {
           title: 'Creator Connect Marketing',
           icon: 'fas fa-bullhorn',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Digital marketing platform connecting brands with memers, influencers, and podcasters for authentic reach.',
           features: [
             'Influencer matching',
@@ -586,8 +586,8 @@ export default function SolutionsPage() {
         {
           title: 'Manufacturing SaaS',
           icon: 'fas fa-industry',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Production management, inventory control, and operations optimization for manufacturing businesses.',
           features: [
             'Production tracking',
@@ -599,8 +599,8 @@ export default function SolutionsPage() {
         {
           title: 'Restaurant Tech',
           icon: 'fas fa-utensils',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Complete restaurant management system for orders, chef coordination, reservations, and inventory tracking.',
           features: [
             'Order management',
@@ -612,8 +612,8 @@ export default function SolutionsPage() {
         {
           title: 'FarmiCart AgriTech',
           icon: 'fas fa-tractor',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'B2B online agriculture marketplace connecting farmers directly, eliminating middlemen for better pricing.',
           features: [
             'Direct farmer connect',
@@ -625,8 +625,8 @@ export default function SolutionsPage() {
         {
           title: 'Parenting App (2-6 Years)',
           icon: 'fas fa-baby',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Screen-free parenting platform for daily routine management and skill training for children aged 2-6 years.',
           features: [
             'Routine management',
@@ -638,8 +638,8 @@ export default function SolutionsPage() {
         {
           title: 'Nexora Entertainment',
           icon: 'fas fa-laugh',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Entertainment platform featuring shorts, movie clips, and viral memes for trending content discovery.',
           features: [
             'Short videos',
@@ -651,8 +651,8 @@ export default function SolutionsPage() {
         {
           title: 'PixelStream OTT',
           icon: 'fas fa-video',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'OTT platform for local creators, short films, soap operas, and showcasing new artists with original content.',
           features: [
             'Original content',
@@ -664,8 +664,8 @@ export default function SolutionsPage() {
         {
           title: 'Startup Fundraising CRM',
           icon: 'fas fa-rocket',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Specialized CRM for startups to manage investor relations, pitch tracking, and fundraising pipelines.',
           features: [
             'Investor database',
@@ -677,8 +677,8 @@ export default function SolutionsPage() {
         {
           title: 'WaveLink Video Platform',
           icon: 'fas fa-broadcast-tower',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Video communication platform with integrated features for enhanced meetings and team collaboration.',
           features: [
             'HD video calls',
@@ -690,8 +690,8 @@ export default function SolutionsPage() {
         {
           title: 'Road Accountability',
           icon: 'fas fa-road',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Platform for tracking and ensuring accountability in road construction and maintenance projects.',
           features: [
             'Project tracking',
@@ -703,8 +703,8 @@ export default function SolutionsPage() {
         {
           title: 'BioTech SaaS',
           icon: 'fas fa-dna',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Biotechnology management platform for research, lab operations, and data analysis in life sciences.',
           features: [
             'Lab management',
@@ -716,8 +716,8 @@ export default function SolutionsPage() {
         {
           title: 'Cloud Bharath',
           icon: 'fas fa-cloud',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Indigenous cloud infrastructure platform designed specifically for Indian businesses with local compliance.',
           features: [
             'Data sovereignty',
@@ -729,8 +729,8 @@ export default function SolutionsPage() {
         {
           title: 'LiFi Telecommunication',
           icon: 'fas fa-wifi',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Pure digital data-only communication service using light fidelity technology at reduced operational costs.',
           features: [
             'Light-based data',
@@ -742,8 +742,8 @@ export default function SolutionsPage() {
         {
           title: 'NeuroSync Brain Interface',
           icon: 'fas fa-brain',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Neural chip technology enabling brain-to-brain API communication for next-generation connectivity.',
           features: [
             'Neural interface',
@@ -755,8 +755,8 @@ export default function SolutionsPage() {
         {
           title: 'Ganga Water Purification',
           icon: 'fas fa-water',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Advanced desalination and water purification technology converting seawater to fresh water.',
           features: [
             'Desalination tech',
@@ -768,8 +768,8 @@ export default function SolutionsPage() {
         {
           title: 'Defense Threat Detection',
           icon: 'fas fa-shield',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Advanced threat detection system with laser-based iron dome technology for national security applications.',
           features: [
             'Threat detection',
@@ -781,8 +781,8 @@ export default function SolutionsPage() {
         {
           title: 'Oil & Gas SaaS',
           icon: 'fas fa-oil-can',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Comprehensive management platform for oil and gas operations, exploration, and supply chain optimization.',
           features: [
             'Operations management',
@@ -794,8 +794,8 @@ export default function SolutionsPage() {
         {
           title: 'Freight Management',
           icon: 'fas fa-ship',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'International freight and logistics SaaS for cross-border shipping and supply chain coordination.',
           features: [
             'Global shipping',
@@ -807,8 +807,8 @@ export default function SolutionsPage() {
         {
           title: 'Robotics Platform',
           icon: 'fas fa-robot',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Robotics development and deployment platform for industrial automation and smart manufacturing.',
           features: [
             'Robot control',
@@ -820,8 +820,8 @@ export default function SolutionsPage() {
         {
           title: 'Mother AI - Life Creation',
           icon: 'fas fa-dna',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Biotech platform combining AI with gene editing for assisted reproductive technologies and life creation research.',
           features: [
             'Gene editing',
@@ -839,8 +839,8 @@ export default function SolutionsPage() {
         {
           title: 'AI Sales Agent',
           icon: 'fas fa-user-tie',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Autonomous sales agent for lead qualification, outreach, follow-ups, and deal closing.',
           features: [
             'Lead qualification',
@@ -852,8 +852,8 @@ export default function SolutionsPage() {
         {
           title: 'AI Real Estate Agent',
           icon: 'fas fa-building',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'AI-powered real estate agent for asset management, acquisitions, brokerage, and property management.',
           features: [
             'Asset management',
@@ -862,24 +862,12 @@ export default function SolutionsPage() {
             'Damage reports'
           ]
         },
-        {
-          title: 'AI Agriculture Agent',
-          icon: 'fas fa-seedling',
-          status: 'Research',
-          statusClass: 'status-research',
-          description: 'Precision farming AI agent for crop monitoring, disease detection, and resource optimization.',
-          features: [
-            'Crop monitoring',
-            'Disease detection',
-            'Resource optimization',
-            'Yield prediction'
-          ]
-        },
+        
         {
           title: 'AI Legal Agent',
           icon: 'fas fa-gavel',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Legal AI assistant for contract analysis, case research, document drafting, and compliance monitoring.',
           features: [
             'Contract analysis',
@@ -891,8 +879,8 @@ export default function SolutionsPage() {
         {
           title: 'AI Accounting Agent',
           icon: 'fas fa-calculator',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Automated accounting agent for bookkeeping, tax preparation, financial reporting, and audit assistance.',
           features: [
             'Automated bookkeeping',
@@ -904,8 +892,8 @@ export default function SolutionsPage() {
         {
           title: 'AI Finance Search Agent',
           icon: 'fas fa-chart-bar',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Financial intelligence agent for market research, investment analysis, and real-time financial data discovery.',
           features: [
             'Market research',
@@ -917,8 +905,8 @@ export default function SolutionsPage() {
         {
           title: 'AI Government Infrastructure Agent',
           icon: 'fas fa-landmark',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'AI agent for government infrastructure planning, project monitoring, and resource allocation.',
           features: [
             'Infrastructure planning',
@@ -930,8 +918,8 @@ export default function SolutionsPage() {
         {
           title: 'AI Customer Support Agent',
           icon: 'fas fa-headset',
-          status: 'Research',
-          statusClass: 'status-research',
+          status: 'In Development',
+          statusClass: 'status-development',
           description: 'Intelligent customer support agent handling queries, troubleshooting, and providing 24/7 multilingual assistance.',
           features: [
             'Query handling',
@@ -1047,9 +1035,7 @@ export default function SolutionsPage() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.borderColor = product.statusClass === 'status-development' ? '#4A55FF' :
-                                                       product.statusClass === 'status-planned' ? '#ff6f00' :
-                                                       product.statusClass === 'status-active' ? '#00b894' : '#666';
+                  e.currentTarget.style.borderColor = '#4A55FF';
                   e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
                 }}
                 onMouseLeave={(e) => {
@@ -1064,10 +1050,7 @@ export default function SolutionsPage() {
                     left: 0,
                     right: 0,
                     height: '4px',
-                    background: product.statusClass === 'status-development' ? 'linear-gradient(90deg, #4A55FF, #6B75FF)' :
-                               product.statusClass === 'status-planned' ? 'linear-gradient(90deg, #ff6f00, #ff8f40)' :
-                               product.statusClass === 'status-active' ? 'linear-gradient(90deg, #00b894, #00d4aa)' :
-                               'linear-gradient(90deg, #666, #888)'
+                    background: 'linear-gradient(90deg, #4A55FF, #6B75FF)'
                   }}></div>
 
                   {/* Status Badge */}
@@ -1080,13 +1063,8 @@ export default function SolutionsPage() {
                     textTransform: 'uppercase',
                     letterSpacing: '0.5px',
                     marginBottom: '20px',
-                    backgroundColor: product.statusClass === 'status-development' ? 'rgba(74, 85, 255, 0.15)' :
-                                    product.statusClass === 'status-planned' ? 'rgba(255, 111, 0, 0.15)' :
-                                    product.statusClass === 'status-active' ? 'rgba(0, 184, 148, 0.15)' :
-                                    'rgba(102, 102, 102, 0.15)',
-                    color: product.statusClass === 'status-development' ? '#6B75FF' :
-                           product.statusClass === 'status-planned' ? '#ff8f40' :
-                           product.statusClass === 'status-active' ? '#00d4aa' : '#999'
+                    backgroundColor: 'rgba(74, 85, 255, 0.15)',
+                    color: '#6B75FF'
                   }}>
                     {product.status}
                   </span>
