@@ -610,6 +610,33 @@ export default function SolutionsPage() {
           ]
         },
         {
+  title: 'FounderFlow AI',
+  icon: 'fas fa-rocket',
+  status: 'In Development',
+  statusClass: 'status-development',
+  description: 'AI-powered platform connecting founders with investors. Intelligent agents automate pitch prep, investor matching, and fundraising workflows.',
+  features: [
+    'AI agent pitch assistance',
+    'Smart investor matching',
+    'Automated due diligence',
+    'Fundraising analytics'
+  ],
+},
+{
+  title: 'Called It',
+  icon: 'fas fa-trophy',
+  status: 'Beta',
+  statusClass: 'status-beta',
+  description: 'Gen-Z prediction market with virtual currency. Bet on trends, events, and outcomes—all the fun of predictions without financial risk.',
+  features: [
+    'Play-money predictions',
+    'Social leaderboards',
+    'Trend forecasting games',
+    'Achievement rewards'
+  ],
+  team: 'Tech: You | UI/UX & Frontend: Deesha Kumbam (Apple) | Sales & Growth: Pallavi (Apple)'
+},
+        {
           title: 'FarmiCart AgriTech',
           icon: 'fas fa-tractor',
           status: 'In Development',
