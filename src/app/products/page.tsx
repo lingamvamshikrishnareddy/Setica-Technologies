@@ -655,7 +655,7 @@ export default function ProductsPage() {
     { key: 'hardwareProducts', title: '⚙️ Hardware Development', color: '#14b8a6' }
   ];
 
-  return (
+     return (
     <>
       {/* Header */}
       <header style={{
@@ -667,7 +667,7 @@ export default function ProductsPage() {
         textAlign: 'center',
         position: 'relative',
         padding: '120px 5% 60px',
-        backgroundColor: 'var(--dark-bg)',
+        backgroundColor: '#000',
         overflow: 'hidden'
       }} className="page-header">
         <div className="stars" style={{
@@ -698,7 +698,7 @@ export default function ProductsPage() {
         <div style={{ zIndex: 5, position: 'relative' }}>
           <h1 style={{
             fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
-            color: 'var(--text-color)',
+            color: '#fff',
             marginBottom: '1rem',
             background: 'linear-gradient(135deg, #4a55ff, #ff6f00, #00d4ff)',
             WebkitBackgroundClip: 'text',
@@ -712,193 +712,20 @@ export default function ProductsPage() {
             fontSize: 'clamp(1rem, 2vw, 1.2rem)',
             maxWidth: '700px',
             margin: '0 auto',
-            color: 'var(--text-muted)'
+            color: '#aaa'
           }}>
             Our comprehensive suite of 70+ integrated solutions spanning healthcare, AI, productivity, and emerging technologies.
           </p>
         </div>
       </header>
 
-      <section style={{
-        padding: '80px 5%',
-        backgroundColor: 'var(--dark-card)',
-        position: 'relative',
-        zIndex: 2
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
-          {sections.map((section, sectionIndex) => {
-            const products = productRoadmap[section.key];
-            if (!products || products.length === 0) return null;
-            
-            return (
-              <div key={sectionIndex} style={{ marginBottom: '80px' }}>
-                <h2 style={{
-                  fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
-                  marginBottom: '40px',
-                  color: section.color,
-                  fontWeight: 700,
-                  textAlign: 'center',
-                  textShadow: `0 0 20px ${section.color}40`
-                }}>
-                  {section.title}
-                </h2>
-
-                <div className="product-grid" style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-                  gap: '30px'
-                }}>
-                  {products.map((product, productIndex) => (
-                    <div
-                      key={productIndex}
-                      className="product-card-animated"
-                      style={{
-                        position: 'relative',
-                        backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                        borderRadius: '16px',
-                        padding: '30px',
-                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                        overflow: 'hidden'
-                      }}
-                    >
-                      <div className="glow-effect" style={{
-                        position: 'absolute',
-                        top: '-50%',
-                        left: '-50%',
-                        width: '200%',
-                        height: '200%',
-                        background: `radial-gradient(circle, ${section.color}15 0%, transparent 70%)`,
-                        opacity: 0,
-                        transition: 'opacity 0.4s ease'
-                      }}></div>
-
-                      <div style={{
-                        width: '60px',
-                        height: '60px',
-                        borderRadius: '12px',
-                        background: `linear-gradient(135deg, ${section.color}20, ${section.color}10)`,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginBottom: '20px',
-                        position: 'relative',
-                        zIndex: 2
-                      }}>
-                        <i className={product.icon} style={{
-                          color: section.color,
-                          fontSize: '1.8rem'
-                        }}></i>
-                      </div>
-
-                      <div style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        padding: '6px 14px',
-                        borderRadius: '20px',
-                        fontSize: '0.75rem',
-                        fontWeight: 600,
-                        marginBottom: '12px',
-                        backgroundColor: `${section.color}20`,
-                        color: section.color,
-                        border: `1px solid ${section.color}40`,
-                        position: 'relative',
-                        zIndex: 2
-                      }}>
-                        {product.status}
-                        {product.progress && (
-                          <span style={{
-                            backgroundColor: section.color,
-                            color: '#000',
-                            padding: '2px 8px',
-                            borderRadius: '10px',
-                            fontSize: '0.7rem',
-                            fontWeight: 700
-                          }}>
-                            {product.progress}
-                          </span>
-                        )}
-                      </div>
-
-                      <div style={{
-                        display: 'inline-block',
-                        padding: '4px 10px',
-                        borderRadius: '6px',
-                        fontSize: '0.7rem',
-                        fontWeight: 600,
-                        marginBottom: '15px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        color: 'var(--text-muted)',
-                        position: 'relative',
-                        zIndex: 2
-                      }}>
-                        {product.tech}
-                      </div>
-
-                      <h3 style={{
-                        fontSize: '1.3rem',
-                        marginBottom: '12px',
-                        color: 'var(--text-color)',
-                        fontWeight: 600,
-                        position: 'relative',
-                        zIndex: 2
-                      }}>
-                        {product.title}
-                      </h3>
-
-                      <p style={{
-                        fontSize: '0.9rem',
-                        color: 'var(--text-muted)',
-                        lineHeight: '1.6',
-                        marginBottom: product.requirements ? '15px' : '0',
-                        position: 'relative',
-                        zIndex: 2
-                      }}>
-                        {product.description}
-                      </p>
-
-                      {product.requirements && (
-                        <div style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px',
-                          padding: '10px 14px',
-                          borderRadius: '8px',
-                          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                          border: '1px solid rgba(255, 255, 255, 0.1)',
-                          position: 'relative',
-                          zIndex: 2
-                        }}>
-                          <i className="fas fa-info-circle" style={{
-                            color: section.color,
-                            fontSize: '0.9rem'
-                          }}></i>
-                          <span style={{
-                            fontSize: '0.8rem',
-                            color: 'var(--text-muted)',
-                            fontStyle: 'italic'
-                          }}>
-                            {product.requirements}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
+      {/* CTA Section */}
       <section style={{
         padding: '100px 5%',
         background: 'linear-gradient(135deg, rgba(74, 85, 255, 0.1), rgba(255, 111, 0, 0.1))',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        backgroundColor: '#0a0a0a'
       }} className="cta-section">
         <div style={{
           maxWidth: '800px',
@@ -910,25 +737,25 @@ export default function ProductsPage() {
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             marginBottom: '1.5rem',
-            color: 'var(--text-color)',
+            color: '#fff',
             fontWeight: 700
           }}>
             Join Our Innovation Journey
           </h2>
           <p style={{
             fontSize: '1.2rem',
-            color: 'var(--text-muted)',
+            color: '#aaa',
             marginBottom: '2.5rem',
             lineHeight: '1.8'
           }}>
-            Be part of building the future with our comprehensive product ecosystem.
+            Be part of building the future with our comprehensive product ecosystem of 70+ solutions spanning AI, SaaS, hardware, and emerging technologies.
           </p>
-          <Link
+          <a
             href="/join-waitlist"
             className="btn-cta-animated"
             style={{
               padding: '18px 45px',
-              background: 'linear-gradient(135deg, var(--primary-blue), var(--primary-orange))',
+              background: 'linear-gradient(135deg, #4a55ff, #ff6f00)',
               color: 'white',
               textDecoration: 'none',
               borderRadius: '12px',
@@ -941,7 +768,7 @@ export default function ProductsPage() {
             }}
           >
             <span style={{ position: 'relative', zIndex: 2 }}>JOIN WAITLIST →</span>
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -950,25 +777,34 @@ export default function ProductsPage() {
           from { background-position: 0 0; }
           to { background-position: -10000px 5000px; }
         }
+
         @keyframes gradientShift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
         }
-        .product-card-animated:hover {
-          transform: translateY(-5px) scale(1.02);
-          background-color: rgba(255, 255, 255, 0.06) !important;
+
+        .btn-cta-animated::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
         }
-        .product-card-animated:hover .glow-effect {
-          opacity: 1;
+
+        .btn-cta-animated:hover::before {
+          left: 100%;
         }
+
         .btn-cta-animated:hover {
           transform: translateY(-3px);
           box-shadow: 0 10px 30px rgba(74, 85, 255, 0.4);
-        }
-        @media (max-width: 768px) {
-          .product-grid {
-            grid-template-columns: 1fr !important;
-          }
         }
       `}</style>
     </>
