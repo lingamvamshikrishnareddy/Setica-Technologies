@@ -125,7 +125,26 @@ export default function ProductsPage() {
         progress: '100%',
         tech: 'Website',
         description: 'Digital marketing platform connecting brands with memers, influencers, and podcasters for authentic reach.'
-      }
+      },
+      {
+  icon: 'fas fa-robot',
+  title: 'FounderFlow AI',
+  status: 'In Development',
+  statusClass: 'status-in-progress',
+  progress: '70%',
+  tech: 'AI Platform',
+  description: 'AI-powered platform connecting founders with investors. Intelligent agents handle pitch preparation, investor matching, and due diligence automation.'
+},
+      {
+  icon: 'fas fa-chart-line',
+  title: 'Called It - Prediction Market',
+  status: 'Beta',
+  statusClass: 'status-beta',
+  progress: '80%',
+  tech: 'Social Gaming',
+  description: 'Gen-Z prediction market where users compete with virtual currency. Make predictions on trends, events, and outcomes—all the excitement, zero financial risk.',
+  team: 'Technical Development: Backend and infra  | UI/UX Design & Marketing: Deesha Kumbam (Apple Engineer) |  Frontend: Pallavi (Apple Engineer)'
+}
     ],
 
     // ==================== IN DEVELOPMENT - HIGH PROGRESS ====================
@@ -139,6 +158,7 @@ export default function ProductsPage() {
         tech: 'JavaScript',
         description: 'Comprehensive wedding planning platform for managing vendors, guests, budgets, and complete wedding coordination.'
       },
+      
       {
         icon: 'fas fa-home',
         title: 'Remis Real Estate SaaS',
