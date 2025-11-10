@@ -19,12 +19,13 @@ export default function Hero() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '2rem',
+      paddingTop: '6rem',
     }}>
       {/* Animated Background Gradient */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'radial-gradient(ellipse at top, rgba(59, 130, 246, 0.2) 0%, transparent 50%), radial-gradient(ellipse at bottom, rgba(249, 115, 22, 0.15) 0%, transparent 50%)',
+        background: 'radial-gradient(ellipse at top, rgba(74, 85, 255, 0.25) 0%, transparent 50%), radial-gradient(ellipse at bottom, rgba(255, 111, 0, 0.2) 0%, transparent 50%)',
         animation: 'pulseGradient 8s ease-in-out infinite',
         zIndex: 0,
       }} />
@@ -33,9 +34,9 @@ export default function Hero() {
       <div style={{
         position: 'absolute',
         inset: 0,
-        backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px)',
+        backgroundImage: 'linear-gradient(rgba(74, 85, 255, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(74, 85, 255, 0.12) 1px, transparent 1px)',
         backgroundSize: '50px 50px',
-        opacity: 0.3,
+        opacity: 0.4,
         zIndex: 0,
       }} />
 
@@ -62,7 +63,7 @@ export default function Hero() {
                   top: `${top}%`,
                   left: `${left}%`,
                   animation: `twinkle ${duration}s infinite ease-in-out ${delay}s`,
-                  boxShadow: '0 0 4px rgba(255,255,255,0.8)',
+                  boxShadow: '0 0 6px rgba(255,255,255,0.9)',
                   zIndex: 1,
                 }}
               />
@@ -94,18 +95,18 @@ export default function Hero() {
               key={`orb-${i}`}
               style={{
                 position: 'absolute',
-                width: `${80 + i * 40}px`,
-                height: `${80 + i * 40}px`,
+                width: `${100 + i * 50}px`,
+                height: `${100 + i * 50}px`,
                 borderRadius: '50%',
                 background: i === 0 
-                  ? 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.1) 50%, transparent 100%)'
+                  ? 'radial-gradient(circle, rgba(74, 85, 255, 0.45) 0%, transparent 70%)'
                   : i === 1
-                  ? 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 100%)'
-                  : 'radial-gradient(circle, rgba(249, 115, 22, 0.3) 0%, rgba(249, 115, 22, 0.1) 50%, transparent 100%)',
-                top: `${20 + i * 25}%`,
-                left: `${10 + i * 30}%`,
+                  ? 'radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 70%)'
+                  : 'radial-gradient(circle, rgba(255, 111, 0, 0.35) 0%, transparent 70%)',
+                top: `${15 + i * 30}%`,
+                left: `${10 + i * 25}%`,
                 animation: `floatOrb ${8 + i * 2}s infinite ease-in-out ${i * 2}s`,
-                filter: 'blur(20px)',
+                filter: 'blur(25px)',
                 zIndex: 1,
               }}
             />
@@ -119,13 +120,13 @@ export default function Hero() {
                 position: 'absolute',
                 width: '4px',
                 height: '4px',
-                background: i % 3 === 0 ? '#3b82f6' : i % 3 === 1 ? '#8b5cf6' : '#f97316',
+                background: i % 3 === 0 ? '#4A55FF' : i % 3 === 1 ? '#8b5cf6' : '#ff6f00',
                 borderRadius: '50%',
                 bottom: '0',
                 left: `${(i * 5) % 100}%`,
                 animation: `floatUp ${12 + (i % 6)}s infinite ease-in ${(i % 5) * 1}s`,
                 filter: 'blur(1px)',
-                boxShadow: `0 0 8px ${i % 3 === 0 ? '#3b82f6' : i % 3 === 1 ? '#8b5cf6' : '#f97316'}`,
+                boxShadow: `0 0 8px ${i % 3 === 0 ? '#4A55FF' : i % 3 === 1 ? '#8b5cf6' : '#ff6f00'}`,
                 zIndex: 1,
               }}
             />
@@ -139,7 +140,7 @@ export default function Hero() {
                 position: 'absolute',
                 width: '200px',
                 height: '1px',
-                background: 'linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent)',
+                background: 'linear-gradient(90deg, transparent, rgba(74, 85, 255, 0.5), transparent)',
                 top: `${30 + i * 20}%`,
                 right: '-200px',
                 animation: `slideLine ${6 + i * 2}s infinite ease-in-out ${i * 1.5}s`,
@@ -157,7 +158,7 @@ export default function Hero() {
                 width: '300px',
                 height: '300px',
                 borderRadius: '50%',
-                border: '2px solid rgba(59, 130, 246, 0.3)',
+                border: '2px solid rgba(74, 85, 255, 0.3)',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
@@ -173,36 +174,64 @@ export default function Hero() {
       <div style={{
         position: 'relative',
         zIndex: 10,
-        maxWidth: '1200px',
+        maxWidth: '1100px',
         textAlign: 'center',
         color: 'white',
       }}>
+        {/* Animated Headline */}
         <h1 style={{
-          fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+          fontSize: 'clamp(2.2rem, 5vw, 4rem)',
           fontWeight: '800',
           marginBottom: '1.5rem',
-          background: 'linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, #fbbf24 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          lineHeight: '1.3',
-          animation: isClient ? 'textGlow 3s ease-in-out infinite' : 'none',
+          lineHeight: '1.2',
         }}>
-          Building Tomorrow&apos;s Solutions, Today
+          <span style={{
+            display: 'inline-block',
+            background: 'linear-gradient(135deg, #ffffff 0%, #4A55FF 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: isClient ? 'fadeInWord 0.6s ease both' : 'none',
+          }}>
+            Building{' '}
+          </span>
+          <span style={{
+            display: 'inline-block',
+            background: 'linear-gradient(135deg, #4A55FF 0%, #ff6f00 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: isClient ? 'fadeInWord 0.6s ease 0.2s both' : 'none',
+            filter: 'drop-shadow(0 0 20px rgba(74, 85, 255, 0.4))',
+          }}>
+            Tomorrow&apos;s{' '}
+          </span>
+          <span style={{
+            display: 'inline-block',
+            background: 'linear-gradient(135deg, #ff6f00 0%, #ffffff 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            animation: isClient ? 'fadeInWord 0.6s ease 0.4s both' : 'none',
+          }}>
+            Solutions, Today
+          </span>
         </h1>
         
+        {/* Improved Subtext */}
         <p style={{
-          fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-          color: 'rgba(255, 255, 255, 0.85)',
+          fontSize: 'clamp(1.05rem, 2.2vw, 1.35rem)',
+          color: 'rgba(255, 255, 255, 0.9)',
           marginBottom: '3rem',
-          maxWidth: '800px',
+          maxWidth: '900px',
           margin: '0 auto 3rem',
-          lineHeight: '1.8',
+          lineHeight: '1.7',
+          fontWeight: '400',
         }}>
-          Setica delivers 60+ integrated products and premium development services across healthcare, logistics, fintech, and enterprise solutions. Your unified platform for digital transformation.
+          Setica delivers <strong style={{ color: '#4A55FF', fontWeight: '600' }}>60+ integrated products</strong> and premium development services — across healthcare, logistics, fintech, and enterprise solutions — unifying your digital transformation.
         </p>
 
-        {/* Buttons */}
+        {/* Enhanced Buttons */}
         <div style={{
           display: 'flex',
           gap: '1.5rem',
@@ -211,26 +240,26 @@ export default function Hero() {
           marginBottom: '4rem',
         }}>
           <button style={{
-            padding: '1rem 2.5rem',
+            padding: '1.1rem 2.8rem',
             fontSize: '1.1rem',
             fontWeight: '600',
             color: 'white',
-            background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+            background: 'linear-gradient(135deg, #4A55FF 0%, #ff6f00 100%)',
             border: 'none',
-            borderRadius: '12px',
+            borderRadius: '14px',
             cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            boxShadow: '0 8px 32px rgba(59, 130, 246, 0.4)',
+            transition: 'all 0.4s ease',
+            boxShadow: '0 10px 35px rgba(74, 85, 255, 0.5)',
             position: 'relative',
             overflow: 'hidden',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-3px)';
-            e.currentTarget.style.boxShadow = '0 12px 40px rgba(59, 130, 246, 0.6)';
+            e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+            e.currentTarget.style.boxShadow = '0 15px 45px rgba(74, 85, 255, 0.7)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 8px 32px rgba(59, 130, 246, 0.4)';
+            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+            e.currentTarget.style.boxShadow = '0 10px 35px rgba(74, 85, 255, 0.5)';
           }}>
             <span style={{ position: 'relative', zIndex: 2 }}>Join Waitlist →</span>
             {isClient && (
@@ -240,33 +269,37 @@ export default function Hero() {
                 left: '-50%',
                 width: '200%',
                 height: '200%',
-                background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent)',
+                background: 'linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent)',
                 animation: 'shimmer 3s infinite',
               }} />
             )}
           </button>
 
           <button style={{
-            padding: '1rem 2.5rem',
+            padding: '1.1rem 2.8rem',
             fontSize: '1.1rem',
             fontWeight: '600',
             color: 'white',
-            background: 'transparent',
-            border: '2px solid rgba(255, 255, 255, 0.3)',
-            borderRadius: '12px',
+            background: 'rgba(74, 85, 255, 0.15)',
+            border: '2px solid rgba(74, 85, 255, 0.5)',
+            borderRadius: '14px',
             cursor: 'pointer',
-            transition: 'all 0.3s ease',
+            transition: 'all 0.4s ease',
             backdropFilter: 'blur(10px)',
+            position: 'relative',
+            overflow: 'hidden',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.5)';
-            e.currentTarget.style.transform = 'translateY(-3px)';
+            e.currentTarget.style.background = 'rgba(74, 85, 255, 0.25)';
+            e.currentTarget.style.borderColor = 'rgba(74, 85, 255, 0.8)';
+            e.currentTarget.style.transform = 'translateY(-4px)';
+            e.currentTarget.style.boxShadow = '0 10px 30px rgba(74, 85, 255, 0.3), inset 0 0 20px rgba(74, 85, 255, 0.2)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            e.currentTarget.style.background = 'rgba(74, 85, 255, 0.15)';
+            e.currentTarget.style.borderColor = 'rgba(74, 85, 255, 0.5)';
             e.currentTarget.style.transform = 'translateY(0)';
+            e.currentTarget.style.boxShadow = 'none';
           }}>
             Explore Products
           </button>
@@ -279,45 +312,85 @@ export default function Hero() {
           gap: 'clamp(2rem, 5vw, 4rem)',
           flexWrap: 'wrap',
           padding: '2rem',
-          background: 'rgba(255, 255, 255, 0.05)',
+          background: 'rgba(255, 255, 255, 0.06)',
           borderRadius: '20px',
           backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: '1px solid rgba(255, 255, 255, 0.15)',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
         }}>
           {[
-            { icon: '✓', text: '60+ Products', color: '#3b82f6' },
-            { icon: '✓', text: 'Premium Services', color: '#f97316' },
+            { icon: '✓', text: '60+ Products', color: '#4A55FF' },
+            { icon: '✓', text: 'Premium Services', color: '#ff6f00' },
             { icon: '✓', text: 'Enterprise Ready', color: '#8b5cf6' }
           ].map((item, i) => (
             <div key={i} style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '0.75rem',
-              animation: isClient ? `fadeInUp 0.6s ease-out ${i * 0.2}s both` : 'none',
+              gap: '0.85rem',
+              animation: isClient ? `fadeInUp 0.6s ease-out ${i * 0.15}s both` : 'none',
             }}>
               <div style={{
-                width: '32px',
-                height: '32px',
+                width: '36px',
+                height: '36px',
                 borderRadius: '50%',
                 background: item.color,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '1.2rem',
+                fontSize: '1.3rem',
                 fontWeight: 'bold',
-                boxShadow: `0 4px 16px ${item.color}66`,
+                boxShadow: `0 4px 20px ${item.color}88`,
+                animation: isClient ? 'pulse 2s infinite ease-in-out' : 'none',
               }}>
                 {item.icon}
               </div>
               <span style={{
-                fontSize: '1.1rem',
-                fontWeight: '500',
+                fontSize: '1.15rem',
+                fontWeight: '600',
               }}>
                 {item.text}
               </span>
             </div>
           ))}
+        </div>
+
+        {/* Social Proof Bar */}
+        <div style={{
+          marginTop: '3rem',
+          padding: '1.5rem',
+          textAlign: 'center',
+          opacity: 0.8,
+          animation: isClient ? 'fadeInUp 0.8s ease-out 0.8s both' : 'none',
+        }}>
+          <p style={{
+            fontSize: '0.95rem',
+            color: 'rgba(255, 255, 255, 0.7)',
+            marginBottom: '0.75rem',
+          }}>
+            Trusted by forward-thinking teams worldwide
+          </p>
+          <div style={{
+            display: 'flex',
+            gap: '1rem',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}>
+            {['⭐', '⭐', '⭐', '⭐', '⭐'].map((star, i) => (
+              <span key={i} style={{ 
+                fontSize: '1.2rem', 
+                opacity: 0.9,
+                animation: isClient ? `twinkle ${2 + (i * 0.2)}s infinite ease-in-out ${i * 0.3}s` : 'none',
+              }}>{star}</span>
+            ))}
+            <span style={{ 
+              fontSize: '0.9rem', 
+              color: 'rgba(255, 255, 255, 0.8)',
+              marginLeft: '0.5rem',
+            }}>
+              Rated 5.0 by early adopters
+            </span>
+          </div>
         </div>
       </div>
 
@@ -325,7 +398,7 @@ export default function Hero() {
       <style>{`
         @keyframes twinkle {
           0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.5); }
+          50% { opacity: 1; transform: scale(1.6); }
         }
 
         @keyframes shootingStar {
@@ -338,11 +411,11 @@ export default function Hero() {
         @keyframes floatOrb {
           0%, 100% { 
             transform: translate(0, 0) scale(1);
-            opacity: 0.6;
+            opacity: 0.7;
           }
           50% { 
-            transform: translate(30px, -30px) scale(1.1);
-            opacity: 0.8;
+            transform: translate(35px, -35px) scale(1.15);
+            opacity: 0.9;
           }
         }
 
@@ -380,12 +453,7 @@ export default function Hero() {
 
         @keyframes pulseGradient {
           0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
-        }
-
-        @keyframes textGlow {
-          0%, 100% { text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
-          50% { text-shadow: 0 0 40px rgba(139, 92, 246, 0.8); }
+          50% { opacity: 0.75; }
         }
 
         @keyframes fadeInUp {
@@ -399,9 +467,35 @@ export default function Hero() {
           }
         }
 
+        @keyframes fadeInWord {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
         @keyframes shimmer {
           0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
           100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          h1 {
+            font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+          }
+          p {
+            font-size: clamp(0.95rem, 4vw, 1.1rem) !important;
+          }
         }
       `}</style>
     </div>

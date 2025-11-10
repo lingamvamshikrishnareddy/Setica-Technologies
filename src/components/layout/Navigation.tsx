@@ -33,14 +33,61 @@ export default function Navigation() {
   return (
     <>
       <style jsx>{`
-        .nav-links a:hover,
-        .nav-links a.active {
-          color: var(--primary-blue);
+        @keyframes logoGlow {
+          0%, 100% {
+            filter: drop-shadow(0 4px 20px rgba(74, 85, 255, 0.5));
+          }
+          50% {
+            filter: drop-shadow(0 4px 30px rgba(255, 111, 0, 0.6));
+          }
+        }
+
+        @keyframes slideIn {
+          from {
+            transform: scaleX(0);
+            transform-origin: left;
+          }
+          to {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes heartPulse {
+          0%, 100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.2);
+          }
+        }
+
+        .nav-links a:hover {
+          color: #4A55FF !important;
+        }
+
+        .love-button-container {
+          transition: all 0.3s ease;
         }
 
         .love-button-container:hover {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 111, 0, 0.15) !important;
           transform: scale(1.05);
+        }
+
+        .love-button-container:active .heart-icon {
+          animation: heartPulse 0.3s ease;
         }
 
         @media (max-width: 768px) {
@@ -54,11 +101,12 @@ export default function Navigation() {
             left: -100%;
             width: 100%;
             height: calc(100vh - 70px);
-            background: rgba(15, 15, 26, 0.98);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 39, 0.98);
+            backdrop-filter: blur(20px);
             flex-direction: column;
             padding: 40px;
             transition: left 0.3s ease;
+            z-index: 999;
           }
 
           .nav-links.active {
@@ -68,10 +116,29 @@ export default function Navigation() {
           .cta-buttons {
             display: none;
           }
+
+          .love-button-container {
+            position: relative;
+            z-index: 1000;
+          }
         }
       `}</style>
 
-      <nav className={isScrolled ? 'scrolled' : ''}>
+      <nav style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        padding: '1rem 0',
+        background: isScrolled 
+          ? 'rgba(10, 14, 39, 0.85)' 
+          : 'transparent',
+        backdropFilter: isScrolled ? 'blur(20px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
+        transition: 'all 0.3s ease',
+        boxShadow: isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.3)' : 'none',
+      }}>
         <div className="nav-container" style={{
           maxWidth: '1400px',
           margin: '0 auto',
@@ -81,14 +148,21 @@ export default function Navigation() {
           alignItems: 'center',
           gap: '2rem'
         }}>
-          <div className="logo">
-            <Link href="/">
+          <div className="logo" style={{
+            animation: 'logoGlow 3s ease-in-out infinite',
+          }}>
+            <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
               <Image 
                 src="/images/setica-preview.jpg" 
                 alt="Setica Logo" 
                 width={140}
                 height={35}
-                style={{ height: '35px', width: 'auto' }}
+                style={{ 
+                  height: '35px', 
+                  width: 'auto',
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 10px rgba(74, 85, 255, 0.3)',
+                }}
               />
             </Link>
           </div>
@@ -100,55 +174,115 @@ export default function Navigation() {
           }}>
             <Link 
               href="/solutions" 
-              className={isActive('/solutions') ? 'active' : ''}
               style={{
-                color: 'var(--text-color)',
+                position: 'relative',
+                color: isActive('/solutions') ? '#4A55FF' : '#ffffff',
                 textDecoration: 'none',
-                fontWeight: '500',
+                fontWeight: isActive('/solutions') ? '600' : '500',
                 transition: 'color 0.3s ease',
-                fontSize: '0.95rem'
+                fontSize: '0.95rem',
+                padding: '0.5rem 0',
               }}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Solutions
+              {isActive('/solutions') && (
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '3px',
+                  background: 'linear-gradient(90deg, #4A55FF, #ff6f00)',
+                  borderRadius: '2px',
+                  boxShadow: '0 2px 8px rgba(74, 85, 255, 0.6)',
+                  animation: 'slideIn 0.3s ease',
+                }} />
+              )}
             </Link>
             <Link 
               href="/about"
-              className={isActive('/about') ? 'active' : ''}
               style={{
-                color: 'var(--text-color)',
+                position: 'relative',
+                color: isActive('/about') ? '#4A55FF' : '#ffffff',
                 textDecoration: 'none',
-                fontWeight: '500',
+                fontWeight: isActive('/about') ? '600' : '500',
                 transition: 'color 0.3s ease',
-                fontSize: '0.95rem'
+                fontSize: '0.95rem',
+                padding: '0.5rem 0',
               }}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               About
+              {isActive('/about') && (
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '3px',
+                  background: 'linear-gradient(90deg, #4A55FF, #ff6f00)',
+                  borderRadius: '2px',
+                  boxShadow: '0 2px 8px rgba(74, 85, 255, 0.6)',
+                  animation: 'slideIn 0.3s ease',
+                }} />
+              )}
             </Link>
             <Link 
               href="/products"
-              className={isActive('/products') ? 'active' : ''}
               style={{
-                color: 'var(--text-color)',
+                position: 'relative',
+                color: isActive('/products') ? '#4A55FF' : '#ffffff',
                 textDecoration: 'none',
-                fontWeight: '500',
+                fontWeight: isActive('/products') ? '600' : '500',
                 transition: 'color 0.3s ease',
-                fontSize: '0.95rem'
+                fontSize: '0.95rem',
+                padding: '0.5rem 0',
               }}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Products
+              {isActive('/products') && (
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '3px',
+                  background: 'linear-gradient(90deg, #4A55FF, #ff6f00)',
+                  borderRadius: '2px',
+                  boxShadow: '0 2px 8px rgba(74, 85, 255, 0.6)',
+                  animation: 'slideIn 0.3s ease',
+                }} />
+              )}
             </Link>
             <Link 
               href="/services"
-              className={isActive('/services') ? 'active' : ''}
               style={{
-                color: 'var(--text-color)',
+                position: 'relative',
+                color: isActive('/services') ? '#4A55FF' : '#ffffff',
                 textDecoration: 'none',
-                fontWeight: '500',
+                fontWeight: isActive('/services') ? '600' : '500',
                 transition: 'color 0.3s ease',
-                fontSize: '0.95rem'
+                fontSize: '0.95rem',
+                padding: '0.5rem 0',
               }}
+              onClick={() => setIsMobileMenuOpen(false)}
             >
               Services
+              {isActive('/services') && (
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '3px',
+                  background: 'linear-gradient(90deg, #4A55FF, #ff6f00)',
+                  borderRadius: '2px',
+                  boxShadow: '0 2px 8px rgba(74, 85, 255, 0.6)',
+                  animation: 'slideIn 0.3s ease',
+                }} />
+              )}
             </Link>
           </div>
 
@@ -160,20 +294,49 @@ export default function Navigation() {
               alignItems: 'center',
               gap: '8px',
               padding: '8px 16px',
-              background: hasLoved ? 'rgba(255, 111, 0, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+              background: hasLoved ? 'rgba(255, 111, 0, 0.25)' : 'rgba(255, 255, 255, 0.05)',
               borderRadius: '20px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease'
+              cursor: hasLoved ? 'default' : 'pointer',
+              border: hasLoved ? '1px solid rgba(255, 111, 0, 0.4)' : '1px solid rgba(255, 255, 255, 0.1)',
             }}
           >
             <span className="heart-icon" style={{ fontSize: '1.2rem' }}>❤️</span>
-            <span className="love-count" style={{ fontWeight: '600', color: 'var(--text-color)' }}>
+            <span className="love-count" style={{ 
+              fontWeight: '600', 
+              color: hasLoved ? '#ff6f00' : '#ffffff',
+              minWidth: '20px',
+              textAlign: 'center',
+            }}>
               {loveCount}
             </span>
           </div>
 
           <div className="cta-buttons" style={{ display: 'flex', gap: '15px' }}>
-            <Link href="/join-waitlist" className="btn btn-primary">
+            <Link 
+              href="/join-waitlist" 
+              style={{
+                display: 'inline-block',
+                padding: '0.75rem 1.75rem',
+                fontSize: '0.95rem',
+                fontWeight: '600',
+                color: 'white',
+                background: 'linear-gradient(135deg, #4A55FF 0%, #ff6f00 100%)',
+                border: 'none',
+                borderRadius: '10px',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 20px rgba(74, 85, 255, 0.4)',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 25px rgba(74, 85, 255, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(74, 85, 255, 0.4)';
+              }}
+            >
               Join Waitlist
             </Link>
           </div>
@@ -185,26 +348,30 @@ export default function Navigation() {
               display: 'none',
               flexDirection: 'column',
               gap: '5px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              padding: '0.5rem',
             }}
           >
             <span style={{
               width: '25px',
               height: '3px',
-              background: 'var(--text-color)',
-              transition: 'all 0.3s ease'
+              background: '#ffffff',
+              transition: 'all 0.3s ease',
+              transform: isMobileMenuOpen ? 'rotate(45deg) translateY(8px)' : 'none',
             }}></span>
             <span style={{
               width: '25px',
               height: '3px',
-              background: 'var(--text-color)',
-              transition: 'all 0.3s ease'
+              background: '#ffffff',
+              transition: 'all 0.3s ease',
+              opacity: isMobileMenuOpen ? 0 : 1,
             }}></span>
             <span style={{
               width: '25px',
               height: '3px',
-              background: 'var(--text-color)',
-              transition: 'all 0.3s ease'
+              background: '#ffffff',
+              transition: 'all 0.3s ease',
+              transform: isMobileMenuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none',
             }}></span>
           </div>
         </div>
