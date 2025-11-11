@@ -1,25 +1,37 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Hero() {
   const [isClient, setIsClient] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  const handleWaitlistClick = () => {
+    router.push('/join-waitlist');
+  };
+
+  const handleProductsClick = () => {
+    router.push('/products');
+  };
+
   return (
     <div style={{
       minHeight: '100vh',
+      height: 'auto',
       position: 'relative',
       overflow: 'hidden',
       background: 'linear-gradient(to bottom, #0a0e27 0%, #1a1d3a 50%, #0a0e27 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '2rem',
+      padding: '2rem 1rem',
       paddingTop: '6rem',
+      paddingBottom: '4rem',
     }}>
       {/* Animated Background Gradient */}
       <div style={{
@@ -237,9 +249,11 @@ export default function Hero() {
           gap: '1.5rem',
           justifyContent: 'center',
           flexWrap: 'wrap',
-          marginBottom: '4rem',
+          marginBottom: '3rem',
         }}>
-          <button style={{
+          <button 
+          onClick={handleWaitlistClick}
+          style={{
             padding: '1.1rem 2.8rem',
             fontSize: '1.1rem',
             fontWeight: '600',
@@ -275,7 +289,9 @@ export default function Hero() {
             )}
           </button>
 
-          <button style={{
+          <button 
+          onClick={handleProductsClick}
+          style={{
             padding: '1.1rem 2.8rem',
             fontSize: '1.1rem',
             fontWeight: '600',
@@ -304,6 +320,46 @@ export default function Hero() {
             Explore Products
           </button>
         </div>
+
+        {/* Scroll Indicator */}
+        {isClient && (
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.5rem',
+            animation: 'fadeInUp 1s ease 1s both',
+          }}>
+            <span style={{
+              fontSize: '0.85rem',
+              color: 'rgba(255, 255, 255, 0.6)',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+            }}>
+              Scroll to explore
+            </span>
+            <div style={{
+              width: '24px',
+              height: '36px',
+              border: '2px solid rgba(74, 85, 255, 0.6)',
+              borderRadius: '12px',
+              position: 'relative',
+              animation: 'pulse 2s infinite ease-in-out',
+            }}>
+              <div style={{
+                width: '4px',
+                height: '8px',
+                background: 'rgba(74, 85, 255, 0.9)',
+                borderRadius: '2px',
+                position: 'absolute',
+                top: '6px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                animation: 'scrollWheel 2s infinite ease-in-out',
+              }} />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* CSS Animations */}
@@ -396,17 +452,52 @@ export default function Hero() {
         }
 
         @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.1); }
+          0%, 100% { 
+            transform: scale(1); 
+            opacity: 1;
+          }
+          50% { 
+            transform: scale(1.05); 
+            opacity: 0.8;
+          }
+        }
+
+        @keyframes scrollWheel {
+          0% {
+            top: 6px;
+            opacity: 1;
+          }
+          50% {
+            top: 14px;
+            opacity: 0.5;
+          }
+          100% {
+            top: 6px;
+            opacity: 1;
+          }
         }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
           h1 {
             font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+            margin-bottom: 1.2rem !important;
           }
           p {
             font-size: clamp(0.95rem, 4vw, 1.1rem) !important;
+            margin-bottom: 2rem !important;
+            padding: 0 0.5rem;
+          }
+          button {
+            padding: 0.95rem 2rem !important;
+            fontSize: 1rem !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          button {
+            width: 100%;
+            max-width: 280px;
           }
         }
       `}</style>
