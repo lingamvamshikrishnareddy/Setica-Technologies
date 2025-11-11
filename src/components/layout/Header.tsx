@@ -132,7 +132,7 @@ export default function Header() {
                 animation: 'shine 3s linear infinite',
               }} />
               <img 
-                src="images/setica-preview.jpg" 
+                src="images/setica-preview.webp" 
                 alt="Setica Logo"
                 style={{
                   width: '100%',

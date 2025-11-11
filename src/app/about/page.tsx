@@ -500,7 +500,7 @@ export default function AboutPage() {
             flexShrink: 0
           }}>
             <img 
-              src="/images/profile.jpg" 
+              src="/images/profile.webp" 
               alt="VK Profile"
               style={{
                 width: '400px',
