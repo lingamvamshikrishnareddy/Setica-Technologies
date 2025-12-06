@@ -1,29 +1,25 @@
 'use client';
 
 import { useEffect, CSSProperties } from 'react';
-import Link from 'next/link';
+import { ExternalLink, Play } from 'lucide-react';
 
 // Type definitions
 interface ProductCardProps {
-  icon: string;
   title: string;
-  status: string;
-  progress?: string;
-  statusColor: string;
-  tech: string;
+  category: string;
   description: string;
-  requirements?: string;
+  imageUrl: string;
+  liveLink: string;
+  demoVideo: string;
 }
 
 interface Product {
-  icon: string;
   title: string;
-  status: string;
-  statusClass: string;
-  progress?: string;
-  tech: string;
+  category: string;
   description: string;
-  requirements?: string;
+  imageUrl: string;
+  liveLink: string;
+  demoVideo: string;
 }
 
 export default function ProductsPage() {
@@ -31,725 +27,365 @@ export default function ProductsPage() {
     document.body.classList.add('loaded');
   }, []);
 
-  const productRoadmap = {
-    // ==================== ACTIVE PRODUCTS ====================
-    active: [
-      {
-        icon: 'fas fa-balance-scale',
-        title: 'Justica.ai - Legal Tech',
-        status: 'Active',
-        statusClass: 'status-active',
-        tech: 'SaaS Platform',
-        description: 'AI-powered legal technology platform streamlining legal research, document analysis, and case management for law firms and legal professionals.'
-      },
-      {
-        icon: 'fas fa-handshake',
-        title: 'B2B Marketplace',
-        status: 'Active',
-        statusClass: 'status-active',
-        tech: 'Marketplace Platform',
-        description: 'Enterprise marketplace platform connecting buyers and sellers with intelligent matching, procurement automation, and seamless transaction management.'
-      }
-    ],
-
-    // ==================== COMPLETED (Ready to Launch) ====================
-    completed: [
-      {
-        icon: 'fas fa-briefcase-medical',
-        title: 'Telehealth Platform',
-        status: 'Completed',
-        statusClass: 'status-completed',
-        progress: '100%',
-        tech: 'Healthcare SaaS',
-        description: 'Comprehensive healthcare solution combining online telemedicine consultations, pharmacy products, and ambulance connectivity in one platform.'
-      },
-      {
-        icon: 'fas fa-shipping-fast',
-        title: 'SetCart Quick Commerce',
-        status: 'Completed',
-        statusClass: 'status-completed',
-        progress: '100%',
-        tech: 'E-commerce Platform',
-        description: 'Transparent quick commerce with zero hidden prices, no dark patterns, and assured quality delivery.'
-      },
-      {
-        icon: 'fas fa-om',
-        title: 'Fast & Yoga',
-        status: 'Completed',
-        statusClass: 'status-completed',
-        progress: '100%',
-        tech: 'Wellness App',
-        description: 'Integrated fasting and yoga platform for nutritional wellness and holistic health practices.'
-      },
-      {
-        icon: 'fas fa-cookie-bite',
-        title: 'ChippyChips Veg Delivery',
-        status: 'Completed',
-        statusClass: 'status-completed',
-        progress: '100%',
-        tech: 'Food Delivery App',
-        description: 'Pure vegetarian food delivery app where orders are accepted within 15 minutes with quality assurance.'
-      },
-      {
-        icon: 'fas fa-utensils',
-        title: 'BriyaniBro',
-        status: 'Completed',
-        statusClass: 'status-completed',
-        progress: '100%',
-        tech: 'Food Delivery App',
-        description: 'Specialized biryani delivery platform emphasizing premium meat quantity and quality with perfectly flavored rice.'
-      },
-      {
-        icon: 'fas fa-car',
-        title: 'Vayu Ride Sharing',
-        status: 'Completed',
-        statusClass: 'status-completed',
-        progress: '100%',
-        tech: 'Mobile App',
-        description: 'Connected transportation with autonomous car products, car wash, and comprehensive vehicle care features.'
-      },
-      {
-        icon: 'fas fa-solar-panel',
-        title: 'Energy Grid Monitor',
-        status: 'Completed',
-        statusClass: 'status-completed',
-        progress: '100%',
-        tech: 'Website',
-        description: 'Smart energy grid management, monitoring, and energy production optimization platform.'
-      },
-      {
-        icon: 'fas fa-bullhorn',
-        title: 'Creator Connect Marketing',
-        status: 'Completed',
-        statusClass: 'status-completed',
-        progress: '100%',
-        tech: 'Website',
-        description: 'Digital marketing platform connecting brands with memers, influencers, and podcasters for authentic reach.'
-      },
-      {
-  icon: 'fas fa-robot',
-  title: 'FounderFlow AI',
-  status: 'In Development',
-  statusClass: 'status-in-progress',
-  progress: '70%',
-  tech: 'AI Platform',
-  description: 'AI-powered platform connecting founders with investors. Intelligent agents handle pitch preparation, investor matching, and due diligence automation.'
-},
-      {
-  icon: 'fas fa-chart-line',
-  title: 'Called It - Prediction Market',
-  status: 'Beta',
-  statusClass: 'status-beta',
-  progress: '80%',
-  tech: 'Social Gaming',
-  description: 'Gen-Z prediction market where users compete with virtual currency. Make predictions on trends, events, and outcomes—all the excitement, zero financial risk.',
-  team: 'Technical Development: Backend and infra  | UI/UX Design & Marketing: Deesha Kumbam (Apple Engineer) |  Frontend: Pallavi (Apple Engineer)'
-}
-    ],
-
-    // ==================== IN DEVELOPMENT - HIGH PROGRESS ====================
-    developmentHigh: [
-      {
-        icon: 'fas fa-ring',
-        title: 'Wedding SaaS',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '70%',
-        tech: 'JavaScript',
-        description: 'Comprehensive wedding planning platform for managing vendors, guests, budgets, and complete wedding coordination.'
-      },
-      
-      {
-        icon: 'fas fa-home',
-        title: 'Remis Real Estate SaaS',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '70%',
-        tech: 'JavaScript',
-        description: 'Real estate management platform specifically for dealers, agents, and owners focusing on customer satisfaction and lead management.'
-      },
-      {
-        icon: 'fas fa-film',
-        title: 'Studio Suite (Adobe Alternative)',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '50%',
-        tech: 'TypeScript',
-        description: 'Professional platform for creators to edit videos, photos, design logos, and create after effects content.'
-      },
-      {
-        icon: 'fas fa-cogs',
-        title: 'Enterprise Management SaaS',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '50%',
-        tech: 'TypeScript',
-        description: 'Business OS for MSMEs and startups with CRM, project management, and workflow automation tools.'
-      },
-      {
-        icon: 'fas fa-utensils',
-        title: 'Restaurant Tech',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '20%',
-        tech: 'TypeScript',
-        description: 'Complete restaurant management system for orders, chef coordination, reservations, and inventory tracking.'
-      },
-      {
-        icon: 'fas fa-tools',
-        title: 'Construction Management SaaS',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '40%',
-        tech: 'JavaScript',
-        description: 'Comprehensive platform for clients to track contractors from project start to build completion, including design and progress monitoring.'
-      },
-      {
-        icon: 'fas fa-industry',
-        title: 'Manufacturing SaaS',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '30%',
-        tech: 'TypeScript',
-        description: 'Production management, inventory control, and operations optimization for manufacturing businesses.'
-      }
-    ],
-
-    // ==================== IN DEVELOPMENT - CORE products ====================
-    developmentCore: [
-      {
-        icon: 'fas fa-hard-hat',
-        title: 'Blue Collar Jobs Platform',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '45%',
-        tech: 'Job Portal',
-        description: 'Comprehensive job portal connecting local and international blue-collar workers with verified opportunities across industries.'
-      },
-      {
-        icon: 'fas fa-heartbeat',
-        title: 'NutriHealth Buddy',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '35%',
-        tech: 'Health & Wellness',
-        description: 'AI-powered nutrition and wellness companion for personalized meal planning, health tracking, and fitness guidance.'
-      },
-      {
-        icon: 'fas fa-shield-alt',
-        title: 'Women\'s Safety App',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '40%',
-        tech: 'Safety Platform',
-        description: 'Individual-registered SOS emergency platform with real-time alerts, location sharing, and trusted contact networks.'
-      },
-      {
-        icon: 'fas fa-book',
-        title: 'Excel Kitab Accounting',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '25%',
-        tech: 'FinTech SaaS',
-        description: 'Simplified accounting and bookkeeping platform designed for small businesses and entrepreneurs.'
-      },
-      {
-        icon: 'fas fa-piggy-bank',
-        title: 'FinTech Banking',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '15%',
-        tech: 'Banking Platform',
-        description: 'Digital banking platform offering personal and business loans, fixed deposits, and comprehensive financial products.'
-      },
-      {
-        icon: 'fas fa-calendar-alt',
-        title: 'Gatherly Event Platform',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '30%',
-        tech: 'Event Management',
-        description: 'Meetups and events platform for organizing, discovering, and managing community gatherings and social events.'
-      },
-      {
-        icon: 'fas fa-plane-departure',
-        title: 'TripNDrip Travel & Hospitality',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '20%',
-        tech: 'Travel Platform',
-        description: 'Online hospitality and booking platform for hotels, flights, and complete travel experiences.'
-      }
-    ],
-
-    // ==================== AI & ML PRODUCTS (Training Phase - 20%) ====================
-    aiMlProducts: [
-      {
-        icon: 'fas fa-traffic-light',
-        title: 'Traffic AI',
-        status: 'Training Phase',
-        statusClass: 'status-training',
-        progress: '20%',
-        requirements: 'GPU Training Required',
-        tech: 'Computer Vision AI',
-        description: 'Vision model-based traffic management system with dynamic timer adjustments based on real-time traffic density instead of traditional fixed timers.'
-      },
-      {
-        icon: 'fas fa-comments',
-        title: 'AI Chatbot (SLM)',
-        status: 'Training Phase',
-        statusClass: 'status-training',
-        progress: '20%',
-        requirements: 'GPU Training Required',
-        tech: 'Small Language Model',
-        description: 'Domain-specialized AI assistant using small language models, beating LLMs in speed, context accuracy, and achieving 80%+ relevance match scores.'
-      },
-      {
-        icon: 'fas fa-chart-line',
-        title: 'Stock Trading AI',
-        status: 'Training Phase',
-        statusClass: 'status-training',
-        progress: '20%',
-        requirements: 'GPU Training Required',
-        tech: 'Predictive AI',
-        description: 'AI-powered stock and trading platform with intelligent market analysis and automated trading strategies.'
-      }
-    ],
-
-    // ==================== AI AGENT ECOSYSTEM ====================
-    aiAgents: [
-      {
-        icon: 'fas fa-user-tie',
-        title: 'AI Sales Agent',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '20%',
-        requirements: 'Training & GPU Required',
-        tech: 'Autonomous AI Agent',
-        description: 'Autonomous sales agent for lead qualification, outreach, follow-ups, and deal closing with natural conversation abilities.'
-      },
-      {
-        icon: 'fas fa-headset',
-        title: 'AI Customer Support Agent',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '20%',
-        requirements: 'Training & GPU Required',
-        tech: 'Autonomous AI Agent',
-        description: 'Intelligent customer support agent handling queries, troubleshooting, escalations, and providing 24/7 multilingual assistance.'
-      },
-      {
-        icon: 'fas fa-gavel',
-        title: 'AI Legal Agent',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '15%',
-        tech: 'Autonomous AI Agent',
-        description: 'Legal AI assistant for contract analysis, case research, document drafting, and compliance monitoring.'
-      },
-      {
-        icon: 'fas fa-calculator',
-        title: 'AI Accounting Agent',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '10%',
-        tech: 'Autonomous AI Agent',
-        description: 'Automated accounting agent for bookkeeping, tax preparation, financial reporting, and audit assistance.'
-      },
-      {
-        icon: 'fas fa-chart-bar',
-        title: 'AI Finance Search Agent',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '15%',
-        tech: 'Autonomous AI Agent',
-        description: 'Financial intelligence agent for market research, investment analysis, and real-time financial data discovery.'
-      },
-      {
-        icon: 'fas fa-robot',
-        title: 'AI Job Application Agent',
-        status: 'In Development',
-        statusClass: 'status-development',
-        progress: '10%',
-        tech: 'Autonomous AI Agent',
-        description: 'Automated job searching and application agent with intelligent matching and profile optimization.'
-      }
-    ],
-
-    // ==================== ADVANCED DEVELOPMENT (10-30%) ====================
-    advancedDevelopment: [
-      {
-        icon: 'fas fa-spa',
-        title: 'BeautyCare AI',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '25%',
-        tech: 'AI-Powered SaaS',
-        description: 'AI-powered beauty routine optimizer with exercise recommendations and personalized product suggestions for skin glow-up and wellness.'
-      },
-      {
-        icon: 'fas fa-car-side',
-        title: 'Vehicle Care products',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '20%',
-        tech: 'Service Platform',
-        description: 'On-demand car wash, products, and comprehensive vehicle care with maintenance tracking and alerts.'
-      },
-      {
-        icon: 'fas fa-hand-holding-medical',
-        title: 'Addiction Recovery App',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '15%',
-        tech: 'Healthcare App',
-        description: 'Support platform for alcoholic, smoker, and drug addiction recovery with alternative therapy recommendations and community support.'
-      },
-      {
-        icon: 'fas fa-envelope-open-text',
-        title: 'Cold DM Platform',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '30%',
-        tech: 'Marketing SaaS',
-        description: 'Consent-first, multi-platform cold DM tool for businesses across Instagram, Twitter, WhatsApp, WeChat, and Snapchat with proper opt-in/opt-out mechanisms.'
-      },
-      {
-        icon: 'fas fa-user-shield',
-        title: 'Cyber Shield',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '20%',
-        tech: 'Cybersecurity SaaS',
-        description: 'Enterprise-grade cybersecurity SaaS for comprehensive personal and business protection with threat monitoring.'
-      },
-      {
-        icon: 'fas fa-user-nurse',
-        title: 'Senior & Baby Care',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '18%',
-        tech: 'Healthcare Platform',
-        description: 'Virtual nursing and care management for senior citizens and baby sitting products with real-time monitoring.'
-      },
-      {
-        icon: 'fas fa-clipboard-check',
-        title: 'Scope Creep Killer',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '22%',
-        tech: 'Project Management',
-        description: 'Project management tool preventing clients from adding out-of-scope features after fixed-price agreements with clear boundary enforcement.'
-      },
-      {
-        icon: 'fas fa-link',
-        title: 'Blockchain Rewards',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '15%',
-        tech: 'Blockchain Platform',
-        description: 'Token and rewards system using blockchain for purchase incentives and loyalty programs.'
-      },
-      {
-        icon: 'fas fa-graduation-cap',
-        title: 'College Life Management',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '28%',
-        tech: 'EdTech SaaS',
-        description: 'All-in-one SaaS platform for students managing academics, schedules, and campus life activities.'
-      },
-      {
-        icon: 'fas fa-heart-broken',
-        title: 'Divorce Support Platform',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '12%',
-        tech: 'Support Platform',
-        description: 'Divorce support resources and legal guidance specifically focused on individual needs during separation.'
-      },
-      {
-        icon: 'fas fa-code',
-        title: 'Synaptika AI Editor',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '25%',
-        tech: 'AI Development Tool',
-        description: 'AI coding editor where complete apps and websites can be built in 5 minutes with automated development.'
-      },
-      {
-        icon: 'fas fa-building',
-        title: 'GateKeeping Resident Portal',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '20%',
-        tech: 'Property Management',
-        description: 'Visitor management and maintenance request system for residential communities and commercial buildings.'
-      },
-      {
-        icon: 'fas fa-newspaper',
-        title: 'User Stories News',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '15%',
-        tech: 'Media Platform',
-        description: 'Platform where every individual can share their story and get featured as news content.'
-      },
-      {
-        icon: 'fas fa-cut',
-        title: 'Women\'s Tailoring',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '18%',
-        tech: 'Service Platform',
-        description: 'Specialized knitting and custom dress making service for women with precise measurements and designs.'
-      },
-      {
-        icon: 'fas fa-helicopter',
-        title: 'Drones Logistics',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '10%',
-        tech: 'Drone Platform',
-        description: 'Fast drone delivery platform for logistics under 3km with comprehensive drone management software.'
-      },
-      {
-        icon: 'fas fa-tractor',
-        title: 'FarmiCart AgriTech',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '22%',
-        tech: 'B2B Marketplace',
-        description: 'B2B online agriculture marketplace connecting farmers directly, eliminating middlemen for better pricing and fair trade.'
-      },
-      {
-        icon: 'fas fa-baby',
-        title: 'Parenting App (2-6 Years)',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '20%',
-        tech: 'Parenting Platform',
-        description: 'Screen-free parenting platform for daily routine management and skill training for children aged 2-6 years.'
-      },
-      {
-        icon: 'fas fa-laugh',
-        title: 'Nexora Entertainment',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '25%',
-        tech: 'Entertainment Platform',
-        description: 'Entertainment platform featuring shorts, movie clips, and viral memes for trending content discovery.'
-      },
-      {
-        icon: 'fas fa-video',
-        title: 'PixelStream OTT',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '18%',
-        tech: 'OTT Platform',
-        description: 'OTT platform for local creators, short films, soap operas, and showcasing new artists with original content.'
-      },
-      {
-        icon: 'fas fa-broadcast-tower',
-        title: 'WaveLink Video Platform',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '20%',
-        tech: 'Video Communication',
-        description: 'Video communication platform with integrated features for enhanced meetings and team collaboration.'
-      },
-      {
-        icon: 'fas fa-road',
-        title: 'Road Accountability',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '15%',
-        tech: 'Governance Platform',
-        description: 'Platform for tracking and ensuring accountability in road construction and maintenance projects.'
-      },
-      {
-        icon: 'fas fa-dna',
-        title: 'BioTech SaaS',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '12%',
-        tech: 'BioTech Platform',
-        description: 'Biotechnology management platform for research, lab operations, and data analysis in life sciences.'
-      },
-      {
-        icon: 'fas fa-cloud',
-        title: 'Cloud Bharath',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '10%',
-        tech: 'Cloud Infrastructure',
-        description: 'Indigenous cloud infrastructure platform designed specifically for Indian businesses with local compliance.'
-      },
-      {
-        icon: 'fas fa-oil-can',
-        title: 'Oil & Gas SaaS',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '15%',
-        tech: 'Industry SaaS',
-        description: 'Comprehensive management platform for oil and gas operations, exploration, and supply chain optimization.'
-      },
-      {
-        icon: 'fas fa-ship',
-        title: 'Freight Management',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '18%',
-        tech: 'Logistics SaaS',
-        description: 'International freight and logistics SaaS for cross-border shipping and supply chain coordination.'
-      },
-      {
-        icon: 'fas fa-recycle',
-        title: 'Waste & Carbon Management',
-        status: 'In Development',
-        statusClass: 'status-early',
-        progress: '20%',
-        tech: 'Sustainability Platform',
-        description: 'Waste management, water management, and carbon credits marketplace for sustainable environmental solutions.'
-      }
-    ],
-
-    // ==================== IDEATION PHASE (Concept Stage) ====================
-    ideation: [
-      {
-        icon: 'fas fa-robot',
-        title: 'Robotics Platform',
-        status: 'Ideation',
-        statusClass: 'status-ideation',
-        requirements: 'Hardware R&D Required',
-        tech: 'Robotics & AI',
-        description: 'Robotics development and deployment platform for industrial automation and smart manufacturing.'
-      },
-      {
-        icon: 'fas fa-dna',
-        title: 'Mother AI - Life Creation',
-        status: 'Ideation',
-        statusClass: 'status-ideation',
-        requirements: 'BioTech R&D Required',
-        tech: 'BioTech & AI',
-        description: 'Biotech platform combining AI with gene editing for assisted reproductive technologies and life creation research.'
-      }
-    ],
-
-    // ==================== HARDWARE DEVELOPMENT (Embedded Systems) ====================
-    hardwareProducts: [
-      {
-        icon: 'fas fa-charging-station',
-        title: 'Kalam EV Vehicle',
-        status: 'Hardware Development',
-        statusClass: 'status-hardware',
-        requirements: 'Embedded Systems & Battery Tech',
-        tech: 'Electric Vehicle',
-        description: 'Quad-motor electric vehicle with specialized lithium battery cells for unmatched reliability and performance.'
-      },
-      {
-        icon: 'fas fa-wifi',
-        title: 'LiFi Telecommunication',
-        status: 'Hardware Development',
-        statusClass: 'status-hardware',
-        requirements: 'Embedded Systems & Optical Tech',
-        tech: 'Light Fidelity Network',
-        description: 'Pure digital data-only communication service using light fidelity technology at reduced operational costs.'
-      },
-      {
-        icon: 'fas fa-brain',
-        title: 'NeuroSync Brain Interface',
-        status: 'Hardware Development',
-        statusClass: 'status-hardware',
-        requirements: 'Embedded Systems & Neuroscience',
-        tech: 'Neural Interface',
-        description: 'Neural chip technology enabling brain-to-brain API communication for next-generation connectivity.'
-      },
-      {
-        icon: 'fas fa-water',
-        title: 'Ganga Water Purification',
-        status: 'Hardware Development',
-        statusClass: 'status-hardware',
-        requirements: 'Embedded Systems & Desalination Tech',
-        tech: 'Water Technology',
-        description: 'Advanced desalination and water purification technology converting seawater to fresh water for water scarcity solutions.'
-      },
-      {
-        icon: 'fas fa-shield',
-        title: 'Defense Threat Detection',
-        status: 'Hardware Development',
-        statusClass: 'status-hardware',
-        requirements: 'Embedded Systems & Laser Tech',
-        tech: 'Defense System',
-        description: 'Advanced threat detection system with laser-based iron dome technology for national security applications.'
-      }
-    ]
-  };
-
-  const getStatusColor = (statusClass: string): string => {
-    const colorMap: { [key: string]: string } = {
-      'status-active': '#10b981',
-      'status-completed': '#3b82f6',
-      'status-development': '#f59e0b',
-      'status-training': '#8b5cf6',
-      'status-early': '#06b6d4',
-      'status-ideation': '#6366f1',
-      'status-hardware': '#14b8a6'
-    };
-    return colorMap[statusClass] || '#6366f1';
-  };
-
-  const renderProductSection = (title: string, products: Product[], sectionColor: string) => {
-    if (!products || products.length === 0) return null;
-    
-    return (
-      <div style={{ marginBottom: '80px' } as CSSProperties}>
-        <h2 style={{
-          fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
-          marginBottom: '40px',
-          color: sectionColor,
-          fontWeight: 700,
-          textAlign: 'center',
-          textShadow: `0 0 20px ${sectionColor}66`
-        } as CSSProperties}>
-          {title}
-        </h2>
-        
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-          gap: '30px'
-        } as CSSProperties}>
-          {products.map((product, index) => (
-            <ProductCard
-              key={index}
-              icon={product.icon}
-              title={product.title}
-              status={product.status}
-              progress={product.progress}
-              statusColor={getStatusColor(product.statusClass)}
-              tech={product.tech}
-              description={product.description}
-              requirements={product.requirements}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  };
+  const products: Product[] = [
+    {
+      title: 'Justica.ai - Legal Tech',
+      category: 'SaaS Platform',
+      description: 'AI-powered legal technology platform streamlining legal research, document analysis, and case management for law firms and legal professionals.',
+      imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80',
+      liveLink: 'https://justica.ai',
+      demoVideo: 'https://youtube.com/demo/justica'
+    },
+    {
+      title: 'B2B Marketplace',
+      category: 'Marketplace Platform',
+      description: 'Enterprise marketplace platform connecting buyers and sellers with intelligent matching, procurement automation, and seamless transaction management.',
+      imageUrl: 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=80',
+      liveLink: 'https://b2bmarketplace.com',
+      demoVideo: 'https://youtube.com/demo/b2b'
+    },
+    {
+      title: 'Vayu - Ride Sharing',
+      category: 'Transportation',
+      description: 'Connected transportation with autonomous car products, car wash, and comprehensive vehicle care features.',
+      imageUrl: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80',
+      liveLink: 'https://vayu.app',
+      demoVideo: 'https://youtube.com/demo/vayu'
+    },
+    {
+      title: 'Telehealth Platform',
+      category: 'Healthcare SaaS',
+      description: 'Comprehensive healthcare solution combining online telemedicine consultations, pharmacy products, and ambulance connectivity.',
+      imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
+      liveLink: 'https://telehealth.app',
+      demoVideo: 'https://youtube.com/demo/telehealth'
+    },
+    {
+      title: 'Udoyag - Job Portal',
+      category: 'Employment Platform',
+      description: 'Comprehensive job portal connecting local and international workers with verified opportunities across industries.',
+      imageUrl: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
+      liveLink: 'https://udoyag.com',
+      demoVideo: 'https://youtube.com/demo/udoyag'
+    },
+    {
+      title: 'PostRecovery - Workout App',
+      category: 'Fitness & Wellness',
+      description: 'Post-workout recovery optimization platform with personalized recovery plans and exercise recommendations.',
+      imageUrl: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
+      liveLink: 'https://postrecovery.app',
+      demoVideo: 'https://youtube.com/demo/postrecovery'
+    },
+    {
+      title: 'Gatherly - Events',
+      category: 'Event Management',
+      description: 'Platform for organizing, discovering, and managing community gatherings and social events.',
+      imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
+      liveLink: 'https://gatherly.app',
+      demoVideo: 'https://youtube.com/demo/gatherly'
+    },
+    {
+      title: 'Women\'s Safety App',
+      category: 'Safety Platform',
+      description: 'SOS emergency platform with real-time alerts, location sharing, and trusted contact networks.',
+      imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80',
+      liveLink: 'https://womensafety.app',
+      demoVideo: 'https://youtube.com/demo/safety'
+    },
+    {
+      title: 'TripNDrip - Travel',
+      category: 'Travel & Hospitality',
+      description: 'Online hospitality and booking platform for hotels, flights, and complete travel experiences.',
+      imageUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
+      liveLink: 'https://tripndrip.com',
+      demoVideo: 'https://youtube.com/demo/tripndrip'
+    },
+    {
+      title: 'Road Accountability',
+      category: 'Governance Platform',
+      description: 'Platform for tracking and ensuring accountability in road construction and maintenance projects.',
+      imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80',
+      liveLink: 'https://roadaccountability.gov',
+      demoVideo: 'https://youtube.com/demo/road'
+    },
+    {
+      title: 'BioTech SaaS',
+      category: 'BioTech Platform',
+      description: 'Biotechnology management platform for research, lab operations, and data analysis in life sciences.',
+      imageUrl: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80',
+      liveLink: 'https://biotech.saas',
+      demoVideo: 'https://youtube.com/demo/biotech'
+    },
+    {
+      title: 'Oil & Gas SaaS',
+      category: 'Industry Platform',
+      description: 'Comprehensive management platform for oil and gas operations, exploration, and supply chain optimization.',
+      imageUrl: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&q=80',
+      liveLink: 'https://oilgassaas.com',
+      demoVideo: 'https://youtube.com/demo/oilgas'
+    },
+    {
+      title: 'Freight Management',
+      category: 'Logistics SaaS',
+      description: 'International freight and logistics platform for cross-border shipping and supply chain coordination.',
+      imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80',
+      liveLink: 'https://freightmanage.com',
+      demoVideo: 'https://youtube.com/demo/freight'
+    },
+    {
+      title: 'Manufacturing SaaS',
+      category: 'Industry Platform',
+      description: 'Production management, inventory control, and operations optimization for manufacturing businesses.',
+      imageUrl: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&q=80',
+      liveLink: 'https://manufacturing.saas',
+      demoVideo: 'https://youtube.com/demo/manufacturing'
+    },
+    {
+      title: 'CareNest - Senior & Baby Care',
+      category: 'Healthcare Platform',
+      description: 'Virtual nursing and care management for senior citizens and baby sitting services with real-time monitoring.',
+      imageUrl: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80',
+      liveLink: 'https://carenest.app',
+      demoVideo: 'https://youtube.com/demo/carenest'
+    },
+    {
+      title: 'Scope Creep Killer',
+      category: 'Project Management',
+      description: 'Project management tool preventing clients from adding out-of-scope features after fixed-price agreements.',
+      imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
+      liveLink: 'https://scopecreep.app',
+      demoVideo: 'https://youtube.com/demo/scopecreep'
+    },
+    {
+      title: 'WaveLink - Video Platform',
+      category: 'Communication',
+      description: 'Video communication platform with integrated features for enhanced meetings and team collaboration.',
+      imageUrl: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80',
+      liveLink: 'https://wavelink.app',
+      demoVideo: 'https://youtube.com/demo/wavelink'
+    },
+    {
+      title: 'PixelStream OTT',
+      category: 'Entertainment',
+      description: 'OTT platform for local creators, short films, soap operas, and showcasing new artists with original content.',
+      imageUrl: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80',
+      liveLink: 'https://pixelstream.tv',
+      demoVideo: 'https://youtube.com/demo/pixelstream'
+    },
+    {
+      title: 'Restaurant Tech',
+      category: 'Restaurant SaaS',
+      description: 'Complete restaurant management system for orders, chef coordination, reservations, and inventory tracking.',
+      imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',
+      liveLink: 'https://restauranttech.app',
+      demoVideo: 'https://youtube.com/demo/restaurant'
+    },
+    {
+      title: 'Unisaz - Enterprise SaaS',
+      category: 'Business Platform',
+      description: 'Business OS for MSMEs and startups with CRM, project management, and workflow automation tools.',
+      imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+      liveLink: 'https://unisaz.com',
+      demoVideo: 'https://youtube.com/demo/unisaz'
+    },
+    {
+      title: 'Creator Connect Marketing',
+      category: 'Digital Marketing',
+      description: 'Digital marketing platform connecting brands with memers, influencers, and podcasters for authentic reach.',
+      imageUrl: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=800&q=80',
+      liveLink: 'https://creatorconnect.app',
+      demoVideo: 'https://youtube.com/demo/creator'
+    },
+    {
+      title: 'Online Tailoring',
+      category: 'Fashion Service',
+      description: 'Specialized knitting and custom dress making service for women with precise measurements and designs.',
+      imageUrl: 'https://images.unsplash.com/photo-1558769132-cb1aea3c8232?w=800&q=80',
+      liveLink: 'https://onlinetailoring.com',
+      demoVideo: 'https://youtube.com/demo/tailoring'
+    },
+    {
+      title: 'Remis - Real Estate',
+      category: 'Property SaaS',
+      description: 'Real estate management platform for dealers, agents, and owners focusing on customer satisfaction and lead management.',
+      imageUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
+      liveLink: 'https://remis.app',
+      demoVideo: 'https://youtube.com/demo/remis'
+    },
+    {
+      title: 'GateKeeping',
+      category: 'Property Management',
+      description: 'Visitor management and maintenance request system for residential communities and commercial buildings.',
+      imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
+      liveLink: 'https://gatekeeping.app',
+      demoVideo: 'https://youtube.com/demo/gatekeeping'
+    },
+    {
+      title: 'Studio Suite',
+      category: 'Creative Software',
+      description: 'Professional platform for creators to edit videos, photos, design logos, and create after effects content.',
+      imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80',
+      liveLink: 'https://studiosuite.app',
+      demoVideo: 'https://youtube.com/demo/studio'
+    },
+    {
+      title: 'User Stories News',
+      category: 'Media Platform',
+      description: 'Platform where every individual can share their story and get featured as news content.',
+      imageUrl: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80',
+      liveLink: 'https://userstories.news',
+      demoVideo: 'https://youtube.com/demo/userstories'
+    },
+    {
+      title: 'Energy Grid Monitor',
+      category: 'Energy SaaS',
+      description: 'Smart energy grid management, monitoring, and energy production optimization platform.',
+      imageUrl: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
+      liveLink: 'https://energygrid.app',
+      demoVideo: 'https://youtube.com/demo/energy'
+    },
+    {
+      title: 'PocketCar Mobile',
+      category: 'Vehicle Care',
+      description: 'On-demand car wash, services, and comprehensive vehicle care with maintenance tracking and alerts.',
+      imageUrl: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80',
+      liveLink: 'https://pocketcar.app',
+      demoVideo: 'https://youtube.com/demo/pocketcar'
+    },
+    {
+      title: 'Construction Management',
+      category: 'Construction SaaS',
+      description: 'Comprehensive platform for clients to track contractors from project start to completion, including design monitoring.',
+      imageUrl: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80',
+      liveLink: 'https://constructionmgmt.app',
+      demoVideo: 'https://youtube.com/demo/construction'
+    },
+    {
+      title: 'FinTech Banking',
+      category: 'Banking Platform',
+      description: 'Digital banking platform offering personal and business loans, fixed deposits, and comprehensive financial products.',
+      imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80',
+      liveLink: 'https://fintechbank.app',
+      demoVideo: 'https://youtube.com/demo/fintech'
+    },
+    {
+      title: 'Wedding SaaS',
+      category: 'Event Platform',
+      description: 'Comprehensive wedding planning platform for managing vendors, guests, budgets, and complete wedding coordination.',
+      imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',
+      liveLink: 'https://weddingsaas.app',
+      demoVideo: 'https://youtube.com/demo/wedding'
+    },
+    {
+      title: 'Excel Kitab - Accounting',
+      category: 'FinTech SaaS',
+      description: 'Simplified accounting and bookkeeping platform designed for small businesses and entrepreneurs.',
+      imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80',
+      liveLink: 'https://excelkitab.app',
+      demoVideo: 'https://youtube.com/demo/excelkitab'
+    },
+    {
+      title: 'Waste Management SaaS',
+      category: 'Sustainability',
+      description: 'Waste management, water management, and carbon credits marketplace for sustainable environmental solutions.',
+      imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&q=80',
+      liveLink: 'https://wastemanagement.app',
+      demoVideo: 'https://youtube.com/demo/waste'
+    },
+    {
+      title: 'Fast & Yoga',
+      category: 'Wellness App',
+      description: 'Integrated fasting and yoga platform for nutritional wellness and holistic health practices.',
+      imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
+      liveLink: 'https://fastyoga.app',
+      demoVideo: 'https://youtube.com/demo/fastyoga'
+    },
+    {
+      title: 'ChippyChips Veg Delivery',
+      category: 'Food Delivery',
+      description: 'Pure vegetarian food delivery app where orders are accepted within 15 minutes with quality assurance.',
+      imageUrl: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80',
+      liveLink: 'https://chippychips.app',
+      demoVideo: 'https://youtube.com/demo/chippychips'
+    },
+    {
+      title: 'Traffic AI',
+      category: 'Computer Vision AI',
+      description: 'Vision model-based traffic management system with dynamic timer adjustments based on real-time traffic density.',
+      imageUrl: 'https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?w=800&q=80',
+      liveLink: 'https://trafficai.app',
+      demoVideo: 'https://youtube.com/demo/trafficai'
+    },
+    {
+      title: 'AI Chatbot Assistant',
+      category: 'AI Platform',
+      description: 'Domain-specialized AI assistant using small language models, achieving 80%+ relevance match scores.',
+      imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80',
+      liveLink: 'https://aichatbot.app',
+      demoVideo: 'https://youtube.com/demo/chatbot'
+    },
+    {
+      title: 'Cyber Shield',
+      category: 'Cybersecurity',
+      description: 'Enterprise-grade cybersecurity SaaS for comprehensive personal and business protection with threat monitoring.',
+      imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80',
+      liveLink: 'https://cybershield.app',
+      demoVideo: 'https://youtube.com/demo/cybershield'
+    },
+    {
+      title: 'AI Sales & Support Agent',
+      category: 'AI Agent',
+      description: 'Autonomous AI agents for customer service, sales call preparation, and automated templates generation.',
+      imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
+      liveLink: 'https://aisalesagent.app',
+      demoVideo: 'https://youtube.com/demo/aiagent'
+    },
+    {
+      title: 'Blockchain Rewards',
+      category: 'Blockchain',
+      description: 'Token and rewards system using blockchain for purchase incentives and loyalty programs on every transaction.',
+      imageUrl: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80',
+      liveLink: 'https://blockchainrewards.app',
+      demoVideo: 'https://youtube.com/demo/blockchain'
+    },
+    {
+      title: 'Synaptika - AI Code Editor',
+      category: 'AI Development',
+      description: 'AI coding editor where complete apps and websites can be built in 5 minutes with automated development.',
+      imageUrl: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80',
+      liveLink: 'https://synaptika.app',
+      demoVideo: 'https://youtube.com/demo/synaptika'
+    },
+    {
+      title: 'Drones Logistics',
+      category: 'Hardware - Drones',
+      description: 'Fast drone delivery platform for logistics under 3km with comprehensive drone management software and autonomous flight systems.',
+      imageUrl: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80',
+      liveLink: 'https://droneslogistics.com',
+      demoVideo: 'https://youtube.com/demo/drones'
+    },
+    {
+      title: 'Kalam EV Vehicle',
+      category: 'Hardware - Electric Vehicle',
+      description: 'Quad-motor electric vehicle with specialized lithium battery cells for unmatched reliability, performance, and sustainable transportation.',
+      imageUrl: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=80',
+      liveLink: 'https://kalamev.com',
+      demoVideo: 'https://youtube.com/demo/kalamev'
+    }
+  ];
 
   return (
     <>
       {/* Header */}
       <header style={{
-        minHeight: '300px',
+        minHeight: '400px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
         position: 'relative',
-        padding: '120px 5% 60px',
+        padding: '120px 5% 80px',
         backgroundColor: '#000',
         overflow: 'hidden'
       } as CSSProperties}>
@@ -780,93 +416,149 @@ export default function ProductsPage() {
         } as CSSProperties}></div>
         <div style={{ zIndex: 5, position: 'relative' } as CSSProperties}>
           <h1 style={{
-            fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
+            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
             color: '#fff',
-            marginBottom: '1rem',
+            marginBottom: '1.5rem',
             background: 'linear-gradient(135deg, #4a55ff, #ff6f00, #00d4ff)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundSize: '200% 200%',
-            animation: 'gradientShift 3s ease infinite'
+            animation: 'gradientShift 3s ease infinite',
+            fontWeight: 800
           } as CSSProperties}>
-            Product Ecosystem 2025
+            Our Product Ecosystem
           </h1>
           <p style={{
-            fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-            maxWidth: '700px',
-            margin: '0 auto',
+            fontSize: 'clamp(1.1rem, 2.2vw, 1.4rem)',
+            maxWidth: '800px',
+            margin: '0 auto 2rem',
+            color: '#ccc',
+            lineHeight: 1.6
+          } as CSSProperties}>
+            {products.length} innovative solutions spanning AI, SaaS, healthcare, finance, hardware, and emerging technologies—all live and ready to transform industries.
+          </p>
+          <div style={{
+            display: 'flex',
+            gap: '30px',
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            fontSize: '1rem',
             color: '#aaa'
           } as CSSProperties}>
-            Our comprehensive suite of 60+ integrated solutions spanning healthcare, AI, productivity, and emerging technologies.
-          </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ fontSize: '2rem' }}>🚀</span>
+              <span>{products.length} Products</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ fontSize: '2rem' }}>🌐</span>
+              <span>Live & Scaling</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ fontSize: '2rem' }}>⚡</span>
+              <span>AI-Powered</span>
+            </div>
+          </div>
         </div>
       </header>
 
-      {/* Products Section */}
+      {/* Products Grid */}
       <section style={{
-        padding: '80px 5%',
+        padding: '100px 5%',
         backgroundColor: '#0a0a0a'
       } as CSSProperties}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' } as CSSProperties}>
-          
-          {/* All Product Sections */}
-          {renderProductSection('🔥 Active Products', productRoadmap.active, '#10b981')}
-          {renderProductSection('👊 Completed & Ready to Launch', productRoadmap.completed, '#3b82f6')}
-          {renderProductSection('⚡ High Progress Development (20-70%)', productRoadmap.developmentHigh, '#f59e0b')}
-          {renderProductSection('🔧 Core products Development', productRoadmap.developmentCore, '#f59e0b')}
-          {renderProductSection('🧠 AI/ML Training Phase', productRoadmap.aiMlProducts, '#8b5cf6')}
-          {renderProductSection('🤖 AI Agent Ecosystem', productRoadmap.aiAgents, '#ec4899')}
-          {renderProductSection('🚧 Early Development (10-30%)', productRoadmap.advancedDevelopment, '#06b6d4')}
-          {renderProductSection('💡 Ideation Phase', productRoadmap.ideation, '#6366f1')}
-          {renderProductSection('⚙️ Hardware Development', productRoadmap.hardwareProducts, '#14b8a6')}
-
+        <div style={{ maxWidth: '1400px', margin: '0 auto' } as CSSProperties}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))',
+            gap: '35px'
+          } as CSSProperties}>
+            {products.map((product, index) => (
+              <ProductCard key={index} {...product} />
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section style={{
-        padding: '100px 5%',
-        background: 'linear-gradient(135deg, rgba(74, 85, 255, 0.1), rgba(255, 111, 0, 0.1))',
-        backgroundColor: '#0a0a0a'
+        padding: '120px 5%',
+        background: 'linear-gradient(135deg, rgba(74, 85, 255, 0.15), rgba(255, 111, 0, 0.15))',
+        backgroundColor: '#0a0a0a',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)'
       } as CSSProperties}>
         <div style={{
-          maxWidth: '800px',
+          maxWidth: '900px',
           margin: '0 auto',
           textAlign: 'center'
         } as CSSProperties}>
           <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
-            marginBottom: '1.5rem',
+            fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)',
+            marginBottom: '2rem',
             color: '#fff',
             fontWeight: 700
           } as CSSProperties}>
-            Join Our Innovation Journey
+            Ready to Transform Your Business?
           </h2>
           <p style={{
-            fontSize: '1.2rem',
-            color: '#aaa',
-            marginBottom: '2.5rem',
-            lineHeight: '1.8'
+            fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
+            color: '#bbb',
+            marginBottom: '3rem',
+            lineHeight: '1.8',
+            maxWidth: '700px',
+            margin: '0 auto 3rem'
           } as CSSProperties}>
-            Be part of building the future with our comprehensive product ecosystem of 60+ solutions spanning AI, SaaS, hardware, and emerging technologies.
+            Be among the first to experience our innovative product ecosystem. Join our seed-stage journey and shape the future of technology.
           </p>
-          <Link
-            href="/join-waitlist"
-            className="btn-cta"
-            style={{
-              padding: '18px 45px',
+          <div style={{
+            display: 'flex',
+            gap: '20px',
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          } as CSSProperties}>
+            <button style={{
+              padding: '20px 50px',
               background: 'linear-gradient(135deg, #4a55ff, #ff6f00)',
               color: 'white',
-              textDecoration: 'none',
+              border: 'none',
               borderRadius: '12px',
               fontWeight: '700',
               fontSize: '1.1rem',
-              display: 'inline-block',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 5px 20px rgba(74, 85, 255, 0.3)'
+            } as CSSProperties}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-3px)';
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(74, 85, 255, 0.5)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 20px rgba(74, 85, 255, 0.3)';
+            }}>
+              Get Started →
+            </button>
+            <button style={{
+              padding: '20px 50px',
+              background: 'transparent',
+              color: 'white',
+              border: '2px solid rgba(255, 255, 255, 0.3)',
+              borderRadius: '12px',
+              fontWeight: '700',
+              fontSize: '1.1rem',
+              cursor: 'pointer',
               transition: 'all 0.3s ease'
             } as CSSProperties}
-          >
-            JOIN WAITLIST →
-          </Link>
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            }}>
+              Schedule Demo
+            </button>
+          </div>
         </div>
       </section>
 
@@ -881,11 +573,6 @@ export default function ProductsPage() {
           50% { background-position: 100% 50%; }
         }
 
-        .btn-cta:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 30px rgba(74, 85, 255, 0.4);
-        }
-
         @media (max-width: 768px) {
           div[style*="gridTemplateColumns"] {
             grid-template-columns: 1fr !important;
@@ -896,121 +583,164 @@ export default function ProductsPage() {
   );
 }
 
-function ProductCard({ icon, title, status, progress, statusColor, tech, description, requirements }: ProductCardProps) {
+function ProductCard({ title, category, description, imageUrl, liveLink, demoVideo }: ProductCardProps) {
   return (
     <div style={{
       position: 'relative',
-      backgroundColor: 'rgba(255, 255, 255, 0.03)',
-      borderRadius: '16px',
-      padding: '30px',
+      backgroundColor: 'rgba(255, 255, 255, 0.02)',
+      borderRadius: '20px',
+      overflow: 'hidden',
       transition: 'all 0.4s ease',
-      border: '1px solid rgba(255, 255, 255, 0.05)'
-    } as CSSProperties}>
-      {/* Icon */}
+      border: '1px solid rgba(255, 255, 255, 0.08)',
+      cursor: 'pointer'
+    } as CSSProperties}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = 'translateY(-8px)';
+      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5)';
+      e.currentTarget.style.borderColor = 'rgba(74, 85, 255, 0.4)';
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = 'translateY(0)';
+      e.currentTarget.style.boxShadow = 'none';
+      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+    }}>
+      {/* Image */}
       <div style={{
-        width: '60px',
-        height: '60px',
-        borderRadius: '12px',
-        background: `linear-gradient(135deg, ${statusColor}20, ${statusColor}10)`,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: '20px'
+        width: '100%',
+        height: '220px',
+        overflow: 'hidden',
+        position: 'relative'
       } as CSSProperties}>
-        <i className={icon} style={{
-          color: statusColor,
-          fontSize: '1.8rem'
-        } as CSSProperties}></i>
+        <img 
+          src={imageUrl} 
+          alt={title}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            transition: 'transform 0.4s ease'
+          } as CSSProperties}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+          }}
+        />
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%)'
+        } as CSSProperties}></div>
       </div>
 
-      {/* Status Badge */}
-      <div style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '8px',
-        padding: '6px 14px',
-        borderRadius: '20px',
-        fontSize: '0.75rem',
-        fontWeight: 600,
-        marginBottom: '12px',
-        backgroundColor: `${statusColor}20`,
-        color: statusColor,
-        border: `1px solid ${statusColor}40`
-      } as CSSProperties}>
-        {status}
-        {progress && (
-          <span style={{
-            backgroundColor: statusColor,
-            color: '#000',
-            padding: '2px 8px',
-            borderRadius: '10px',
-            fontSize: '0.7rem',
-            fontWeight: 700
-          } as CSSProperties}>
-            {progress}
-          </span>
-        )}
-      </div>
+      {/* Content */}
+      <div style={{ padding: '25px' } as CSSProperties}>
+        {/* Category Badge */}
+        <div style={{
+          display: 'inline-block',
+          padding: '6px 14px',
+          borderRadius: '8px',
+          fontSize: '0.75rem',
+          fontWeight: 600,
+          marginBottom: '15px',
+          backgroundColor: 'rgba(74, 85, 255, 0.15)',
+          color: '#7c88ff',
+          border: '1px solid rgba(74, 85, 255, 0.3)'
+        } as CSSProperties}>
+          {category}
+        </div>
 
-      {/* Tech Badge */}
-      <div style={{
-        display: 'inline-block',
-        padding: '4px 10px',
-        borderRadius: '6px',
-        fontSize: '0.7rem',
-        fontWeight: 600,
-        marginBottom: '15px',
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-        color: '#aaa'
-      } as CSSProperties}>
-        {tech}
-      </div>
+        {/* Title */}
+        <h3 style={{
+          fontSize: '1.4rem',
+          marginBottom: '12px',
+          color: '#fff',
+          fontWeight: 600,
+          lineHeight: 1.3
+        } as CSSProperties}>
+          {title}
+        </h3>
 
-      {/* Title */}
-      <h3 style={{
-        fontSize: '1.3rem',
-        marginBottom: '12px',
-        color: '#fff',
-        fontWeight: 600
-      } as CSSProperties}>
-        {title}
-      </h3>
+        {/* Description */}
+        <p style={{
+          fontSize: '0.95rem',
+          color: '#aaa',
+          lineHeight: '1.7',
+          marginBottom: '20px',
+          minHeight: '80px'
+        } as CSSProperties}>
+          {description}
+        </p>
 
-      {/* Description */}
-      <p style={{
-        fontSize: '0.9rem',
-        color: '#aaa',
-        lineHeight: '1.6',
-        marginBottom: requirements ? '15px' : '0'
-      } as CSSProperties}>
-        {description}
-      </p>
-
-      {/* Requirements */}
-      {requirements && (
+        {/* Action Buttons */}
         <div style={{
           display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          padding: '10px 14px',
-          borderRadius: '8px',
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          marginTop: '15px'
+          gap: '12px',
+          paddingTop: '15px',
+          borderTop: '1px solid rgba(255, 255, 255, 0.05)'
         } as CSSProperties}>
-          <i className="fas fa-info-circle" style={{
-            color: statusColor,
-            fontSize: '0.9rem'
-          } as CSSProperties}></i>
-          <span style={{
-            fontSize: '0.8rem',
-            color: '#aaa',
-            fontStyle: 'italic'
-          } as CSSProperties}>
-            {requirements}
-          </span>
+          <button style={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            padding: '12px 20px',
+            background: 'linear-gradient(135deg, #4a55ff, #6b73ff)',
+            color: 'white',
+            border: 'none',
+            borderRadius: '10px',
+            fontWeight: '600',
+            fontSize: '0.9rem',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease'
+          } as CSSProperties}
+          onClick={() => window.open(liveLink, '_blank')}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.05)';
+            e.currentTarget.style.boxShadow = '0 5px 15px rgba(74, 85, 255, 0.4)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.boxShadow = 'none';
+          }}>
+            <ExternalLink size={16} />
+            Live Demo
+          </button>
+          <button style={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            padding: '12px 20px',
+            background: 'rgba(255, 255, 255, 0.05)',
+            color: 'white',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
+            borderRadius: '10px',
+            fontWeight: '600',
+            fontSize: '0.9rem',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease'
+          } as CSSProperties}
+          onClick={() => window.open(demoVideo, '_blank')}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+          }}>
+            <Play size={16} />
+            Video
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }

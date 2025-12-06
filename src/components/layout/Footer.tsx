@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -7,7 +8,7 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: 'fab fa-twitter', href: 'https://twitter.com/setica', label: 'Twitter' },
-    { icon: 'fab fa-linkedin', href: 'https://linkedin.com/company/setica', label: 'LinkedIn' },
+    { icon: 'fab fa-linkedin', href: 'https://www.linkedin.com/in/lingam-vamshi-krishna-reddy-1a7402160/', label: 'LinkedIn' },
     { icon: 'fab fa-github', href: 'https://github.com/setica', label: 'GitHub' },
     { icon: 'fab fa-instagram', href: 'https://instagram.com/setica', label: 'Instagram' },
   ];
@@ -18,6 +19,15 @@ export default function Footer() {
       { label: 'Products', href: '/products' },
       { label: 'Services', href: '/services' },
       { label: 'Solutions', href: '/solutions' },
+    ],
+    resources: [
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'Join Waitlist', href: '/join-waitlist' },
+    ],
+    legal: [
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms & Conditions', href: '/terms-conditions' },
+      { label: 'Refund Policy', href: '/refund-policy' },
     ],
   };
 
@@ -71,7 +81,7 @@ export default function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
-                  target="https://www.linkedin.com/in/lingam-vamshi-krishna-reddy-1a7402160/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   style={{
@@ -111,8 +121,66 @@ export default function Footer() {
             }}>
               Company
             </h4>
-            <ul style={{ listStyle: 'none' }}>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
               {footerLinks.company.map((link) => (
+                <li key={link.label} style={{ marginBottom: '12px' }}>
+                  <Link href={link.href} style={{
+                    color: 'var(--text-muted)',
+                    textDecoration: 'none',
+                    fontSize: '0.95rem',
+                    transition: 'color 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources Links */}
+          <div>
+            <h4 style={{
+              fontSize: '1.1rem',
+              fontWeight: '700',
+              color: 'var(--text-color)',
+              marginBottom: '20px',
+            }}>
+              Resources
+            </h4>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              {footerLinks.resources.map((link) => (
+                <li key={link.label} style={{ marginBottom: '12px' }}>
+                  <Link href={link.href} style={{
+                    color: 'var(--text-muted)',
+                    textDecoration: 'none',
+                    fontSize: '0.95rem',
+                    transition: 'color 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal Links */}
+          <div>
+            <h4 style={{
+              fontSize: '1.1rem',
+              fontWeight: '700',
+              color: 'var(--text-color)',
+              marginBottom: '20px',
+            }}>
+              Legal
+            </h4>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              {footerLinks.legal.map((link) => (
                 <li key={link.label} style={{ marginBottom: '12px' }}>
                   <Link href={link.href} style={{
                     color: 'var(--text-muted)',
@@ -149,9 +217,70 @@ export default function Footer() {
             <span className="heart-icon">❤️</span> in India.
           </p>
 
-          
+          <div style={{
+            display: 'flex',
+            gap: '20px',
+            flexWrap: 'wrap',
+          }}>
+            <Link 
+              href="/privacy-policy"
+              style={{
+                fontSize: '0.85rem',
+                color: 'var(--text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.3s ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              Privacy
+            </Link>
+            <Link 
+              href="/terms-conditions"
+              style={{
+                fontSize: '0.85rem',
+                color: 'var(--text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.3s ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              Terms
+            </Link>
+            <Link 
+              href="/refund-policy"
+              style={{
+                fontSize: '0.85rem',
+                color: 'var(--text-muted)',
+                textDecoration: 'none',
+                transition: 'color 0.3s ease',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary-blue)'}
+              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              Refund Policy
+            </Link>
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          footer > div > div:first-child {
+            grid-template-columns: 1fr !important;
+          }
+          
+          footer > div > div:last-child {
+            flex-direction: column;
+            text-align: center;
+          }
+          
+          footer > div > div:last-child > div {
+            justify-content: center;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

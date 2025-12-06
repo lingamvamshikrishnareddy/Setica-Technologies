@@ -24,6 +24,7 @@ export default function Header() {
     { href: '/products', label: 'Products' },
     { href: '/services', label: 'Services' },
     { href: '/solutions', label: 'Solutions' },
+    { href: '/pricing', label: 'Pricing' },
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -71,7 +72,7 @@ export default function Header() {
           }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
           .desktop-nav {
             display: none !important;
           }
@@ -267,6 +268,8 @@ export default function Header() {
             gap: '20px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
             animation: 'fadeIn 0.3s ease',
+            maxHeight: '80vh',
+            overflowY: 'auto',
           }} className="mobile-menu">
             {navLinks.map((link) => (
               <Link
