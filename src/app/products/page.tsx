@@ -1,16 +1,14 @@
 'use client';
 
-import { useEffect, CSSProperties } from 'react';
-import { ExternalLink, Play } from 'lucide-react';
+import { useEffect, CSSProperties, useState } from 'react';
+import { Clock, Code } from 'lucide-react';
 
-// Type definitions
 interface ProductCardProps {
   title: string;
   category: string;
   description: string;
   imageUrl: string;
-  liveLink: string;
-  demoVideo: string;
+  status: 'development';
 }
 
 interface Product {
@@ -18,11 +16,12 @@ interface Product {
   category: string;
   description: string;
   imageUrl: string;
-  liveLink: string;
-  demoVideo: string;
+  status: 'development';
 }
 
 export default function ProductsPage() {
+  const [showNotification, setShowNotification] = useState(false);
+
   useEffect(() => {
     document.body.classList.add('loaded');
   }, []);
@@ -33,349 +32,329 @@ export default function ProductsPage() {
       category: 'SaaS Platform',
       description: 'AI-powered legal technology platform streamlining legal research, document analysis, and case management for law firms and legal professionals.',
       imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80',
-      liveLink: 'https://justica.ai',
-      demoVideo: 'https://youtube.com/demo/justica'
+      status: 'development'
     },
     {
       title: 'B2B Marketplace',
       category: 'Marketplace Platform',
       description: 'Enterprise marketplace platform connecting buyers and sellers with intelligent matching, procurement automation, and seamless transaction management.',
       imageUrl: 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&q=80',
-      liveLink: 'https://b2bmarketplace.com',
-      demoVideo: 'https://youtube.com/demo/b2b'
+      status: 'development'
     },
     {
       title: 'Vayu - Ride Sharing',
       category: 'Transportation',
       description: 'Connected transportation with autonomous car products, car wash, and comprehensive vehicle care features.',
       imageUrl: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80',
-      liveLink: 'https://vayu.app',
-      demoVideo: 'https://youtube.com/demo/vayu'
+      status: 'development'
     },
     {
       title: 'Telehealth Platform',
       category: 'Healthcare SaaS',
       description: 'Comprehensive healthcare solution combining online telemedicine consultations, pharmacy products, and ambulance connectivity.',
       imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
-      liveLink: 'https://telehealth.app',
-      demoVideo: 'https://youtube.com/demo/telehealth'
+      status: 'development'
     },
     {
       title: 'Udoyag - Job Portal',
       category: 'Employment Platform',
       description: 'Comprehensive job portal connecting local and international workers with verified opportunities across industries.',
       imageUrl: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&q=80',
-      liveLink: 'https://udoyag.com',
-      demoVideo: 'https://youtube.com/demo/udoyag'
+      status: 'development'
     },
     {
       title: 'PostRecovery - Workout App',
       category: 'Fitness & Wellness',
       description: 'Post-workout recovery optimization platform with personalized recovery plans and exercise recommendations.',
       imageUrl: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
-      liveLink: 'https://postrecovery.app',
-      demoVideo: 'https://youtube.com/demo/postrecovery'
+      status: 'development'
     },
     {
       title: 'Gatherly - Events',
       category: 'Event Management',
       description: 'Platform for organizing, discovering, and managing community gatherings and social events.',
       imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
-      liveLink: 'https://gatherly.app',
-      demoVideo: 'https://youtube.com/demo/gatherly'
+      status: 'development'
     },
     {
       title: 'Women\'s Safety App',
       category: 'Safety Platform',
       description: 'SOS emergency platform with real-time alerts, location sharing, and trusted contact networks.',
       imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80',
-      liveLink: 'https://womensafety.app',
-      demoVideo: 'https://youtube.com/demo/safety'
+      status: 'development'
     },
     {
       title: 'TripNDrip - Travel',
       category: 'Travel & Hospitality',
       description: 'Online hospitality and booking platform for hotels, flights, and complete travel experiences.',
       imageUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
-      liveLink: 'https://tripndrip.com',
-      demoVideo: 'https://youtube.com/demo/tripndrip'
+      status: 'development'
     },
     {
       title: 'Road Accountability',
       category: 'Governance Platform',
       description: 'Platform for tracking and ensuring accountability in road construction and maintenance projects.',
       imageUrl: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80',
-      liveLink: 'https://roadaccountability.gov',
-      demoVideo: 'https://youtube.com/demo/road'
+      status: 'development'
     },
     {
       title: 'BioTech SaaS',
       category: 'BioTech Platform',
       description: 'Biotechnology management platform for research, lab operations, and data analysis in life sciences.',
       imageUrl: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80',
-      liveLink: 'https://biotech.saas',
-      demoVideo: 'https://youtube.com/demo/biotech'
+      status: 'development'
     },
     {
       title: 'Oil & Gas SaaS',
       category: 'Industry Platform',
       description: 'Comprehensive management platform for oil and gas operations, exploration, and supply chain optimization.',
       imageUrl: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&q=80',
-      liveLink: 'https://oilgassaas.com',
-      demoVideo: 'https://youtube.com/demo/oilgas'
+      status: 'development'
     },
     {
       title: 'Freight Management',
       category: 'Logistics SaaS',
       description: 'International freight and logistics platform for cross-border shipping and supply chain coordination.',
       imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80',
-      liveLink: 'https://freightmanage.com',
-      demoVideo: 'https://youtube.com/demo/freight'
+      status: 'development'
     },
     {
       title: 'Manufacturing SaaS',
       category: 'Industry Platform',
       description: 'Production management, inventory control, and operations optimization for manufacturing businesses.',
       imageUrl: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&q=80',
-      liveLink: 'https://manufacturing.saas',
-      demoVideo: 'https://youtube.com/demo/manufacturing'
+      status: 'development'
     },
     {
       title: 'CareNest - Senior & Baby Care',
       category: 'Healthcare Platform',
       description: 'Virtual nursing and care management for senior citizens and baby sitting services with real-time monitoring.',
       imageUrl: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80',
-      liveLink: 'https://carenest.app',
-      demoVideo: 'https://youtube.com/demo/carenest'
+      status: 'development'
     },
     {
       title: 'Scope Creep Killer',
       category: 'Project Management',
       description: 'Project management tool preventing clients from adding out-of-scope features after fixed-price agreements.',
       imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80',
-      liveLink: 'https://scopecreep.app',
-      demoVideo: 'https://youtube.com/demo/scopecreep'
+      status: 'development'
     },
     {
       title: 'WaveLink - Video Platform',
       category: 'Communication',
       description: 'Video communication platform with integrated features for enhanced meetings and team collaboration.',
       imageUrl: 'https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800&q=80',
-      liveLink: 'https://wavelink.app',
-      demoVideo: 'https://youtube.com/demo/wavelink'
+      status: 'development'
     },
     {
       title: 'PixelStream OTT',
       category: 'Entertainment',
       description: 'OTT platform for local creators, short films, soap operas, and showcasing new artists with original content.',
       imageUrl: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?w=800&q=80',
-      liveLink: 'https://pixelstream.tv',
-      demoVideo: 'https://youtube.com/demo/pixelstream'
+      status: 'development'
     },
     {
       title: 'Restaurant Tech',
       category: 'Restaurant SaaS',
       description: 'Complete restaurant management system for orders, chef coordination, reservations, and inventory tracking.',
       imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',
-      liveLink: 'https://restauranttech.app',
-      demoVideo: 'https://youtube.com/demo/restaurant'
+      status: 'development'
     },
     {
       title: 'Unisaz - Enterprise SaaS',
       category: 'Business Platform',
       description: 'Business OS for MSMEs and startups with CRM, project management, and workflow automation tools.',
       imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
-      liveLink: 'https://unisaz.com',
-      demoVideo: 'https://youtube.com/demo/unisaz'
+      status: 'development'
     },
     {
       title: 'Creator Connect Marketing',
       category: 'Digital Marketing',
       description: 'Digital marketing platform connecting brands with memers, influencers, and podcasters for authentic reach.',
       imageUrl: 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=800&q=80',
-      liveLink: 'https://creatorconnect.app',
-      demoVideo: 'https://youtube.com/demo/creator'
+      status: 'development'
     },
     {
       title: 'Online Tailoring',
       category: 'Fashion Service',
       description: 'Specialized knitting and custom dress making service for women with precise measurements and designs.',
       imageUrl: 'https://images.unsplash.com/photo-1558769132-cb1aea3c8232?w=800&q=80',
-      liveLink: 'https://onlinetailoring.com',
-      demoVideo: 'https://youtube.com/demo/tailoring'
+      status: 'development'
     },
     {
       title: 'Remis - Real Estate',
       category: 'Property SaaS',
       description: 'Real estate management platform for dealers, agents, and owners focusing on customer satisfaction and lead management.',
       imageUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80',
-      liveLink: 'https://remis.app',
-      demoVideo: 'https://youtube.com/demo/remis'
+      status: 'development'
     },
     {
       title: 'GateKeeping',
       category: 'Property Management',
       description: 'Visitor management and maintenance request system for residential communities and commercial buildings.',
       imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
-      liveLink: 'https://gatekeeping.app',
-      demoVideo: 'https://youtube.com/demo/gatekeeping'
+      status: 'development'
     },
     {
       title: 'Studio Suite',
       category: 'Creative Software',
       description: 'Professional platform for creators to edit videos, photos, design logos, and create after effects content.',
       imageUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80',
-      liveLink: 'https://studiosuite.app',
-      demoVideo: 'https://youtube.com/demo/studio'
+      status: 'development'
     },
     {
       title: 'User Stories News',
       category: 'Media Platform',
       description: 'Platform where every individual can share their story and get featured as news content.',
       imageUrl: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80',
-      liveLink: 'https://userstories.news',
-      demoVideo: 'https://youtube.com/demo/userstories'
+      status: 'development'
     },
     {
       title: 'Energy Grid Monitor',
       category: 'Energy SaaS',
       description: 'Smart energy grid management, monitoring, and energy production optimization platform.',
       imageUrl: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80',
-      liveLink: 'https://energygrid.app',
-      demoVideo: 'https://youtube.com/demo/energy'
+      status: 'development'
     },
     {
       title: 'PocketCar Mobile',
       category: 'Vehicle Care',
       description: 'On-demand car wash, services, and comprehensive vehicle care with maintenance tracking and alerts.',
       imageUrl: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80',
-      liveLink: 'https://pocketcar.app',
-      demoVideo: 'https://youtube.com/demo/pocketcar'
+      status: 'development'
     },
     {
       title: 'Construction Management',
       category: 'Construction SaaS',
       description: 'Comprehensive platform for clients to track contractors from project start to completion, including design monitoring.',
       imageUrl: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80',
-      liveLink: 'https://constructionmgmt.app',
-      demoVideo: 'https://youtube.com/demo/construction'
+      status: 'development'
     },
     {
       title: 'FinTech Banking',
       category: 'Banking Platform',
       description: 'Digital banking platform offering personal and business loans, fixed deposits, and comprehensive financial products.',
       imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80',
-      liveLink: 'https://fintechbank.app',
-      demoVideo: 'https://youtube.com/demo/fintech'
+      status: 'development'
     },
     {
       title: 'Wedding SaaS',
       category: 'Event Platform',
       description: 'Comprehensive wedding planning platform for managing vendors, guests, budgets, and complete wedding coordination.',
       imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80',
-      liveLink: 'https://weddingsaas.app',
-      demoVideo: 'https://youtube.com/demo/wedding'
+      status: 'development'
     },
     {
       title: 'Excel Kitab - Accounting',
       category: 'FinTech SaaS',
       description: 'Simplified accounting and bookkeeping platform designed for small businesses and entrepreneurs.',
       imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80',
-      liveLink: 'https://excelkitab.app',
-      demoVideo: 'https://youtube.com/demo/excelkitab'
+      status: 'development'
     },
     {
       title: 'Waste Management SaaS',
       category: 'Sustainability',
       description: 'Waste management, water management, and carbon credits marketplace for sustainable environmental solutions.',
       imageUrl: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&q=80',
-      liveLink: 'https://wastemanagement.app',
-      demoVideo: 'https://youtube.com/demo/waste'
+      status: 'development'
     },
     {
       title: 'Fast & Yoga',
       category: 'Wellness App',
       description: 'Integrated fasting and yoga platform for nutritional wellness and holistic health practices.',
       imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80',
-      liveLink: 'https://fastyoga.app',
-      demoVideo: 'https://youtube.com/demo/fastyoga'
+      status: 'development'
     },
     {
       title: 'ChippyChips Veg Delivery',
       category: 'Food Delivery',
       description: 'Pure vegetarian food delivery app where orders are accepted within 15 minutes with quality assurance.',
       imageUrl: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80',
-      liveLink: 'https://chippychips.app',
-      demoVideo: 'https://youtube.com/demo/chippychips'
+      status: 'development'
     },
     {
       title: 'Traffic AI',
       category: 'Computer Vision AI',
       description: 'Vision model-based traffic management system with dynamic timer adjustments based on real-time traffic density.',
       imageUrl: 'https://images.unsplash.com/photo-1502136969935-8d8eef54d77b?w=800&q=80',
-      liveLink: 'https://trafficai.app',
-      demoVideo: 'https://youtube.com/demo/trafficai'
+      status: 'development'
     },
     {
       title: 'AI Chatbot Assistant',
       category: 'AI Platform',
       description: 'Domain-specialized AI assistant using small language models, achieving 80%+ relevance match scores.',
       imageUrl: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80',
-      liveLink: 'https://aichatbot.app',
-      demoVideo: 'https://youtube.com/demo/chatbot'
+      status: 'development'
     },
     {
       title: 'Cyber Shield',
       category: 'Cybersecurity',
       description: 'Enterprise-grade cybersecurity SaaS for comprehensive personal and business protection with threat monitoring.',
       imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80',
-      liveLink: 'https://cybershield.app',
-      demoVideo: 'https://youtube.com/demo/cybershield'
+      status: 'development'
     },
     {
       title: 'AI Sales & Support Agent',
       category: 'AI Agent',
       description: 'Autonomous AI agents for customer service, sales call preparation, and automated templates generation.',
       imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
-      liveLink: 'https://aisalesagent.app',
-      demoVideo: 'https://youtube.com/demo/aiagent'
+      status: 'development'
     },
     {
       title: 'Blockchain Rewards',
       category: 'Blockchain',
       description: 'Token and rewards system using blockchain for purchase incentives and loyalty programs on every transaction.',
       imageUrl: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80',
-      liveLink: 'https://blockchainrewards.app',
-      demoVideo: 'https://youtube.com/demo/blockchain'
+      status: 'development'
     },
     {
       title: 'Synaptika - AI Code Editor',
       category: 'AI Development',
       description: 'AI coding editor where complete apps and websites can be built in 5 minutes with automated development.',
       imageUrl: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80',
-      liveLink: 'https://synaptika.app',
-      demoVideo: 'https://youtube.com/demo/synaptika'
+      status: 'development'
     },
     {
       title: 'Drones Logistics',
       category: 'Hardware - Drones',
       description: 'Fast drone delivery platform for logistics under 3km with comprehensive drone management software and autonomous flight systems.',
       imageUrl: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80',
-      liveLink: 'https://droneslogistics.com',
-      demoVideo: 'https://youtube.com/demo/drones'
+      status: 'development'
     },
     {
       title: 'Kalam EV Vehicle',
       category: 'Hardware - Electric Vehicle',
       description: 'Quad-motor electric vehicle with specialized lithium battery cells for unmatched reliability, performance, and sustainable transportation.',
       imageUrl: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=80',
-      liveLink: 'https://kalamev.com',
-      demoVideo: 'https://youtube.com/demo/kalamev'
+      status: 'development'
     }
   ];
 
+  const handleInterestClick = () => {
+    setShowNotification(true);
+    setTimeout(() => setShowNotification(false), 3000);
+  };
+
   return (
     <>
+      {/* Notification */}
+      {showNotification && (
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          background: 'linear-gradient(135deg, #4a55ff, #ff6f00)',
+          color: 'white',
+          padding: '20px 30px',
+          borderRadius: '12px',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+          zIndex: 1000,
+          animation: 'slideIn 0.3s ease'
+        } as CSSProperties}>
+          <strong>Coming Soon!</strong> This product is currently in development. Stay tuned!
+        </div>
+      )}
+
       {/* Header */}
       <header style={{
         minHeight: '400px',
@@ -415,6 +394,22 @@ export default function ProductsPage() {
           animation: 'move-twink-back 200s linear infinite'
         } as CSSProperties}></div>
         <div style={{ zIndex: 5, position: 'relative' } as CSSProperties}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '10px 20px',
+            background: 'rgba(255, 111, 0, 0.2)',
+            border: '1px solid rgba(255, 111, 0, 0.4)',
+            borderRadius: '30px',
+            marginBottom: '20px',
+            color: '#ff6f00',
+            fontSize: '0.9rem',
+            fontWeight: '600'
+          } as CSSProperties}>
+            <Code size={18} />
+            All Products Currently in Development
+          </div>
           <h1 style={{
             fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
             color: '#fff',
@@ -435,7 +430,7 @@ export default function ProductsPage() {
             color: '#ccc',
             lineHeight: 1.6
           } as CSSProperties}>
-            {products.length} innovative solutions spanning AI, SaaS, healthcare, finance, hardware, and emerging technologies—all live and ready to transform industries.
+            {products.length} innovative solutions spanning AI, SaaS, healthcare, finance, hardware, and emerging technologies—currently being built to transform industries.
           </p>
           <div style={{
             display: 'flex',
@@ -450,11 +445,11 @@ export default function ProductsPage() {
               <span>{products.length} Products</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ fontSize: '2rem' }}>🌐</span>
-              <span>Live & Scaling</span>
+              <span style={{ fontSize: '2rem' }}>⚡</span>
+              <span>In Development</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ fontSize: '2rem' }}>⚡</span>
+              <span style={{ fontSize: '2rem' }}>🤖</span>
               <span>AI-Powered</span>
             </div>
           </div>
@@ -473,7 +468,7 @@ export default function ProductsPage() {
             gap: '35px'
           } as CSSProperties}>
             {products.map((product, index) => (
-              <ProductCard key={index} {...product} />
+              <ProductCard key={index} {...product} onInterestClick={handleInterestClick} />
             ))}
           </div>
         </div>
@@ -497,7 +492,7 @@ export default function ProductsPage() {
             color: '#fff',
             fontWeight: 700
           } as CSSProperties}>
-            Ready to Transform Your Business?
+            Be Part of Our Journey
           </h2>
           <p style={{
             fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
@@ -507,7 +502,7 @@ export default function ProductsPage() {
             maxWidth: '700px',
             margin: '0 auto 3rem'
           } as CSSProperties}>
-            Be among the first to experience our innovative product ecosystem. Join our seed-stage journey and shape the future of technology.
+            Join our seed-stage journey and be among the first to experience our innovative product ecosystem as we build the future of technology.
           </p>
           <div style={{
             display: 'flex',
@@ -535,7 +530,7 @@ export default function ProductsPage() {
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.boxShadow = '0 5px 20px rgba(74, 85, 255, 0.3)';
             }}>
-              Get Started →
+              Join Waitlist →
             </button>
             <button style={{
               padding: '20px 50px',
@@ -556,7 +551,7 @@ export default function ProductsPage() {
               e.currentTarget.style.backgroundColor = 'transparent';
               e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
             }}>
-              Schedule Demo
+              Learn More
             </button>
           </div>
         </div>
@@ -573,6 +568,17 @@ export default function ProductsPage() {
           50% { background-position: 100% 50%; }
         }
 
+        @keyframes slideIn {
+          from {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
         @media (max-width: 768px) {
           div[style*="gridTemplateColumns"] {
             grid-template-columns: 1fr !important;
@@ -583,7 +589,18 @@ export default function ProductsPage() {
   );
 }
 
-function ProductCard({ title, category, description, imageUrl, liveLink, demoVideo }: ProductCardProps) {
+function ProductCard({ title, category, description, imageUrl, status, onInterestClick }: ProductCardProps & { onInterestClick: () => void }) {
+  const getStatusBadge = () => {
+    return {
+      label: 'In Development',
+      color: '#ff6f00',
+      bgColor: 'rgba(255, 111, 0, 0.15)',
+      borderColor: 'rgba(255, 111, 0, 0.3)'
+    };
+  };
+
+  const statusInfo = getStatusBadge();
+
   return (
     <div style={{
       position: 'relative',
@@ -604,6 +621,28 @@ function ProductCard({ title, category, description, imageUrl, liveLink, demoVid
       e.currentTarget.style.boxShadow = 'none';
       e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
     }}>
+      {/* Status Badge */}
+      <div style={{
+        position: 'absolute',
+        top: '15px',
+        right: '15px',
+        zIndex: 10,
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px',
+        padding: '8px 14px',
+        borderRadius: '8px',
+        fontSize: '0.75rem',
+        fontWeight: 600,
+        backgroundColor: statusInfo.bgColor,
+        color: statusInfo.color,
+        border: `1px solid ${statusInfo.borderColor}`,
+        backdropFilter: 'blur(10px)'
+      } as CSSProperties}>
+        <Clock size={14} />
+        {statusInfo.label}
+      </div>
+
       {/* Image */}
       <div style={{
         width: '100%',
@@ -618,7 +657,8 @@ function ProductCard({ title, category, description, imageUrl, liveLink, demoVid
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            transition: 'transform 0.4s ease'
+            transition: 'transform 0.4s ease',
+            filter: 'brightness(0.7)'
           } as CSSProperties}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.1)';
@@ -676,68 +716,42 @@ function ProductCard({ title, category, description, imageUrl, liveLink, demoVid
           {description}
         </p>
 
-        {/* Action Buttons */}
+        {/* Action Button */}
         <div style={{
           display: 'flex',
           gap: '12px',
           paddingTop: '15px',
           borderTop: '1px solid rgba(255, 255, 255, 0.05)'
         } as CSSProperties}>
-          <button style={{
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            padding: '12px 20px',
-            background: 'linear-gradient(135deg, #4a55ff, #6b73ff)',
-            color: 'white',
-            border: 'none',
-            borderRadius: '10px',
-            fontWeight: '600',
-            fontSize: '0.9rem',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          } as CSSProperties}
-          onClick={() => window.open(liveLink, '_blank')}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 5px 15px rgba(74, 85, 255, 0.4)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}>
-            <ExternalLink size={16} />
-            Live Demo
-          </button>
-          <button style={{
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            padding: '12px 20px',
-            background: 'rgba(255, 255, 255, 0.05)',
-            color: 'white',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRadius: '10px',
-            fontWeight: '600',
-            fontSize: '0.9rem',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease'
-          } as CSSProperties}
-          onClick={() => window.open(demoVideo, '_blank')}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-          }}>
-            <Play size={16} />
-            Video
+          <button 
+            onClick={onInterestClick}
+            style={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              padding: '12px 20px',
+              background: 'linear-gradient(135deg, #4a55ff, #6b73ff)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '10px',
+              fontWeight: '600',
+              fontSize: '0.9rem',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            } as CSSProperties}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 5px 15px rgba(74, 85, 255, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            <Clock size={16} />
+            Express Interest
           </button>
         </div>
       </div>

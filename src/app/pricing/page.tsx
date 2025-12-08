@@ -1,21 +1,49 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+
+type Currency = 'USD' | 'EUR' | 'INR';
+type BillingCycle = 'development' | 'maintenance';
+
+interface Package {
+  name: string;
+  priceUSD: number;
+  description: string;
+  features: string[];
+  popular: boolean;
+}
 
 export default function PricingPage() {
-  const router = useRouter();
-  const [billingCycle, setBillingCycle] = useState<'development' | 'maintenance'>('development');
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>('development');
+  const [currency, setCurrency] = useState<Currency>('USD');
 
   useEffect(() => {
     document.body.classList.add('loaded');
   }, []);
 
-  const developmentPackages = [
+  const exchangeRates = {
+    USD: 1,
+    EUR: 0.92,
+    INR: 83.50
+  };
+
+  const currencySymbols = {
+    USD: '$',
+    EUR: '€',
+    INR: '₹'
+  };
+
+  const convertPrice = (usdPrice: number): string => {
+    const converted = usdPrice * exchangeRates[currency];
+    return currency === 'INR' 
+      ? Math.round(converted).toLocaleString('en-IN')
+      : converted.toFixed(2);
+  };
+
+  const developmentPackages: Package[] = [
     {
       name: 'Basic App Package',
-      price: '$499',
-      currency: 'USD',
+      priceUSD: 499,
       description: 'Frontend Development',
       features: [
         'Mobile app for your users',
@@ -30,8 +58,7 @@ export default function PricingPage() {
     },
     {
       name: 'Complete Starter Package',
-      price: '$1999',
-      currency: 'USD',
+      priceUSD: 1999,
       description: 'MVP Development',
       features: [
         'Mobile app plus admin dashboard',
@@ -47,8 +74,7 @@ export default function PricingPage() {
     },
     {
       name: 'Everything You Need',
-      price: '$3499',
-      currency: 'USD',
+      priceUSD: 3499,
       description: 'Full-Cycle App Development',
       features: [
         'User app, business app & admin dashboard',
@@ -65,11 +91,10 @@ export default function PricingPage() {
     }
   ];
 
-  const maintenancePackages = [
+  const maintenancePackages: Package[] = [
     {
       name: 'Essential Care Plan',
-      price: '$99',
-      currency: '/month',
+      priceUSD: 99,
       description: 'Basic',
       features: [
         'Fix up to 5 bugs each week',
@@ -84,8 +109,7 @@ export default function PricingPage() {
     },
     {
       name: 'Most Popular Plan',
-      price: '$299',
-      currency: '/month',
+      priceUSD: 299,
       description: 'Standard',
       features: [
         'Fix up to 10 bugs each week',
@@ -101,8 +125,7 @@ export default function PricingPage() {
     },
     {
       name: 'Complete Care Package',
-      price: '$799',
-      currency: '/month',
+      priceUSD: 799,
       description: 'Premium',
       features: [
         'Unlimited bug fixes anytime',
@@ -154,7 +177,7 @@ export default function PricingPage() {
           </h1>
           <p style={{
             fontSize: '1.25rem',
-            color: 'var(--text-muted)',
+            color: '#94a3b8',
             maxWidth: '600px',
             margin: '0 auto'
           }}>
@@ -163,231 +186,274 @@ export default function PricingPage() {
         </div>
       </header>
 
-      {/* Pricing Toggle */}
+      {/* Controls Section */}
       <section style={{
         padding: '60px 5% 80px',
-        background: 'var(--dark-bg)'
+        background: '#0a0a0a'
       }}>
         <div style={{
-          maxWidth: '400px',
-          margin: '0 auto 60px',
-          display: 'flex',
-          background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '16px',
-          padding: '6px',
-          border: '1px solid rgba(255, 255, 255, 0.1)'
-        }}>
-          <button
-            onClick={() => setBillingCycle('development')}
-            style={{
-              flex: 1,
-              padding: '14px 24px',
-              borderRadius: '12px',
-              border: 'none',
-              background: billingCycle === 'development' 
-                ? 'linear-gradient(135deg, #4A55FF, #ff6f00)' 
-                : 'transparent',
-              color: 'white',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              fontSize: '1rem'
-            }}
-          >
-            Development
-          </button>
-          <button
-            onClick={() => setBillingCycle('maintenance')}
-            style={{
-              flex: 1,
-              padding: '14px 24px',
-              borderRadius: '12px',
-              border: 'none',
-              background: billingCycle === 'maintenance' 
-                ? 'linear-gradient(135deg, #4A55FF, #ff6f00)' 
-                : 'transparent',
-              color: 'white',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              fontSize: '1rem'
-            }}
-          >
-            Maintenance
-          </button>
-        </div>
-
-        {/* Pricing Cards */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '40px',
-          maxWidth: '1400px',
+          maxWidth: '1200px',
           margin: '0 auto'
         }}>
-          {currentPackages.map((pkg, index) => (
-            <div
-              key={index}
-              style={{
-                position: 'relative',
-                padding: '40px 30px',
-                background: pkg.popular 
-                  ? 'linear-gradient(135deg, rgba(74, 85, 255, 0.1), rgba(255, 111, 0, 0.1))' 
-                  : 'rgba(255, 255, 255, 0.03)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '24px',
-                border: pkg.popular 
-                  ? '2px solid rgba(74, 85, 255, 0.5)' 
-                  : '1px solid rgba(255, 255, 255, 0.08)',
-                transition: 'all 0.4s ease'
-              }}
-              className="pricing-card"
-            >
-              {pkg.popular && (
-                <div style={{
-                  position: 'absolute',
-                  top: '-15px',
-                  right: '30px',
-                  padding: '8px 20px',
-                  background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
-                  borderRadius: '20px',
-                  color: 'white',
-                  fontWeight: '700',
-                  fontSize: '0.85rem',
-                  boxShadow: '0 5px 20px rgba(74, 85, 255, 0.4)'
-                }}>
-                  {billingCycle === 'maintenance' ? 'MOST POPULAR' : 'RECOMMENDED'}
-                </div>
-              )}
-
-              <div style={{ marginBottom: '10px' }}>
-                <p style={{
-                  fontSize: '0.9rem',
-                  color: 'var(--text-muted)',
-                  textTransform: 'uppercase',
-                  fontWeight: '600',
-                  letterSpacing: '1px',
-                  marginBottom: '8px'
-                }}>
-                  {pkg.description}
-                </p>
-                <h3 style={{
-                  fontSize: '1.8rem',
-                  color: 'var(--text-color)',
-                  fontWeight: '700',
-                  marginBottom: '20px'
-                }}>
-                  {pkg.name}
-                </h3>
-              </div>
-
-              <div style={{ marginBottom: '30px' }}>
-                <span style={{
-                  fontSize: '3.5rem',
-                  fontWeight: '800',
-                  background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  color: 'transparent'
-                }}>
-                  {pkg.price}
-                </span>
-                <span style={{
-                  fontSize: '1.2rem',
-                  color: 'var(--text-muted)',
-                  marginLeft: '8px'
-                }}>
-                  {pkg.currency}
-                </span>
-              </div>
-
-              <ul style={{
-                listStyle: 'none',
-                padding: 0,
-                margin: '0 0 30px 0'
-              }}>
-                {pkg.features.map((feature, fIndex) => (
-                  <li key={fIndex} style={{
-                    padding: '12px 0',
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '12px',
-                    fontSize: '0.95rem',
-                    color: 'var(--text-muted)',
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
-                  }}>
-                    <i className="fas fa-check-circle" style={{
-                      color: '#4A55FF',
-                      fontSize: '1rem',
-                      minWidth: '20px',
-                      marginTop: '2px'
-                    }}></i>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <button
-                onClick={() => router.push('/join-waitlist')}
-                style={{
-                  width: '100%',
-                  padding: '16px 32px',
-                  background: pkg.popular 
-                    ? 'linear-gradient(135deg, #4A55FF, #ff6f00)' 
-                    : 'rgba(74, 85, 255, 0.1)',
-                  color: pkg.popular ? 'white' : '#4A55FF',
-                  border: pkg.popular ? 'none' : '1px solid rgba(74, 85, 255, 0.3)',
-                  borderRadius: '14px',
-                  fontWeight: '700',
-                  fontSize: '1.05rem',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}
-                className="pricing-cta"
-              >
-                {billingCycle === 'development' ? 'Start Your Project' : 'Get Started'}
-              </button>
+          {/* Currency Selector */}
+          <div style={{
+            maxWidth: '500px',
+            margin: '0 auto 30px',
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '15px',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              color: '#94a3b8',
+              fontSize: '0.95rem',
+              fontWeight: '600'
+            }}>
+              <span>Currency:</span>
             </div>
-          ))}
-        </div>
+            {(['USD', 'EUR', 'INR'] as Currency[]).map((curr) => (
+              <button
+                key={curr}
+                onClick={() => setCurrency(curr)}
+                style={{
+                  padding: '10px 24px',
+                  borderRadius: '10px',
+                  border: currency === curr ? '2px solid #4A55FF' : '1px solid rgba(255, 255, 255, 0.1)',
+                  background: currency === curr ? 'rgba(74, 85, 255, 0.15)' : 'rgba(255, 255, 255, 0.05)',
+                  color: currency === curr ? '#4A55FF' : '#94a3b8',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  fontSize: '0.95rem'
+                }}
+              >
+                {currencySymbols[curr]} {curr}
+              </button>
+            ))}
+          </div>
 
-        {/* FAQ Section */}
-        <div style={{
-          maxWidth: '800px',
-          margin: '100px auto 0',
-          textAlign: 'center'
-        }}>
-          <h2 style={{
-            fontSize: '2.5rem',
-            marginBottom: '20px',
-            color: 'var(--text-color)'
+          {/* Pricing Toggle */}
+          <div style={{
+            maxWidth: '400px',
+            margin: '0 auto 60px',
+            display: 'flex',
+            background: 'rgba(255, 255, 255, 0.05)',
+            borderRadius: '16px',
+            padding: '6px',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
           }}>
-            Questions? We&apos;ve Got Answers
-          </h2>
-          <p style={{
-            fontSize: '1.1rem',
-            color: 'var(--text-muted)',
-            marginBottom: '40px'
+            <button
+              onClick={() => setBillingCycle('development')}
+              style={{
+                flex: 1,
+                padding: '14px 24px',
+                borderRadius: '12px',
+                border: 'none',
+                background: billingCycle === 'development' 
+                  ? 'linear-gradient(135deg, #4A55FF, #ff6f00)' 
+                  : 'transparent',
+                color: 'white',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                fontSize: '1rem'
+              }}
+            >
+              Development
+            </button>
+            <button
+              onClick={() => setBillingCycle('maintenance')}
+              style={{
+                flex: 1,
+                padding: '14px 24px',
+                borderRadius: '12px',
+                border: 'none',
+                background: billingCycle === 'maintenance' 
+                  ? 'linear-gradient(135deg, #4A55FF, #ff6f00)' 
+                  : 'transparent',
+                color: 'white',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                fontSize: '1rem'
+              }}
+            >
+              Maintenance
+            </button>
+          </div>
+
+          {/* Pricing Cards */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '40px',
+            maxWidth: '1400px',
+            margin: '0 auto'
           }}>
-            Still have questions about our pricing? Contact us directly.
-          </p>
-          <button
-            onClick={() => router.push('/services')}
-            style={{
-              padding: '16px 40px',
-              background: 'rgba(74, 85, 255, 0.1)',
-              color: '#4A55FF',
-              border: '1px solid rgba(74, 85, 255, 0.3)',
-              borderRadius: '14px',
-              fontWeight: '700',
-              fontSize: '1.05rem',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease'
-            }}
-            className="contact-btn"
-          >
-            Contact Us
-          </button>
+            {currentPackages.map((pkg, index) => (
+              <div
+                key={index}
+                style={{
+                  position: 'relative',
+                  padding: '40px 30px',
+                  background: pkg.popular 
+                    ? 'linear-gradient(135deg, rgba(74, 85, 255, 0.1), rgba(255, 111, 0, 0.1))' 
+                    : 'rgba(255, 255, 255, 0.03)',
+                  backdropFilter: 'blur(10px)',
+                  borderRadius: '24px',
+                  border: pkg.popular 
+                    ? '2px solid rgba(74, 85, 255, 0.5)' 
+                    : '1px solid rgba(255, 255, 255, 0.08)',
+                  transition: 'all 0.4s ease'
+                }}
+                className="pricing-card"
+              >
+                {pkg.popular && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '-15px',
+                    right: '30px',
+                    padding: '8px 20px',
+                    background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
+                    borderRadius: '20px',
+                    color: 'white',
+                    fontWeight: '700',
+                    fontSize: '0.85rem',
+                    boxShadow: '0 5px 20px rgba(74, 85, 255, 0.4)'
+                  }}>
+                    {billingCycle === 'maintenance' ? 'MOST POPULAR' : 'RECOMMENDED'}
+                  </div>
+                )}
+
+                <div style={{ marginBottom: '10px' }}>
+                  <p style={{
+                    fontSize: '0.9rem',
+                    color: '#94a3b8',
+                    textTransform: 'uppercase',
+                    fontWeight: '600',
+                    letterSpacing: '1px',
+                    marginBottom: '8px'
+                  }}>
+                    {pkg.description}
+                  </p>
+                  <h3 style={{
+                    fontSize: '1.8rem',
+                    color: '#fff',
+                    fontWeight: '700',
+                    marginBottom: '20px'
+                  }}>
+                    {pkg.name}
+                  </h3>
+                </div>
+
+                <div style={{ marginBottom: '30px' }}>
+                  <span style={{
+                    fontSize: '3.5rem',
+                    fontWeight: '800',
+                    background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    color: 'transparent'
+                  }}>
+                    {currencySymbols[currency]}{convertPrice(pkg.priceUSD)}
+                  </span>
+                  <span style={{
+                    fontSize: '1.2rem',
+                    color: '#94a3b8',
+                    marginLeft: '8px'
+                  }}>
+                    {billingCycle === 'maintenance' ? '/month' : ''}
+                  </span>
+                </div>
+
+                <ul style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  margin: '0 0 30px 0'
+                }}>
+                  {pkg.features.map((feature, fIndex) => (
+                    <li key={fIndex} style={{
+                      padding: '12px 0',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '12px',
+                      fontSize: '0.95rem',
+                      color: '#94a3b8',
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
+                    }}>
+                      <span style={{
+                        color: '#4A55FF',
+                        fontSize: '1.2rem',
+                        minWidth: '20px'
+                      }}>✓</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  style={{
+                    width: '100%',
+                    padding: '16px 32px',
+                    background: pkg.popular 
+                      ? 'linear-gradient(135deg, #4A55FF, #ff6f00)' 
+                      : 'rgba(74, 85, 255, 0.1)',
+                    color: pkg.popular ? 'white' : '#4A55FF',
+                    border: pkg.popular ? 'none' : '1px solid rgba(74, 85, 255, 0.3)',
+                    borderRadius: '14px',
+                    fontWeight: '700',
+                    fontSize: '1.05rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  className="pricing-cta"
+                >
+                  {billingCycle === 'development' ? 'Start Your Project' : 'Get Started'}
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {/* FAQ Section */}
+          <div style={{
+            maxWidth: '800px',
+            margin: '100px auto 0',
+            textAlign: 'center'
+          }}>
+            <h2 style={{
+              fontSize: '2.5rem',
+              marginBottom: '20px',
+              color: '#fff'
+            }}>
+              Questions? We&apos;ve Got Answers
+            </h2>
+            <p style={{
+              fontSize: '1.1rem',
+              color: '#94a3b8',
+              marginBottom: '40px'
+            }}>
+              Still have questions about our pricing? Contact us directly.
+            </p>
+            <button
+              style={{
+                padding: '16px 40px',
+                background: 'rgba(74, 85, 255, 0.1)',
+                color: '#4A55FF',
+                border: '1px solid rgba(74, 85, 255, 0.3)',
+                borderRadius: '14px',
+                fontWeight: '700',
+                fontSize: '1.05rem',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              className="contact-btn"
+            >
+              Contact Us
+            </button>
+          </div>
         </div>
       </section>
 
