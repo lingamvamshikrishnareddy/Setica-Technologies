@@ -2,20 +2,23 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Heart } from 'lucide-react';
 import Hero from '@/components/sections/Hero';
 
 export default function HomePage() {
-  useEffect(() => {
-    // Add loaded class to body after page loads
-    document.body.classList.add('loaded');
-  }, []);
+   const router = useRouter();
+
+   useEffect(() => {
+     // Add loaded class to body after page loads
+     document.body.classList.add('loaded');
+   }, []);
 
   const solutions = [
     {
       title: 'Telehealth Platform',
       icon: 'fas fa-briefcase-medical',
-      status: 'In Development',
-      statusClass: 'status-development',
+      status: 'testing',
       description: 'Comprehensive healthcare solution combining online telemedicine consultations, pharmacy services, and ambulance connectivity in one platform.',
       features: [
         'Virtual doctor consultations',
@@ -25,36 +28,9 @@ export default function HomePage() {
       ]
     },
     {
-      title: 'Blue Collar Jobs Platform',
-      icon: 'fas fa-hard-hat',
-      status: 'In Development',
-      statusClass: 'status-development',
-      description: 'Comprehensive job portal connecting local and international blue-collar workers with verified opportunities across industries.',
-      features: [
-        'Local to international job matching',
-        'Skill verification system',
-        'Multi-language support',
-        'Career progression tracking'
-      ]
-    },
-    {
-      title: 'NutriHealth Buddy',
-      icon: 'fas fa-heartbeat',
-      status: 'In Development',
-      statusClass: 'status-development',
-      description: 'AI-powered nutrition and wellness companion for personalized meal planning, health tracking, and fitness guidance.',
-      features: [
-        'AI meal planning & recipes',
-        'Calorie & macro tracking',
-        'Fitness integration',
-        'Health insights & reports'
-      ]
-    },
-    {
       title: 'Women\'s Safety App',
       icon: 'fas fa-shield-alt',
-      status: 'In Development',
-      statusClass: 'status-development',
+      status: 'testing',
       description: 'Individual-registered SOS emergency platform with real-time alerts, location sharing, and trusted contact networks.',
       features: [
         'Personal SOS registration',
@@ -66,8 +42,7 @@ export default function HomePage() {
     {
       title: 'SetCart Quick Commerce',
       icon: 'fas fa-shipping-fast',
-      status: 'In Development',
-      statusClass: 'status-In Development',
+      status: 'testing',
       description: 'Transparent quick commerce with zero hidden prices, no dark patterns, and assured quality delivery.',
       features: [
         '100% transparent pricing',
@@ -77,23 +52,9 @@ export default function HomePage() {
       ]
     },
     {
-      title: 'Vayu Ride Sharing',
-      icon: 'fas fa-car',
-      status: 'In Development',
-      statusClass: 'status-In Development',
-      description: 'Connected transportation with autonomous car services, car wash, and comprehensive vehicle care features.',
-      features: [
-        'Ride-hailing service',
-        'Autonomous vehicle ready',
-        'Car wash & care booking',
-        'Vehicle maintenance alerts'
-      ]
-    },
-    {
       title: 'Enterprise Management SaaS',
       icon: 'fas fa-cogs',
-      status: 'In Development',
-      statusClass: 'status-In Development',
+      status: 'testing',
       description: 'Business OS for MSMEs and startups with CRM, project management, and workflow automation tools.',
       features: [
         'Unified CRM platform',
@@ -105,8 +66,7 @@ export default function HomePage() {
     {
       title: 'Yatra Travel & Hospitality',
       icon: 'fas fa-plane-departure',
-      status: 'In Development',
-      statusClass: 'status-In Development',
+      status: 'testing',
       description: 'Online hospitality and booking platform for hotels, flights, and complete travel experiences.',
       features: [
         'Hotel & flight booking',
@@ -118,53 +78,13 @@ export default function HomePage() {
     {
       title: 'Traffic AI',
       icon: 'fas fa-traffic-light',
-      status: 'In Development',
-      statusClass: 'status-In Development',
+      status: 'testing',
       description: 'Vision model-based traffic management system with dynamic timer adjustments based on real-time traffic density.',
       features: [
         'AI vision-based detection',
         'Dynamic signal timing',
         'Traffic density analysis',
         'Smart city integration'
-      ]
-    },
-    {
-      title: 'AI Job Application Agent',
-      icon: 'fas fa-robot',
-      status: 'In Development',
-      statusClass: 'status-In Development',
-      description: 'Automated job searching and application agent with intelligent matching and profile optimization.',
-      features: [
-        'Auto job search & apply',
-        'Resume optimization',
-        'Interview preparation',
-        'Application tracking'
-      ]
-    },
-    {
-      title: 'NeuroSync Brain Interface',
-      icon: 'fas fa-brain',
-      status: 'In Development',
-      statusClass: 'status-In Development',
-      description: 'Neural chip technology enabling brain-to-brain API communication for next-generation connectivity.',
-      features: [
-        'Brain-computer interface',
-        'Thought-based communication',
-        'Neural API integration',
-        'Privacy-first design'
-      ]
-    },
-    {
-      title: 'Kalam EV Vehicle',
-      icon: 'fas fa-charging-station',
-      status: 'In Development',
-      statusClass: 'status-In Development',
-      description: 'Quad-motor electric vehicle with specialized lithium battery cells for unmatched reliability.',
-      features: [
-        '4-motor redundancy',
-        'Advanced battery tech',
-        'Smart connectivity',
-        'Sustainable design'
       ]
     }
   ];
@@ -196,28 +116,45 @@ export default function HomePage() {
           {solutions.map((solution, index) => (
             <div key={index} className="solution-card">
               <div className="solution-card-content" style={{ position: 'relative', zIndex: 1 }}>
-                <span className={`status-tag ${solution.statusClass}`}>
-                  {solution.status}
+                <span className={`status-tag ${solution.status === 'testing' ? 'status-testing' : 'status-development'}`}>
+                  {solution.status === 'testing' ? 'Testing & Production' : 'In Development'}
                 </span>
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '15px',
+                  justifyContent: 'space-between',
                   marginBottom: '20px'
-                }} className="solution-icon-wrapper">
-                  <i className={solution.icon} style={{
-                    fontSize: '2.5rem',
-                    background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    color: 'transparent',
-                    transition: 'transform 0.3s ease'
-                  }}></i>
-                  <h3 style={{
-                    fontSize: '1.3rem',
-                    color: 'var(--text-color)',
-                    fontWeight: '700'
-                  }}>{solution.title}</h3>
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '15px'
+                  }} className="solution-icon-wrapper">
+                    <i className={solution.icon} style={{
+                      fontSize: '2.5rem',
+                      background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                      color: 'transparent',
+                      transition: 'transform 0.3s ease'
+                    }}></i>
+                    <h3 style={{
+                      fontSize: '1.3rem',
+                      color: 'var(--text-color)',
+                      fontWeight: '700'
+                    }}>{solution.title}</h3>
+                  </div>
+                  <Heart
+                    size={24}
+                    style={{
+                      color: '#ff6f00',
+                      cursor: 'pointer',
+                      transition: 'transform 0.3s ease'
+                    }}
+                    onClick={() => router.push('/join-waitlist')}
+                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
+                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  />
                 </div>
                 <p style={{
                   fontSize: '0.95rem',
@@ -247,18 +184,48 @@ export default function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/products" style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  color: 'var(--primary-blue)',
-                  textDecoration: 'none',
-                  fontWeight: '600',
-                  fontSize: '0.9rem',
-                  transition: 'all 0.3s ease'
-                }} className="read-more">
-                  Learn more <i className="fas fa-arrow-right"></i>
-                </Link>
+                <div style={{
+                  display: 'flex',
+                  gap: '10px',
+                  marginTop: '20px'
+                }}>
+                  <button style={{
+                    flex: 1,
+                    padding: '10px 15px',
+                    background: 'linear-gradient(135deg, #4a55ff, #6b73ff)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontWeight: '600',
+                    fontSize: '0.85rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  onClick={() => window.open('https://example.com/demo', '_blank')}
+                  >
+                    Demo Link
+                  </button>
+                  <button style={{
+                    flex: 1,
+                    padding: '10px 15px',
+                    background: 'linear-gradient(135deg, #ff6f00, #ff8c00)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontWeight: '600',
+                    fontSize: '0.85rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  onClick={() => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank')}
+                  >
+                    Demo Video
+                  </button>
+                </div>
               </div>
             </div>
           ))}

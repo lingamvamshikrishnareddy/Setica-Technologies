@@ -174,34 +174,6 @@ export default function Navigation() {
             alignItems: 'center'
           }}>
             <Link 
-              href="/solutions" 
-              style={{
-                position: 'relative',
-                color: isActive('/solutions') ? '#4A55FF' : '#ffffff',
-                textDecoration: 'none',
-                fontWeight: isActive('/solutions') ? '600' : '500',
-                transition: 'color 0.3s ease',
-                fontSize: '0.95rem',
-                padding: '0.5rem 0',
-              }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Solutions
-              {isActive('/solutions') && (
-                <div style={{
-                  position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: '3px',
-                  background: 'linear-gradient(90deg, #4A55FF, #ff6f00)',
-                  borderRadius: '2px',
-                  boxShadow: '0 2px 8px rgba(74, 85, 255, 0.6)',
-                  animation: 'slideIn 0.3s ease',
-                }} />
-              )}
-            </Link>
-            <Link 
               href="/about"
               style={{
                 position: 'relative',
