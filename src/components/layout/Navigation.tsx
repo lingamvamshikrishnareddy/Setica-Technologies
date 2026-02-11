@@ -202,20 +202,20 @@ export default function Navigation() {
               )}
             </Link>
             <Link 
-              href="/products"
+              href="/portfolio"
               style={{
                 position: 'relative',
-                color: isActive('/products') ? '#4A55FF' : '#ffffff',
+                color: isActive('/portfolio') ? '#4A55FF' : '#ffffff',
                 textDecoration: 'none',
-                fontWeight: isActive('/products') ? '600' : '500',
+                fontWeight: isActive('/portfolio') ? '600' : '500',
                 transition: 'color 0.3s ease',
                 fontSize: '0.95rem',
                 padding: '0.5rem 0',
               }}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Products
-              {isActive('/products') && (
+              Portfolio
+              {isActive('/portfolio') && (
                 <div style={{
                   position: 'absolute',
                   bottom: 0,
@@ -229,7 +229,7 @@ export default function Navigation() {
                 }} />
               )}
             </Link>
-            <Link 
+            <Link
               href="/services"
               style={{
                 position: 'relative',
@@ -257,7 +257,7 @@ export default function Navigation() {
                 }} />
               )}
             </Link>
-            <Link 
+            <Link
               href="/pricing"
               style={{
                 position: 'relative',
@@ -272,6 +272,34 @@ export default function Navigation() {
             >
               Pricing
               {isActive('/pricing') && (
+                <div style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: '3px',
+                  background: 'linear-gradient(90deg, #4A55FF, #ff6f00)',
+                  borderRadius: '2px',
+                  boxShadow: '0 2px 8px rgba(74, 85, 255, 0.6)',
+                  animation: 'slideIn 0.3s ease',
+                }} />
+              )}
+            </Link>
+            <Link
+              href="/contact"
+              style={{
+                position: 'relative',
+                color: isActive('/contact') ? '#4A55FF' : '#ffffff',
+                textDecoration: 'none',
+                fontWeight: isActive('/contact') ? '600' : '500',
+                transition: 'color 0.3s ease',
+                fontSize: '0.95rem',
+                padding: '0.5rem 0',
+              }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+              {isActive('/contact') && (
                 <div style={{
                   position: 'absolute',
                   bottom: 0,
@@ -313,8 +341,8 @@ export default function Navigation() {
           </div>
 
           <div className="cta-buttons" style={{ display: 'flex', gap: '15px' }}>
-            <Link 
-              href="/join-waitlist" 
+            <Link
+              href="/book-consultation"
               style={{
                 display: 'inline-block',
                 padding: '0.75rem 1.75rem',
@@ -338,7 +366,7 @@ export default function Navigation() {
                 e.currentTarget.style.boxShadow = '0 4px 20px rgba(74, 85, 255, 0.4)';
               }}
             >
-              Join Waitlist
+              Book Appointment Free
             </Link>
           </div>
 

@@ -16,12 +16,13 @@ export default function Footer() {
   const footerLinks = {
     company: [
       { label: 'About Us', href: '/about' },
-      { label: 'Products', href: '/products' },
+      { label: 'Portfolio', href: '/portfolio' },
       { label: 'Services', href: '/services' },
+      { label: 'Contact', href: '/contact' },
     ],
     resources: [
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Join Waitlist', href: '/join-waitlist' },
+      { label: 'Book Appointment', href: '/book-consultation' },
     ],
     legal: [
       { label: 'Privacy Policy', href: '/privacy-policy' },

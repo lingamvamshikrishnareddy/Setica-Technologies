@@ -15,11 +15,11 @@ interface CTAProps {
 
 export default function CTA({
   title = "Ready to Transform Your Business?",
-  description = "Join the waitlist and be the first to experience Setica's unified platform with 40+ integrated solutions.",
-  primaryButtonText = "JOIN WAITLIST",
-  primaryButtonLink = "/join-waitlist",
-  secondaryButtonText = "Explore Products",
-  secondaryButtonLink = "/products",
+  description = "Book a free consultation to discuss your project needs and get a clear roadmap for your digital product.",
+  primaryButtonText = "BOOK APPOINTMENT FREE",
+  primaryButtonLink = "/book-consultation",
+  secondaryButtonText = "Explore Portfolio",
+  secondaryButtonLink = "/portfolio",
   showSecondaryButton = false,
 }: CTAProps) {
   return (

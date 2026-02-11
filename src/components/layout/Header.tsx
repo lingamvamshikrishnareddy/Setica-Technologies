@@ -21,10 +21,10 @@ export default function Header() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/products', label: 'Products' },
+    { href: '/portfolio', label: 'Portfolio' },
     { href: '/services', label: 'Services' },
-    { href: '/solutions', label: 'Solutions' },
     { href: '/pricing', label: 'Pricing' },
+    { href: '/contact', label: 'Contact' },
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -132,8 +132,8 @@ export default function Header() {
                 background: 'linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent)',
                 animation: 'shine 3s linear infinite',
               }} />
-              <img 
-                src="images/setica-preview.webp" 
+              <img
+                src="/images/setica-preview.webp"
                 alt="Setica Logo"
                 style={{
                   width: '100%',
@@ -203,8 +203,8 @@ export default function Header() {
               </Link>
             ))}
             
-            <Link 
-              href="/join-waitlist" 
+            <Link
+              href="/book-consultation"
               style={{
                 display: 'inline-block',
                 padding: '0.75rem 1.75rem',
@@ -230,7 +230,7 @@ export default function Header() {
                 e.currentTarget.style.boxShadow = '0 4px 20px rgba(74, 85, 255, 0.4)';
               }}
             >
-              Join Waitlist
+              Book Appointment Free
             </Link>
           </div>
 
@@ -290,7 +290,7 @@ export default function Header() {
               </Link>
             ))}
             <Link
-              href="/join-waitlist"
+              href="/book-consultation"
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 display: 'inline-block',
@@ -306,7 +306,7 @@ export default function Header() {
                 marginTop: '10px',
               }}
             >
-              Join Waitlist
+              Book Appointment Free
             </Link>
           </div>
         )}

@@ -121,6 +121,32 @@ export default function ServicesPage() {
         'Domain-specific model training',
         'ChatGPT API integration'
       ]
+    },
+    {
+      title: 'Video Editing',
+      icon: 'fas fa-film',
+      description: 'Professional video editing services with cinematic effects, color grading, and seamless transitions for engaging content.',
+      features: [
+        'Professional video editing & cutting',
+        'Color correction & grading',
+        'Motion graphics & visual effects',
+        'Audio enhancement & sound design',
+        'Multiple format exports',
+        'Social media optimization'
+      ]
+    },
+    {
+      title: 'Animated Launch Videos',
+      icon: 'fas fa-play-circle',
+      description: 'Eye-catching animated launch videos that captivate your audience and effectively communicate your product\'s value.',
+      features: [
+        '2D & 3D animation production',
+        'Product showcase animations',
+        'Explainer videos',
+        'Custom character design',
+        'Professional voiceover integration',
+        'Brand-consistent storytelling'
+      ]
     }
   ];
 
@@ -151,36 +177,6 @@ export default function ServicesPage() {
     }
   ];
 
-  const projects = [
-    {
-      title: 'E-Commerce PWA Platform',
-      category: 'PWA Website',
-      description: 'Full-featured progressive web app with payment integration and real-time inventory',
-      tech: ['React', 'Node.js', 'MongoDB', 'PWA'],
-      rating: 5
-    },
-    {
-      title: 'Healthcare Appointment System',
-      category: 'Full-Stack Web',
-      description: 'Complete booking system with patient management and telemedicine features',
-      tech: ['Next.js', 'TypeScript', 'PostgreSQL'],
-      rating: 5
-    },
-    {
-      title: 'Fitness Tracking Mobile App',
-      category: 'Mobile App',
-      description: 'Cross-platform fitness app with workout plans and progress tracking',
-      tech: ['React Native', 'Firebase', 'AI Integration'],
-      rating: 5
-    },
-    {
-      title: 'Real Estate Listing Platform',
-      category: 'PWA Website',
-      description: 'Property listing platform with advanced search and virtual tours',
-      tech: ['React', 'Express', 'MongoDB'],
-      rating: 5
-    }
-  ];
 
   const developmentPricing = [
     {
@@ -275,29 +271,6 @@ export default function ServicesPage() {
     }
   ];
 
-  const blogPosts = [
-    {
-      title: 'Building Scalable SaaS Applications',
-      excerpt: 'Learn the essential architecture patterns for creating scalable multi-tenant SaaS platforms.',
-      date: 'Nov 28, 2024',
-      category: 'Development',
-      readTime: '8 min read'
-    },
-    {
-      title: 'AI Integration Best Practices',
-      excerpt: 'How to effectively integrate ChatGPT and Claude APIs into your applications.',
-      date: 'Nov 15, 2024',
-      category: 'AI/ML',
-      readTime: '6 min read'
-    },
-    {
-      title: 'PWA vs Native Apps in 2024',
-      excerpt: 'A comprehensive comparison to help you choose the right approach for your project.',
-      date: 'Nov 3, 2024',
-      category: 'Mobile',
-      readTime: '10 min read'
-    }
-  ];
 
   return (
     <>
@@ -518,107 +491,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Projects Showcase */}
-      <section style={{
-        padding: '100px 5%',
-        background: 'var(--dark-bg)'
-      }}>
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '60px'
-        }}>
-          <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
-            marginBottom: '20px',
-            color: 'var(--text-color)'
-          }}>
-            Our Recent Projects
-          </h2>
-          <p style={{
-            fontSize: '1.2rem',
-            color: 'var(--text-muted)',
-            maxWidth: '700px',
-            margin: '0 auto'
-          }}>
-            Showcasing excellence in every delivery
-          </p>
-        </div>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '30px',
-          maxWidth: '1400px',
-          margin: '0 auto'
-        }}>
-          {projects.map((project, index) => (
-            <div key={index} style={{
-              padding: '35px',
-              background: 'rgba(255, 255, 255, 0.03)',
-              backdropFilter: 'blur(10px)',
-              borderRadius: '20px',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              transition: 'all 0.3s ease'
-            }} className="project-card">
-              <div style={{
-                display: 'inline-block',
-                padding: '6px 16px',
-                background: 'rgba(74, 85, 255, 0.15)',
-                borderRadius: '20px',
-                fontSize: '0.85rem',
-                fontWeight: '600',
-                color: '#4A55FF',
-                marginBottom: '20px'
-              }}>
-                {project.category}
-              </div>
-              <h3 style={{
-                fontSize: '1.4rem',
-                marginBottom: '15px',
-                color: 'var(--text-color)',
-                fontWeight: '700'
-              }}>
-                {project.title}
-              </h3>
-              <p style={{
-                fontSize: '0.95rem',
-                color: 'var(--text-muted)',
-                lineHeight: '1.7',
-                marginBottom: '20px'
-              }}>
-                {project.description}
-              </p>
-              <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '10px',
-                marginBottom: '20px'
-              }}>
-                {project.tech.map((tech, tIndex) => (
-                  <span key={tIndex} style={{
-                    padding: '4px 12px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    borderRadius: '8px',
-                    fontSize: '0.8rem',
-                    color: 'var(--text-muted)'
-                  }}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div style={{
-                display: 'flex',
-                gap: '4px'
-              }}>
-                {[...Array(project.rating)].map((_, i) => (
-                  <i key={i} className="fas fa-star" style={{ color: '#FFD700', fontSize: '1rem' }}></i>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Pricing Section */}
       <section style={{
         padding: '100px 5%',
@@ -815,113 +687,6 @@ export default function ServicesPage() {
               >
                 {pricingTab === 'development' ? 'Start Your Project' : 'Get Started'}
               </button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Blog Section */}
-      <section style={{
-        padding: '100px 5%',
-        background: 'var(--dark-bg)'
-      }}>
-        <div style={{
-          textAlign: 'center',
-          marginBottom: '60px'
-        }}>
-          <h2 style={{
-            fontSize: 'clamp(2rem, 4vw, 3rem)',
-            marginBottom: '20px',
-            color: 'var(--text-color)'
-          }}>
-            Latest Insights
-          </h2>
-          <p style={{
-            fontSize: '1.2rem',
-            color: 'var(--text-muted)',
-            maxWidth: '700px',
-            margin: '0 auto'
-          }}>
-            Stay updated with our latest thoughts on development and technology
-          </p>
-        </div>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '40px',
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
-          {blogPosts.map((post, index) => (
-            <div key={index} style={{
-              padding: '35px',
-              background: 'rgba(255, 255, 255, 0.03)',
-              backdropFilter: 'blur(10px)',
-              borderRadius: '20px',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer'
-            }} className="blog-card">
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                marginBottom: '20px'
-              }}>
-                <span style={{
-                  padding: '6px 16px',
-                  background: 'rgba(74, 85, 255, 0.15)',
-                  borderRadius: '20px',
-                  fontSize: '0.85rem',
-                  fontWeight: '600',
-                  color: '#4A55FF'
-                }}>
-                  {post.category}
-                </span>
-                <span style={{
-                  fontSize: '0.85rem',
-                  color: 'var(--text-muted)'
-                }}>
-                  {post.date}
-                </span>
-              </div>
-
-              <h3 style={{
-                fontSize: '1.5rem',
-                marginBottom: '15px',
-                color: 'var(--text-color)',
-                fontWeight: '700'
-              }}>
-                {post.title}
-              </h3>
-              <p style={{
-                fontSize: '0.95rem',
-                color: 'var(--text-muted)',
-                lineHeight: '1.7',
-                marginBottom: '20px'
-              }}>
-                {post.excerpt}
-              </p>
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-              }}>
-                <span style={{
-                  fontSize: '0.9rem',
-                  color: '#4A55FF',
-                  fontWeight: '600'
-                }}>
-                  Read More →
-                </span>
-                <span style={{
-                  fontSize: '0.85rem',
-                  color: 'var(--text-muted)'
-                }}>
-                  {post.readTime}
-                </span>
-              </div>
             </div>
           ))}
         </div>
@@ -1144,12 +909,6 @@ export default function ServicesPage() {
           box-shadow: 0 5px 20px rgba(74, 85, 255, 0.3);
         }
 
-        .project-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-          border-color: rgba(74, 85, 255, 0.3);
-        }
-
         .pricing-card:hover {
           transform: translateY(-10px);
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -1158,12 +917,6 @@ export default function ServicesPage() {
         .pricing-cta:hover {
           transform: translateY(-2px);
           box-shadow: 0 10px 30px rgba(74, 85, 255, 0.4);
-        }
-
-        .blog-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-          border-color: rgba(74, 85, 255, 0.3);
         }
 
         .submit-btn:hover:not(:disabled) {

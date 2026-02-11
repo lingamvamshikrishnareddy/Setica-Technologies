@@ -32,6 +32,7 @@ const db = getFirestore(app);
 
 // Collection names
 const WAITLIST_COLLECTION = 'waitlist';
+const CONTACT_COLLECTION = 'contact';
 const STATS_COLLECTION = 'stats';
 const STATS_DOC_ID = 'counters';
 
@@ -192,6 +193,34 @@ export async function getAllWaitlistEmails(): Promise<any[]> {
   } catch (error) {
     console.error('Error getting all waitlist emails:', error);
     return [];
+  }
+}
+
+/**
+ * Submit contact form
+ * @param data - Contact form data
+ * @returns Promise that resolves when the contact form is submitted
+ */
+export async function submitContactForm(data: {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}): Promise<void> {
+  try {
+    await addDoc(collection(db, CONTACT_COLLECTION), {
+      name: data.name.trim(),
+      email: data.email.toLowerCase().trim(),
+      subject: data.subject.trim(),
+      message: data.message.trim(),
+      createdAt: serverTimestamp(),
+      status: 'unread'
+    });
+
+    console.log('Contact form submitted successfully:', data.email);
+  } catch (error: any) {
+    console.error('Error submitting contact form:', error);
+    throw error;
   }
 }
 

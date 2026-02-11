@@ -1,274 +1,147 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { Heart } from 'lucide-react';
 import Hero from '@/components/sections/Hero';
 
 export default function HomePage() {
-   const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
 
-   useEffect(() => {
-     // Add loaded class to body after page loads
-     document.body.classList.add('loaded');
-   }, []);
+  useEffect(() => {
+    // Add loaded class to body after page loads
+    document.body.classList.add('loaded');
+    
+    // Trigger CTA visibility on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-  const solutions = [
-    {
-      title: 'Telehealth Platform',
-      icon: 'fas fa-briefcase-medical',
-      status: 'testing',
-      description: 'Comprehensive healthcare solution combining online telemedicine consultations, pharmacy services, and ambulance connectivity in one platform.',
-      features: [
-        'Virtual doctor consultations',
-        'Online pharmacy integration',
-        'Ambulance service connectivity',
-        'Secure health records access'
-      ]
-    },
-    {
-      title: 'Women\'s Safety App',
-      icon: 'fas fa-shield-alt',
-      status: 'testing',
-      description: 'Individual-registered SOS emergency platform with real-time alerts, location sharing, and trusted contact networks.',
-      features: [
-        'Personal SOS registration',
-        'Real-time location sharing',
-        'Emergency contact alerts',
-        'Journey monitoring'
-      ]
-    },
-    {
-      title: 'SetCart Quick Commerce',
-      icon: 'fas fa-shipping-fast',
-      status: 'testing',
-      description: 'Transparent quick commerce with zero hidden prices, no dark patterns, and assured quality delivery.',
-      features: [
-        '100% transparent pricing',
-        'No dark patterns guarantee',
-        'Quality assured delivery',
-        'Local store partnerships'
-      ]
-    },
-    {
-      title: 'Enterprise Management SaaS',
-      icon: 'fas fa-cogs',
-      status: 'testing',
-      description: 'Business OS for MSMEs and startups with CRM, project management, and workflow automation tools.',
-      features: [
-        'Unified CRM platform',
-        'MSME-focused features',
-        'Startup tools & templates',
-        'Workflow automation'
-      ]
-    },
-    {
-      title: 'Yatra Travel & Hospitality',
-      icon: 'fas fa-plane-departure',
-      status: 'testing',
-      description: 'Online hospitality and booking platform for hotels, flights, and complete travel experiences.',
-      features: [
-        'Hotel & flight booking',
-        'Travel packages',
-        'Itinerary planning',
-        'Local experiences'
-      ]
-    },
-    {
-      title: 'Traffic AI',
-      icon: 'fas fa-traffic-light',
-      status: 'testing',
-      description: 'Vision model-based traffic management system with dynamic timer adjustments based on real-time traffic density.',
-      features: [
-        'AI vision-based detection',
-        'Dynamic signal timing',
-        'Traffic density analysis',
-        'Smart city integration'
-      ]
+    const ctaSection = document.querySelector('.cta-section');
+    if (ctaSection) {
+      observer.observe(ctaSection);
     }
-  ];
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
       <Hero />
 
-      {/* Solutions Section */}
-      <section className="solutions-section" style={{
-        padding: '100px 5%',
-        background: 'linear-gradient(to bottom, var(--dark-card), var(--dark-bg))'
+      {/* CTA Section - Apple Style */}
+      <section className="cta-section" style={{
+        position: 'relative',
+        padding: '120px 5%',
+        textAlign: 'center',
+        background: '#000000',
+        overflow: 'hidden',
       }}>
-        <div className="section-header">
-          <h2>Featured Solutions & Product Roadmap</h2>
-          <p>
-            Explore Setica&apos;s comprehensive ecosystem of integrated solutions currently 
-            in development or In Development for future releases.
-          </p>
-        </div>
-
+        {/* Subtle Background Glow */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '30px',
-          maxWidth: '1400px',
-          margin: '0 auto'
-        }} className="solutions-grid">
-          {solutions.map((solution, index) => (
-            <div key={index} className="solution-card">
-              <div className="solution-card-content" style={{ position: 'relative', zIndex: 1 }}>
-                <span className={`status-tag ${solution.status === 'testing' ? 'status-testing' : 'status-development'}`}>
-                  {solution.status === 'testing' ? 'Testing & Production' : 'In Development'}
-                </span>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginBottom: '20px'
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '15px'
-                  }} className="solution-icon-wrapper">
-                    <i className={solution.icon} style={{
-                      fontSize: '2.5rem',
-                      background: 'linear-gradient(135deg, #4A55FF, #ff6f00)',
-                      WebkitBackgroundClip: 'text',
-                      backgroundClip: 'text',
-                      color: 'transparent',
-                      transition: 'transform 0.3s ease'
-                    }}></i>
-                    <h3 style={{
-                      fontSize: '1.3rem',
-                      color: 'var(--text-color)',
-                      fontWeight: '700'
-                    }}>{solution.title}</h3>
-                  </div>
-                  <Heart
-                    size={24}
-                    style={{
-                      color: '#ff6f00',
-                      cursor: 'pointer',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    onClick={() => router.push('/join-waitlist')}
-                    onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.2)'}
-                    onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                  />
-                </div>
-                <p style={{
-                  fontSize: '0.95rem',
-                  color: 'var(--text-muted)',
-                  marginBottom: '20px',
-                  lineHeight: '1.6'
-                }}>{solution.description}</p>
-                <ul className="features-list" style={{
-                  listStyle: 'none',
-                  marginBottom: '20px'
-                }}>
-                  {solution.features.map((feature, fIndex) => (
-                    <li key={fIndex} style={{
-                      padding: '8px 0',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      fontSize: '0.85rem',
-                      color: 'var(--text-muted)',
-                      transition: 'all 0.3s ease'
-                    }}>
-                      <i className="fas fa-check-circle" style={{
-                        color: 'var(--primary-blue)',
-                        fontSize: '0.7rem'
-                      }}></i>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div style={{
-                  display: 'flex',
-                  gap: '10px',
-                  marginTop: '20px'
-                }}>
-                  <button style={{
-                    flex: 1,
-                    padding: '10px 15px',
-                    background: 'linear-gradient(135deg, #4a55ff, #6b73ff)',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '8px',
-                    fontWeight: '600',
-                    fontSize: '0.85rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                  onClick={() => window.open('https://example.com/demo', '_blank')}
-                  >
-                    Demo Link
-                  </button>
-                  <button style={{
-                    flex: 1,
-                    padding: '10px 15px',
-                    background: 'linear-gradient(135deg, #ff6f00, #ff8c00)',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '8px',
-                    fontWeight: '600',
-                    fontSize: '0.85rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-                  onClick={() => window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank')}
-                  >
-                    Demo Video
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '600px',
+          height: '600px',
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%)',
+          filter: 'blur(80px)',
+          zIndex: 0,
+        }} />
 
-        <div style={{ textAlign: 'center', marginTop: '60px' }}>
-          <Link href="/products" className="btn btn-primary" style={{ marginRight: '15px' }}>
-            View Complete Roadmap (50+ Products)
-          </Link>
-          <Link href="/services" className="btn btn-primary">
-            Explore Our Services
-          </Link>
-        </div>
-      </section>
+        <div className="cta-content" style={{
+          position: 'relative',
+          zIndex: 2,
+          maxWidth: '720px',
+          margin: '0 auto',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+          transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+        }}>
+          {/* Section Label */}
+          <span style={{
+            display: 'inline-block',
+            fontSize: '0.8rem',
+            fontWeight: '600',
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: 'rgba(255, 255, 255, 0.5)',
+            marginBottom: '1.5rem',
+          }}>
+            Let's work together
+          </span>
 
-      {/* CTA Section */}
-      <section className="cta-section">
-        <div className="cta-content">
+          {/* Headline */}
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
-            marginBottom: '1rem',
-            color: 'var(--text-color)'
-          }}>Ready to Simplify Your Life?</h2>
-          <p style={{
-            fontSize: '1.2rem',
-            color: 'var(--text-muted)',
-            marginBottom: '2rem'
+            fontWeight: '600',
+            marginBottom: '1.25rem',
+            color: '#f5f5f7',
+            lineHeight: '1.2',
+            letterSpacing: '-0.02em',
           }}>
-            Join the waitlist and be the first to experience the unified Setica platform.
+            Ready to bring your idea to life?
+          </h2>
+
+          {/* Description */}
+          <p style={{
+            fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+            color: 'rgba(255, 255, 255, 0.7)',
+            marginBottom: '2.5rem',
+            lineHeight: '1.6',
+            fontWeight: '400',
+          }}>
+            Book a free consultation to discuss your project. No commitment, just a conversation about how we can help.
           </p>
-          <Link href="/join-waitlist" style={{
-            padding: '16px 40px',
-            background: 'linear-gradient(135deg, var(--primary-blue), var(--primary-orange))',
-            color: 'white',
-            textDecoration: 'none',
-            borderRadius: '12px',
-            fontWeight: '700',
-            fontSize: '1.1rem',
-            display: 'inline-block',
-            transition: 'all 0.3s ease'
-          }} className="btn-cta">
-            JOIN WAITLIST →
+
+          {/* CTA Button - Apple Style */}
+          <Link 
+            href="/book-consultation" 
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              padding: '16px 36px',
+              background: '#3b82f6',
+              color: 'white',
+              textDecoration: 'none',
+              borderRadius: '980px',
+              fontWeight: '500',
+              fontSize: '1rem',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              letterSpacing: '-0.01em',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#2563eb';
+              e.currentTarget.style.transform = 'scale(1.02)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#3b82f6';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            Book a free consultation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
           </Link>
+
+          {/* Trust Note */}
+          <p style={{
+            marginTop: '2rem',
+            fontSize: '0.85rem',
+            color: 'rgba(255, 255, 255, 0.4)',
+          }}>
+            Free consultation • No obligation • Response within 24 hours
+          </p>
         </div>
       </section>
     </>
