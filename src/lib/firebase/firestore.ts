@@ -33,6 +33,7 @@ const db = getFirestore(app);
 // Collection names
 const WAITLIST_COLLECTION = 'waitlist';
 const CONTACT_COLLECTION = 'contact';
+const BOOKINGS_COLLECTION = 'bookings';
 const STATS_COLLECTION = 'stats';
 const STATS_DOC_ID = 'counters';
 
@@ -220,6 +221,37 @@ export async function submitContactForm(data: {
     console.log('Contact form submitted successfully:', data.email);
   } catch (error: any) {
     console.error('Error submitting contact form:', error);
+    throw error;
+  }
+}
+
+/**
+ * Book a consultation
+ * @param data - Booking details
+ */
+export async function bookConsultation(data: {
+  name: string;
+  email: string;
+  company?: string;
+  message?: string;
+  date: string;
+  time: string;
+}): Promise<void> {
+  try {
+    await addDoc(collection(db, BOOKINGS_COLLECTION), {
+      name: data.name.trim(),
+      email: data.email.toLowerCase().trim(),
+      company: data.company?.trim() || '',
+      message: data.message?.trim() || '',
+      date: data.date,
+      time: data.time,
+      createdAt: serverTimestamp(),
+      status: 'scheduled'
+    });
+
+    console.log('Consultation booked successfully:', data.email);
+  } catch (error: any) {
+    console.error('Error booking consultation:', error);
     throw error;
   }
 }

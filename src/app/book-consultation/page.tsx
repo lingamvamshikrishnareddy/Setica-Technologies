@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { bookConsultation } from '@/lib/firebase/firestore';
 
 export default function BookConsultationPage() {
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
@@ -512,11 +513,20 @@ export default function BookConsultationPage() {
                       e.preventDefault();
                       setIsSubmitting(true);
                       
-                      // Simulate booking submission
-                      await new Promise(resolve => setTimeout(resolve, 1500));
-                      
-                      setIsSubmitting(false);
-                      setShowSuccess(true);
+                      try {
+                        const dateStr = `${months[currentMonth.getMonth()]} ${selectedDate}, ${currentMonth.getFullYear()}`;
+                        await bookConsultation({
+                          ...formData,
+                          date: dateStr,
+                          time: selectedTime || '',
+                        });
+                        setShowSuccess(true);
+                      } catch (err) {
+                        console.error('Error booking consultation:', err);
+                        alert('Something went wrong. Please try again.');
+                      } finally {
+                        setIsSubmitting(false);
+                      }
                     }}>
                       <div style={{ marginBottom: '16px' }}>
                         <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', marginBottom: '8px', color: '#1a1a1a' }}>
