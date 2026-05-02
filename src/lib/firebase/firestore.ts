@@ -238,7 +238,7 @@ export async function bookConsultation(data: {
   time: string;
 }): Promise<void> {
   try {
-    await addDoc(collection(db, CONTACT_COLLECTION), {
+    await addDoc(collection(db, 'contact-messages'), {
       name: data.name.trim(),
       email: data.email.toLowerCase().trim(),
       subject: `Consultation Booking: ${data.date} at ${data.time}`,
