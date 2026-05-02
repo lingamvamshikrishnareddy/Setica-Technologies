@@ -238,15 +238,13 @@ export async function bookConsultation(data: {
   time: string;
 }): Promise<void> {
   try {
-    await addDoc(collection(db, BOOKINGS_COLLECTION), {
+    await addDoc(collection(db, CONTACT_COLLECTION), {
       name: data.name.trim(),
       email: data.email.toLowerCase().trim(),
-      company: data.company?.trim() || '',
-      message: data.message?.trim() || '',
-      date: data.date,
-      time: data.time,
+      subject: `Consultation Booking: ${data.date} at ${data.time}`,
+      message: `Company: ${data.company || 'N/A'}\nMessage: ${data.message || 'N/A'}\nRequested Date: ${data.date}\nRequested Time: ${data.time}`,
       createdAt: serverTimestamp(),
-      status: 'scheduled'
+      status: 'unread'
     });
 
     console.log('Consultation booked successfully:', data.email);
